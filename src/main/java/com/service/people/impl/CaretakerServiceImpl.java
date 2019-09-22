@@ -13,22 +13,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class CaretakerServiceImpl implements CaretakerService {
-    @Autowired
-    @Qualifier("InMemory")
-    private CaretakerServiceImpl service = null;
+    private static CaretakerServiceImpl service;
     private CaretakerRepository repository;
 
-    private CaretakerServiceImpl(){
-        this.repository = CaretakerRepositoryImpl.getRepository();
-    }
+    private CaretakerServiceImpl(){this.repository = CaretakerRepositoryImpl.getRepository();}
 
-    public CaretakerService getService(){
-        if (service == null) service = new CaretakerServiceImpl();
+    public static CaretakerServiceImpl getService()
+    {
+        if(service == null){service = new CaretakerServiceImpl();}
         return service;
     }
 
     @Override
-    public Caretaker create(Caretaker caretaker) {
+    public Caretaker create(Caretaker caretaker){
         return this.repository.create(caretaker);
     }
 
@@ -38,7 +35,7 @@ public class CaretakerServiceImpl implements CaretakerService {
     }
 
     @Override
-    public void delete(String caretakerIDNumber) {
+    public void delete(String caretakerIDNumber){
         this.repository.delete(caretakerIDNumber);
     }
 
@@ -51,4 +48,5 @@ public class CaretakerServiceImpl implements CaretakerService {
     public Set<Caretaker> getAll() {
         return this.repository.getAll();
     }
+
 }

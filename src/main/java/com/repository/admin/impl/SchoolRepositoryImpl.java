@@ -4,59 +4,55 @@ import com.domain.admin.School;
 import com.repository.admin.SchoolRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 @Repository("InMemory")
 public class SchoolRepositoryImpl implements SchoolRepository {
-
     private static SchoolRepositoryImpl repository = null;
-    private Set<School> schools;
+    private Map<String, School> schools;
 
-    private SchoolRepositoryImpl(){
-        this.schools = new HashSet<>();
+    private SchoolRepositoryImpl() {
+        this.schools = new HashMap<>();
     }
 
-    public static SchoolRepositoryImpl getRepository(){
+    public static SchoolRepositoryImpl getRepository() {
         if (repository == null) repository = new SchoolRepositoryImpl();
         return repository;
     }
 
-    public School create(School school){
-        this.schools.add(school);
-        return school;
+    @Override
+    public Set<School> getAll() {
+        Collection<School> schools = this.schools.values();
+        Set<School> set = new HashSet<>();
+        set.addAll(schools);
+        return set;
     }
 
-    private School findSchool(String schoolCode) {
-        return this.schools.stream()
-                .filter(school -> school.getSchoolCode().trim().equals(schoolCode))
-                .findAny()
-                .orElse(null);
-    }
-
-    public School read(String schoolCode){
-
-        School school = findSchool(schoolCode);
-        return school;
-    }
-
-    public void delete(String schoolCode) {
-        School school = findSchool(schoolCode);
-        if (school != null) this.schools.remove(school);
-
-    }
-
-    public School update(School school) {
-        School toDelete = findSchool(school.getSchoolCode());
-        if (toDelete != null) {
-            this.schools.remove(toDelete);
-            return create(school);
+    @Override
+    public School create(School school) {
+        if (read(school.getSchoolCode()) == null) {
+            this.schools.put(school.getSchoolCode(), school);
         }
-        return null;
+        return school;
     }
 
-
-
-    public Set<School> getAll(){
-        return this.schools;
+    @Override
+    public School read(String e) {
+        return this.schools.get(e);
     }
+
+    @Override
+    public School update(School school) {
+        if (read(school.getSchoolCode()) != null) {
+            schools.replace(school.getSchoolCode(), school);
+        }
+        return school;
+    }
+
+    @Override
+    public void delete(String e) {
+        School school = read(e);
+        this.schools.remove(e, school);
+    }
+
 }

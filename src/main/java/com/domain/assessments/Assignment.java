@@ -28,6 +28,14 @@ public class Assignment {
         return assignmentNumber;
     }
 
+    public void setAssignmentNumber(String assignmentNumber) {
+        this.assignmentNumber = assignmentNumber;
+    }
+
+    public void setAssignmentType(String assignmentType) {
+        this.assignmentType = assignmentType;
+    }
+
     public String getAssignmentType() {
         return assignmentType;
     }

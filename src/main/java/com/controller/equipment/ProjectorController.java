@@ -1,42 +1,47 @@
 package com.controller.equipment;
 
 import com.domain.equipment.Projector;
+import com.service.equipment.impl.ProjectorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.equipment.ProjectorService;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/projector")
 public class ProjectorController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
-    private ProjectorService service;
+    private ProjectorServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public Projector create(Projector projector) {
+    public Projector create(@RequestBody Projector projector) {
         return service.create(projector);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public Projector update(Projector projector) {
+    public Projector update(@RequestBody Projector projector) {
         return service.update(projector);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
 
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public Projector read(@PathVariable String id) {
-        return service.read(id);
+
+        Projector projector = service.read(id);
+        return projector;
+    }
+
+    @GetMapping("/getall")
+    public Set<Projector> getAll(){
+        return service.getAll();
     }
 
 }

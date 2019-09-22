@@ -1,8 +1,9 @@
 package com.service.equipment;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.equipment.Textbook;
 import com.factory.equipment.TextbookFactory;
+import com.service.equipment.impl.TextbookServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,63 +17,67 @@ import com.repository.equipment.impl.TextbookRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class TextbookServiceTest {
 
-    private TextbookRepository repository;
-    private Textbook textbook;
-
-    private Textbook getSavedTextbook() {
-        Set<Textbook> savedTextbooks = this.repository.getAll();
-        return savedTextbooks.iterator().next();
-    }
+    TextbookServiceImpl service;
+    Textbook textbook;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = TextbookRepositoryImpl.getRepository();
-        this.textbook = TextbookFactory.getTextbook("I.T001", "I.T");
+        service = TextbookServiceImpl.getService();
+        textbook = TextbookFactory.getTextbook("IT", "12345");
     }
 
     @Test
-    public void a_create() {
-        Textbook created = this.repository.create(this.textbook);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.textbook);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Textbook savedTextbook = getSavedTextbook();
-        System.out.println("In read, textbook code = " + savedTextbook.getTextbookCode());
-        Textbook read = this.repository.read(savedTextbook.getTextbookCode());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedTextbook, read);
+    public void getAll() {
+        service.create(textbook);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Textbook savedTextbook = getSavedTextbook();
-        this.repository.delete(savedTextbook.getTextbookCode());
-        d_getAll();
+    public void create() {
+        service.create(textbook);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newTextbookCode = "New Test Textbook Code";
-        Textbook updated = new Textbook.Builder().copy(getSavedTextbook()).textbookCode(newTextbookCode).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newTextbookCode, updated.getTextbookCode());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Textbook> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(textbook);
+        System.out.println(service.read("12345"));
+
+        Textbook textbookUpdated = TextbookFactory.getTextbook("English", "12345");
+        service.update(textbookUpdated);
+
+        Textbook txtBook = service.read("12345");
+        Assert.assertNotEquals(textbook.getTextbookName(), txtBook.getTextbookName());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(textbook.getTextbookCode()));
+        System.out.println("Delete\n" + service.read(textbook.getTextbookCode()));
+    }
+
 }

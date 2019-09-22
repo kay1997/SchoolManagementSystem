@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class SecurityServiceImpl  implements SecurityService {
-    @Autowired
-    @Qualifier("InMemory")
-    private SecurityServiceImpl service = null;
+    private static SecurityServiceImpl service;
     private SecurityRepository repository;
 
-    private SecurityServiceImpl(){
-        this.repository = SecurityRepositoryImpl.getRepository();
-    }
+    private SecurityServiceImpl(){this.repository = SecurityRepositoryImpl.getRepository();}
 
-    public SecurityService getService(){
-        if (service == null) service = new SecurityServiceImpl();
+    public static SecurityServiceImpl getService()
+    {
+        if(service == null){service = new SecurityServiceImpl();}
         return service;
     }
 
     @Override
-    public Security create(Security security) {
+    public Security create(Security security){
         return this.repository.create(security);
     }
 
@@ -37,7 +34,7 @@ public class SecurityServiceImpl  implements SecurityService {
     }
 
     @Override
-    public void delete(String securityIDNumber) {
+    public void delete(String securityIDNumber){
         this.repository.delete(securityIDNumber);
     }
 
@@ -50,4 +47,5 @@ public class SecurityServiceImpl  implements SecurityService {
     public Set<Security> getAll() {
         return this.repository.getAll();
     }
+
 }

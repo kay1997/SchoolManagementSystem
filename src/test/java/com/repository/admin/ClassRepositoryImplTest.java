@@ -1,9 +1,11 @@
 package com.repository.admin;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.admin.Class;
 import com.factory.admin.ClassFactory;
+import com.repository.admin.impl.ClassRepositoryImpl;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,26 +16,72 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 @FixMethodOrder(MethodSorters.JVM)
 public class ClassRepositoryImplTest {
-    @Autowired
-    private ClassRepository repository;
-    private String oneClassNo = null;
+    ClassRepositoryImpl repository;
+    Class cls;
 
-    @Test
-    public void CreateClassTest() throws IOException {
-        Class oneClass = ClassFactory.getClass("A");
-        Class result = repository.create(oneClass);
-        oneClassNo = result.getClassGroup();
-        Assert.assertNotNull(oneClass);
+    @Before
+    public void setUp() throws Exception {
+
+        repository = ClassRepositoryImpl.getRepository();
+        cls= ClassFactory.getClass("1", "A");
     }
 
     @Test
-    public void GetClassTest() throws IOException {
-
-        Class oneClass = repository.read(oneClassNo);
-        Assert.assertNotNull(oneClass);
+    public void getRepository() {
+        assertNotNull(repository);
+        System.out.println(repository);
     }
+
+    @Test
+    public void getAll() {
+        repository.create(cls);
+        assertNotNull(repository.getAll());
+        System.out.println("Get All\n" + repository.getAll());
+    }
+
+    @Test
+    public void create() {
+        repository.create(cls);
+        assertNotNull(repository.read(cls.getClassID()));
+        System.out.println("Created\n" + repository.read(cls.getClassID()));
+    }
+
+    @Test
+    public void read() {
+
+        repository.create(cls);
+
+        Class clses = repository.read(cls.getClassID());
+
+        assertEquals(cls, clses);
+    }
+
+    @Test
+    public void update() {
+
+       repository.create(cls);
+
+        Class updatedClass = ClassFactory.getClass("1", "B");
+
+        repository.update(updatedClass);
+
+        Assert.assertNotEquals(cls.getClassGroup(), updatedClass.getClassGroup());
+    }
+
+    @Test
+    public void delete() {
+        repository.delete(cls.getClassID());
+        assertNull(repository.read(cls.getClassID()));
+        System.out.println("Deleted\n" + repository.read(cls.getClassID()));
+    }
+
 }

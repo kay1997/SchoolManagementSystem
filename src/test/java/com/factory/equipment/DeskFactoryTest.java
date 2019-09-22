@@ -11,8 +11,9 @@ public class DeskFactoryTest {
     public void getDeskNumber() {
 
         String id = "101";
+        String type = "Steel";
 
-        Desk desk = DeskFactory.getDesk(id);
+        Desk desk = DeskFactory.getDesk(id, type);
         System.out.println(desk);
         Assert.assertNotNull(desk.getDeskNumber());
     }

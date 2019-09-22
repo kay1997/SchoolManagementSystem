@@ -12,22 +12,20 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class AttendanceServiceImpl implements AttendanceService {
-    @Autowired
-    @Qualifier("InMemory")
-    private AttendanceServiceImpl service = null;
+
+    private static AttendanceServiceImpl service;
     private AttendanceRepository repository;
 
-    private AttendanceServiceImpl() {
-        this.repository = AttendanceRepositoryImpl.getRepository();
-    }
+    private AttendanceServiceImpl(){this.repository = AttendanceRepositoryImpl.getRepository();}
 
-    public AttendanceService getService() {
-        if (service == null) service = new AttendanceServiceImpl();
+    public static AttendanceServiceImpl getService()
+    {
+        if(service == null){service = new AttendanceServiceImpl();}
         return service;
     }
 
     @Override
-    public Attendance create(Attendance attendance) {
+    public Attendance create(Attendance attendance){
         return this.repository.create(attendance);
     }
 
@@ -37,13 +35,13 @@ public class AttendanceServiceImpl implements AttendanceService {
     }
 
     @Override
-    public void delete(String attendanceNumber) {
-        this.repository.delete(attendanceNumber);
+    public void delete(String learnerID){
+        this.repository.delete(learnerID);
     }
 
     @Override
-    public Attendance read(String attendanceNumber) {
-        return this.repository.read(attendanceNumber);
+    public Attendance read(String learnerID) {
+        return this.repository.read(learnerID);
     }
 
     @Override
@@ -52,3 +50,4 @@ public class AttendanceServiceImpl implements AttendanceService {
     }
 
 }
+

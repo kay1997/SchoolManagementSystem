@@ -10,8 +10,9 @@ public class ChairFactoryTest {
     public void getChairNumber() {
 
         String id = "101";
+        String type = "Wooden";
 
-        Chair chair = ChairFactory.getChair(id);
+        Chair chair = ChairFactory.getChair(id, type);
         System.out.println(chair);
         Assert.assertNotNull(chair.getChairNumber());
     }

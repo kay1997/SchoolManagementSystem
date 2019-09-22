@@ -4,60 +4,55 @@ import com.domain.admin.Grade;
 import com.repository.admin.GradeRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 @Repository("InMemory")
 public class GradeRepositoryImpl implements GradeRepository {
-
     private static GradeRepositoryImpl repository = null;
-    private Set<Grade> grades;
+    private Map<String, Grade> grades;
 
-    private GradeRepositoryImpl(){
-        this.grades = new HashSet<>();
+    private GradeRepositoryImpl() {
+        this.grades = new HashMap<>();
     }
 
-    public static GradeRepositoryImpl getRepository(){
+    public static GradeRepositoryImpl getRepository() {
         if (repository == null) repository = new GradeRepositoryImpl();
         return repository;
     }
 
-
-    public Grade create(Grade grade){
-        this.grades.add(grade);
-        return grade;
+    @Override
+    public Set<Grade> getAll() {
+        Collection<Grade> grades = this.grades.values();
+        Set<Grade> set = new HashSet<>();
+        set.addAll(grades);
+        return set;
     }
 
-    private Grade findGrade(String gradeNumber) {
-        return this.grades.stream()
-                .filter(grade -> grade.getGradeNumber().trim().equals(gradeNumber))
-                .findAny()
-                .orElse(null);
-    }
-
-    public Grade read(String gradeNumber){
-
-        Grade grade = findGrade(gradeNumber);
-        return grade;
-    }
-
-    public void delete(String gradeNumber) {
-        Grade grade = findGrade(gradeNumber);
-        if (grade != null) this.grades.remove(grade);
-
-    }
-
-    public Grade update(Grade grade) {
-        Grade toDelete = findGrade(grade.getGradeNumber());
-        if (toDelete != null) {
-            this.grades.remove(toDelete);
-            return create(grade);
+    @Override
+    public Grade create(Grade grade) {
+        if (read(grade.getGradeID()) == null) {
+            this.grades.put(grade.getGradeID(), grade);
         }
-        return null;
+        return grade;
     }
 
-
-
-    public Set<Grade> getAll(){
-        return this.grades;
+    @Override
+    public Grade read(String e) {
+        return this.grades.get(e);
     }
+
+    @Override
+    public Grade update(Grade grade) {
+        if (read(grade.getGradeID()) != null) {
+            grades.replace(grade.getGradeID(), grade);
+        }
+        return grade;
+    }
+
+    @Override
+    public void delete(String e) {
+        Grade grade = read(e);
+        this.grades.remove(e, grade);
+    }
+
 }

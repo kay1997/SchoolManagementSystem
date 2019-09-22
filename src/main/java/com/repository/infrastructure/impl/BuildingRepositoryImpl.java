@@ -4,58 +4,56 @@ import com.domain.infrastructure.Building;
 import org.springframework.stereotype.Repository;
 import com.repository.infrastructure.BuildingRepository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 @Repository("InMemory")
 public class BuildingRepositoryImpl implements BuildingRepository {
 
     private static BuildingRepositoryImpl repository = null;
-    private Set<Building> buildings;
+    private Map<String, Building> buildings;
 
-    private BuildingRepositoryImpl(){
-        this.buildings = new HashSet<>();
+    private BuildingRepositoryImpl() {
+        this.buildings = new HashMap<>();
     }
 
-    public static BuildingRepositoryImpl getRepository(){
+    public static BuildingRepositoryImpl getRepository() {
         if (repository == null) repository = new BuildingRepositoryImpl();
         return repository;
     }
 
-
-    public Building create(Building building){
-        this.buildings.add(building);
-        return building;
+    @Override
+    public Set<Building> getAll() {
+        Collection<Building> buildings = this.buildings.values();
+        Set<Building> set = new HashSet<>();
+        set.addAll(buildings);
+        return set;
     }
 
-    private Building findBuilding(String buildingNumber) {
-        return this.buildings.stream()
-                .filter(building -> building.getBuildingNumber().trim().equals(buildingNumber))
-                .findAny()
-                .orElse(null);
-    }
-
-    public Building read(String buildingNumber){
-
-        Building building = findBuilding(buildingNumber);
-        return building;
-    }
-
-    public void delete(String buildingNumber) {
-        Building building = findBuilding(buildingNumber);
-        if (building != null) this.buildings.remove(building);
-
-    }
-
-    public Building update(Building building) {
-        Building toDelete = findBuilding(building.getBuildingNumber());
-        if (toDelete != null) {
-            this.buildings.remove(toDelete);
-            return create(building);
+    @Override
+    public Building create(Building building) {
+        if (read(building.getBuildingNumber()) == null) {
+            this.buildings.put(building.getBuildingNumber(), building);
         }
-        return null;
+        return building;
     }
 
-    public Set<Building> getAll(){
-        return this.buildings;
+    @Override
+    public Building read(String e) {
+        return this.buildings.get(e);
     }
+
+    @Override
+    public Building update(Building building) {
+        if (read(building.getBuildingNumber()) != null) {
+            buildings.replace(building.getBuildingNumber(), building);
+        }
+        return building;
+    }
+
+    @Override
+    public void delete(String e) {
+        Building building = read(e);
+        this.buildings.remove(e, building);
+    }
+
 }

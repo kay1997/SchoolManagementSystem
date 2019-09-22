@@ -22,6 +22,14 @@ public class Exam {
         return examPaperNumber;
     }
 
+    public void setExamPaperNumber(String examPaperNumber) {
+        this.examPaperNumber = examPaperNumber;
+    }
+
+    public void setExamType(String examType) {
+        this.examType = examType;
+    }
+
     public String getExamType() {
         return examType;
     }

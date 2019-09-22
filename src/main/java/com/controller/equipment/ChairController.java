@@ -1,42 +1,47 @@
 package com.controller.equipment;
 
 import com.domain.equipment.Chair;
+import com.service.equipment.impl.ChairServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.equipment.ChairService;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/chair")
 public class ChairController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
-    private ChairService service;
+    private ChairServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public Chair create(Chair chair) {
+    public Chair create(@RequestBody Chair chair) {
         return service.create(chair);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public Chair update(Chair chair) {
+    public Chair update(@RequestBody Chair chair) {
         return service.update(chair);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
 
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public Chair read(@PathVariable String id) {
-        return service.read(id);
+
+        Chair chair = service.read(id);
+        return chair;
+    }
+
+    @GetMapping("/getall")
+    public Set<Chair> getAll(){
+        return service.getAll();
     }
 
 }

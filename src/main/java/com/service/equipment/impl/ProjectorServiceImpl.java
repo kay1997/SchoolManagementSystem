@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class ProjectorServiceImpl implements ProjectorService {
-    @Autowired
-    @Qualifier("InMemory")
-    private ProjectorServiceImpl service = null;
+    private static ProjectorServiceImpl service;
     private ProjectorRepository repository;
 
-    private ProjectorServiceImpl() {
-        this.repository = ProjectorRepositoryImpl.getRepository();
-    }
+    private ProjectorServiceImpl(){this.repository = ProjectorRepositoryImpl.getRepository();}
 
-    public ProjectorService getService() {
-        if (service == null) service = new ProjectorServiceImpl();
+    public static ProjectorServiceImpl getService()
+    {
+        if(service == null){service = new ProjectorServiceImpl();}
         return service;
     }
 
     @Override
-    public Projector create(Projector projector) {
+    public Projector create(Projector projector){
         return this.repository.create(projector);
     }
 
@@ -37,7 +34,7 @@ public class ProjectorServiceImpl implements ProjectorService {
     }
 
     @Override
-    public void delete(String projectorCode) {
+    public void delete(String projectorCode){
         this.repository.delete(projectorCode);
     }
 

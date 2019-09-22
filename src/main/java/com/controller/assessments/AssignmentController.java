@@ -1,42 +1,47 @@
 package com.controller.assessments;
 
 import com.domain.assessments.Assignment;
+import com.service.assessments.impl.AssignmentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.assessments.AssignmentService;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/assignment")
 public class AssignmentController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
-    private AssignmentService service;
+    private AssignmentServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public Assignment create(Assignment assignment) {
+    public Assignment create(@RequestBody Assignment assignment) {
         return service.create(assignment);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public Assignment update(Assignment assignment) {
+    public Assignment update(@RequestBody Assignment assignment) {
         return service.update(assignment);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
 
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public Assignment read(@PathVariable String id) {
-        return service.read(id);
+
+        Assignment assignment = service.read(id);
+        return assignment;
+    }
+
+    @GetMapping("/getall")
+    public Set<Assignment> getAll(){
+        return service.getAll();
     }
 
 }

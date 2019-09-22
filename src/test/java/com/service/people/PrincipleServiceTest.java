@@ -1,8 +1,9 @@
 package com.service.people;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.people.Principle;
 import com.factory.people.PrincipleFactory;
+import com.service.people.impl.PrincipleServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,63 +17,67 @@ import com.repository.people.impl.PrincipleRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class PrincipleServiceTest {
 
-    private PrincipleRepository repository;
-    private Principle principle;
-
-    private Principle getSavedPrinciple() {
-        Set<Principle> savedPrinciples = this.repository.getAll();
-        return savedPrinciples.iterator().next();
-    }
+    PrincipleServiceImpl service;
+    Principle principle;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = PrincipleRepositoryImpl.getRepository();
-        this.principle = PrincipleFactory.getPrinciple("870912", "Kay", "Abrahams", "870912", "Cape Town", "0123456789", 32);
+        service = PrincipleServiceImpl.getService();
+        principle = PrincipleFactory.getPrinciple("12345", "Kaylen", "Abrahams", "26", "CPT", "12345", 22);
     }
 
     @Test
-    public void a_create() {
-        Principle created = this.repository.create(this.principle);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.principle);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Principle savedPrinciple = getSavedPrinciple();
-        System.out.println("In read, principle ID number = " + savedPrinciple.getPrincipleIDNumber());
-        Principle read = this.repository.read(savedPrinciple.getPrincipleIDNumber());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedPrinciple, read);
+    public void getAll() {
+        service.create(principle);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Principle savedPrinciple = getSavedPrinciple();
-        this.repository.delete(savedPrinciple.getPrincipleIDNumber());
-        d_getAll();
+    public void create() {
+        service.create(principle);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newname = "New Test Principle Name";
-        Principle updated = new Principle.Builder().copy(getSavedPrinciple()).principleFirstName(newname).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newname, updated.getPrincipleFirstName());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Principle> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(principle);
+        System.out.println(service.read("12345"));
+
+        Principle principleUpdated = PrincipleFactory.getPrinciple("12345", "Kevin", "Abrahams", "26", "CPT", "12345", 22);
+        service.update(principleUpdated);
+
+        Principle emp = service.read("12345");
+        Assert.assertNotEquals(principle.getPrincipleFirstName(), emp.getPrincipleFirstName());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(principle.getPrincipleIDNumber()));
+        System.out.println("Delete\n" + service.read(principle.getPrincipleIDNumber()));
+    }
+
 }

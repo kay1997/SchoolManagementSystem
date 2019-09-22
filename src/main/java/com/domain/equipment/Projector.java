@@ -22,6 +22,14 @@ public class Projector {
         return projectorCode;
     }
 
+    public void setProjectorCode(String projectorCode) {
+        this.projectorCode = projectorCode;
+    }
+
+    public void setProjectorName(String projectorName) {
+        this.projectorName = projectorName;
+    }
+
     public String getProjectorName() {
     return projectorName;
     }

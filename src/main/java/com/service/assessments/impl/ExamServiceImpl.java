@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class ExamServiceImpl implements ExamService {
-    @Autowired
-    @Qualifier("InMemory")
-    private ExamServiceImpl service = null;
+    private static ExamServiceImpl service;
     private ExamRepository repository;
 
-    private ExamServiceImpl(){
-        this.repository = ExamRepositoryImpl.getRepository();
-    }
+    private ExamServiceImpl(){this.repository = ExamRepositoryImpl.getRepository();}
 
-    public ExamService getService(){
-        if (service == null) service = new ExamServiceImpl();
+    public static ExamServiceImpl getService()
+    {
+        if(service == null){service = new ExamServiceImpl();}
         return service;
     }
 
     @Override
-    public Exam create(Exam exam) {
+    public Exam create(Exam exam){
         return this.repository.create(exam);
     }
 
@@ -37,7 +34,7 @@ public class ExamServiceImpl implements ExamService {
     }
 
     @Override
-    public void delete(String examPaperNumber) {
+    public void delete(String examPaperNumber){
         this.repository.delete(examPaperNumber);
     }
 
@@ -50,4 +47,5 @@ public class ExamServiceImpl implements ExamService {
     public Set<Exam> getAll() {
         return this.repository.getAll();
     }
+
 }

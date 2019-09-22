@@ -10,43 +10,51 @@ import java.util.*;
 
 @Repository("InMemory")
 public class SecretaryRepositoryImpl implements SecretaryRepository
-{
-    @Autowired
-    @Qualifier
-    private static SecretaryRepositoryImpl repository = null;
-    private Map<String, Secretary> secretarys;
+{ private static SecretaryRepositoryImpl repository = null;
+    private Map<String, Secretary> secrataries;
 
     private SecretaryRepositoryImpl() {
-        this.secretarys = new HashMap<>();
+        this.secrataries = new HashMap<>();
     }
 
-    public static SecretaryRepository getRepository(){
-        if(repository == null) repository = new SecretaryRepositoryImpl();
+    public static SecretaryRepositoryImpl getRepository() {
+        if (repository == null) repository = new SecretaryRepositoryImpl();
         return repository;
     }
 
-    public Secretary create(Secretary secretary){
-        this.secretarys.put(secretary.getSecretaryIDNumber(),secretary);
+    @Override
+    public Set<Secretary> getAll() {
+        Collection<Secretary> secrataries = this.secrataries.values();
+        Set<Secretary> set = new HashSet<>();
+        set.addAll(secrataries);
+        return set;
+    }
+
+    @Override
+    public Secretary create(Secretary secretary) {
+        if (read(secretary.getSecretaryIDNumber()) == null) {
+            this.secrataries.put(secretary.getSecretaryIDNumber(), secretary);
+        }
         return secretary;
     }
 
-    public Secretary read(String secretaryId){
-        return this.secretarys.get(secretaryId);
+    @Override
+    public Secretary read(String e) {
+        return this.secrataries.get(e);
     }
 
+    @Override
     public Secretary update(Secretary secretary) {
-        this.secretarys.replace(secretary.getSecretaryIDNumber(),secretary);
-        return this.secretarys.get(secretary.getSecretaryIDNumber());
+        if (read(secretary.getSecretaryIDNumber()) != null) {
+            secrataries.replace(secretary.getSecretaryIDNumber(), secretary);
+        }
+        return secretary;
     }
 
-    public void delete(String secretaryId) {
-        this.secretarys.remove(secretaryId);
+    @Override
+    public void delete(String e) {
+        Secretary secretary = read(e);
+        this.secrataries.remove(e, secretary);
     }
 
-    public Set<Secretary> getAll(){
-        Collection<Secretary> secretarys = this.secretarys.values();
-        Set<Secretary> set = new HashSet<>();
-        set.addAll(secretarys);
-        return set;
-    }
 }

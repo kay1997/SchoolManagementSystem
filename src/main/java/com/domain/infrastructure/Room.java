@@ -13,24 +13,37 @@ import java.util.Set;
 public class Room {
 
     private String roomNumber;
+    private String roomType;
     private Set<Chair> chairs;
     private Set<Desk> desks;
     private Set<Projector> projectors;
     private Set<Caretaker> caretaker;
 
-    private Room() {}
+    private Room(){}
 
     private Room(Builder builder) {
         this.roomNumber = builder.roomNumber;
+        this.roomType = builder.roomType;
     }
 
     public String getRoomNumber() {
         return roomNumber;
     }
 
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
+
+    public String getRoomType(){return roomType;}
+
     public static class Builder {
 
         private String roomNumber;
+        private String roomType;
         private Set<Chair> chairs;
         private Set<Desk> desks;
         private Set<Projector> projectors;
@@ -42,8 +55,15 @@ public class Room {
             return this;
         }
 
+        public Builder roomType(String roomType)
+        {
+            this.roomType = roomType;
+            return this;
+        }
+
         public Builder copy(Room room){
             this.roomNumber = room.roomNumber;
+            this.roomType = room.roomType;
 
             return this;
         }
@@ -58,6 +78,7 @@ public class Room {
     public String toString() {
         return "Room{" +
                 "roomNumber" + roomNumber + '\'' +
+                "roomType" + roomType + '\'' +
                 '}';
     }
 

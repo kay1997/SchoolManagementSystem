@@ -1,43 +1,47 @@
 package com.controller.infrastructure;
 
 import com.domain.infrastructure.Room;
+import com.service.infrastructure.impl.RoomServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.infrastructure.RoomService;
 
+import java.util.Set;
+
 @RestController
 @RequestMapping("/room")
 public class RoomController {
 
-
     @Autowired
-    @Qualifier("ServiceImpl")
-    private RoomService service;
+    private RoomServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public Room create(Room room) {
+    public Room create(@RequestBody Room room) {
         return service.create(room);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public Room update(Room room) {
+    public Room update(@RequestBody Room room) {
         return service.update(room);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
 
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public Room read(@PathVariable String id) {
-        return service.read(id);
+
+        Room room = service.read(id);
+        return room;
+    }
+
+    @GetMapping("/getall")
+    public Set<Room> getAll(){
+        return service.getAll();
     }
 
 }

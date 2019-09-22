@@ -22,6 +22,14 @@ public class Computer {
         return computerNumber;
     }
 
+    public void setComputerName(String computerName) {
+        this.computerName = computerName;
+    }
+
+    public void setComputerNumber(String computerNumber) {
+        this.computerNumber = computerNumber;
+    }
+
     public String getComputerName() {
         return computerName;
     }

@@ -1,8 +1,9 @@
 package com.service.assessments;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.assessments.Exam;
 import com.factory.assessments.ExamFactory;
+import com.service.assessments.impl.ExamServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,63 +17,67 @@ import com.repository.assessments.impl.ExamRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class ExamServiceTest {
 
-    private ExamRepository repository;
-    private Exam exam;
-
-    private Exam getSavedExam() {
-        Set<Exam> savedExams = this.repository.getAll();
-        return savedExams.iterator().next();
-    }
+    ExamServiceImpl service;
+    Exam exam;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = ExamRepositoryImpl.getRepository();
-        this.exam = ExamFactory.getExam("Art321", "Written");
+        service = ExamServiceImpl.getService();
+        exam = ExamFactory.getExam("12345", "Practical");
     }
 
     @Test
-    public void a_create() {
-        Exam created = this.repository.create(this.exam);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.exam);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Exam savedExam = getSavedExam();
-        System.out.println("In read, exam code = " + savedExam.getExamPaperNumber());
-        Exam read = this.repository.read(savedExam.getExamPaperNumber());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedExam, read);
+    public void getAll() {
+        service.create(exam);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Exam savedExam = getSavedExam();
-        this.repository.delete(savedExam.getExamPaperNumber());
-        d_getAll();
+    public void create() {
+        service.create(exam);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newExamCode = "New Test Exam Paper Number";
-        Exam updated = new Exam.Builder().copy(getSavedExam()).examPaperNumber(newExamCode).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newExamCode, updated.getExamPaperNumber());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Exam> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(exam);
+        System.out.println(service.read("12345"));
+
+        Exam examUpdated = ExamFactory.getExam("12345", "Written");
+        service.update(examUpdated);
+
+        Exam comp = service.read("12345");
+        Assert.assertNotEquals(exam.getExamType(), comp.getExamType());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(exam.getExamPaperNumber()));
+        System.out.println("Delete\n" + service.read(exam.getExamPaperNumber()));
+    }
+
 }

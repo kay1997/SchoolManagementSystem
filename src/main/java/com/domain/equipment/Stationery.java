@@ -22,6 +22,14 @@ public class Stationery {
         return stationeryCode;
     }
 
+    public void setStationeryCode(String stationeryCode) {
+        this.stationeryCode = stationeryCode;
+    }
+
+    public void setStationeryType(String stationeryType) {
+        this.stationeryType = stationeryType;
+    }
+
     public String getStationeryType() {
         return stationeryType;
     }

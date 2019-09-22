@@ -27,6 +27,14 @@ public class Learner {
         this.learnerTelephoneNumber = builder.learnerTelephoneNumber;
     }
 
+    public void setLearnerId(String learnerId) {
+        this.learnerId = learnerId;
+    }
+
+    public void setLearnerFirstName(String learnerFirstName) {
+        this.learnerFirstName = learnerFirstName;
+    }
+
     public String getLearnerId()
     {
         return learnerId;

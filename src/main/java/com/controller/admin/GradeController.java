@@ -1,42 +1,46 @@
 package com.controller.admin;
 
 import com.domain.admin.Grade;
+import com.service.admin.impl.GradeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.admin.GradeService;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/grade")
 public class GradeController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
-    private GradeService service;
+    private GradeServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public Grade create(Grade grade) {
+    public Grade create(@RequestBody Grade grade) {
         return service.create(grade);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public Grade update(Grade grade) {
+    public Grade update(@RequestBody Grade grade) {
         return service.update(grade);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
 
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public Grade read(@PathVariable String id) {
-        return service.read(id);
+
+        Grade grade = service.read(id);
+        return grade;
     }
 
+    @GetMapping("/getall")
+    public Set<Grade> getAll(){
+        return service.getAll();
+    }
 }

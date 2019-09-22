@@ -1,8 +1,9 @@
 package com.service.admin;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.admin.Class;
 import com.factory.admin.ClassFactory;
+import com.service.admin.impl.ClassServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,64 +17,67 @@ import com.repository.admin.impl.ClassRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class ClassServiceTest {
 
 
-    private ClassRepository repository;
-    private Class oneClass;
-
-    private Class getSavedClass() {
-        Set<Class> savedClasses = this.repository.getAll();
-        return savedClasses.iterator().next();
-    }
+    ClassServiceImpl service;
+    Class cls;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = ClassRepositoryImpl.getRepository();
-        this.oneClass = ClassFactory.getClass("A");
+        service = ClassServiceImpl.getService();
+        cls = ClassFactory.getClass("1", "A");
     }
 
     @Test
-    public void a_create() {
-        Class created = this.repository.create(this.oneClass);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.oneClass);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Class savedClass = getSavedClass();
-        System.out.println("In read, class group = " + savedClass.getClassGroup());
-        Class read = this.repository.read(savedClass.getClassGroup());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedClass, read);
+    public void getAll() {
+        service.create(cls);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Class savedPrinter = getSavedClass();
-        this.repository.delete(getSavedClass().getClassGroup());
-        d_getAll();
+    public void create() {
+        service.create(cls);
+        assertNotNull(service.read("1"));
+        System.out.println("Created\n" + service.read("1"));
     }
 
     @Test
-    public void c_update() {
-        String newClassGroup = "New Test Class Group";
-        Class updated = new Class.Builder().copy(getSavedClass()).classGroup(newClassGroup).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newClassGroup, updated.getClassGroup());
+    public void read() {
+        assertNotNull(service.read("1"));
+        System.out.println("Read\n" + service.read("1"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Class> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(cls);
+        System.out.println(service.read("1"));
+
+        Class clsUpdated = ClassFactory.getClass("1", "B");
+        service.update(clsUpdated);
+
+        Class gen = service.read("1");
+        Assert.assertNotEquals(cls.getClassGroup(), gen.getClassGroup());
+        System.out.println("Updated\n" + service.read("1"));
+    }
+
+    @Test
+    public void delete() {
+        service.delete("1");
+        assertNull(service.read(cls.getClassID()));
+        System.out.println("Delete\n" + service.read(cls.getClassID()));
     }
 }

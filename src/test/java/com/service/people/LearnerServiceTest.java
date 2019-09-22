@@ -1,8 +1,9 @@
 package com.service.people;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.people.Learner;
 import com.factory.people.LearnerFactory;
+import com.service.people.impl.LearnerServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,64 +17,68 @@ import com.repository.people.impl.LearnerRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class LearnerServiceTest {
 
 
-    private LearnerRepository repository;
-    private Learner learner;
-
-    private Learner getSavedLearner() {
-        Set<Learner> savedSecurities = this.repository.getAll();
-        return savedSecurities.iterator().next();
-    }
+    LearnerServiceImpl service;
+    Learner learner;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = LearnerRepositoryImpl.getRepository();
-        this.learner = LearnerFactory.getLearner("870912", "Kay", "Abrahams", "Cape Town", "1234567890", 15);
+        service = LearnerServiceImpl.getService();
+        learner = LearnerFactory.getLearner("12345", "Kaylen", "Abrahams", "CPT", "12345", 22);
     }
 
     @Test
-    public void a_create() {
-        Learner created = this.repository.create(this.learner);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.learner);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Learner savedLearner = getSavedLearner();
-        System.out.println("In read, learner ID number = " + savedLearner.getLearnerId());
-        Learner read = this.repository.read(savedLearner.getLearnerId());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedLearner, read);
+    public void getAll() {
+        service.create(learner);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Learner savedLearner = getSavedLearner();
-        this.repository.delete(savedLearner.getLearnerId());
-        d_getAll();
+    public void create() {
+        service.create(learner);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newname = "New Test Learner Name";
-        Learner updated = new Learner.Builder().copy(getSavedLearner()).learnerFirstName(newname).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newname, updated.getLearnerFirstName());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Learner> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(learner);
+        System.out.println(service.read("12345"));
+
+        Learner learnerUpdated = LearnerFactory.getLearner("12345", "Kevin", "Abrahams", "CPT", "12345", 22);
+        service.update(learnerUpdated);
+
+        Learner emp = service.read("12345");
+        Assert.assertNotEquals(learner.getLearnerFirstName(), emp.getLearnerFirstName());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(learner.getLearnerId()));
+        System.out.println("Delete\n" + service.read(learner.getLearnerId()));
+    }
+
 }

@@ -4,58 +4,55 @@ import com.domain.infrastructure.Lab;
 import org.springframework.stereotype.Repository;
 import com.repository.infrastructure.LabRepository;
 
-import java.util.HashSet;
-import java.util.Set;
-@Repository("InMemory")
-public class LabRepositoryImpl implements LabRepository
-{
-    private static LabRepositoryImpl repository = null;
-    private Set<Lab> labs;
+import java.util.*;
 
-    private LabRepositoryImpl(){
-        this.labs = new HashSet<>();
+@Repository("InMemory")
+public class LabRepositoryImpl implements LabRepository {
+    private static LabRepositoryImpl repository = null;
+    private Map<String, Lab> labs;
+
+    private LabRepositoryImpl() {
+        this.labs = new HashMap<>();
     }
 
-    public static LabRepositoryImpl getRepository(){
+    public static LabRepositoryImpl getRepository() {
         if (repository == null) repository = new LabRepositoryImpl();
         return repository;
     }
 
-
-    public Lab create(Lab lab){
-        this.labs.add(lab);
-        return lab;
+    @Override
+    public Set<Lab> getAll() {
+        Collection<Lab> labs = this.labs.values();
+        Set<Lab> set = new HashSet<>();
+        set.addAll(labs);
+        return set;
     }
 
-    private Lab findLab(String labNumber) {
-        return this.labs.stream()
-                .filter(lab -> lab.getLabNumber().trim().equals(labNumber))
-                .findAny()
-                .orElse(null);
-    }
-
-    public Lab read(String labNumber){
-
-        Lab lab = findLab(labNumber);
-        return lab;
-    }
-
-    public void delete(String labNumber) {
-        Lab lab = findLab(labNumber);
-        if (lab != null) this.labs.remove(lab);
-
-    }
-
-    public Lab update(Lab lab) {
-        Lab toDelete = findLab(lab.getLabNumber());
-        if (toDelete != null) {
-            this.labs.remove(toDelete);
-            return create(lab);
+    @Override
+    public Lab create(Lab lab) {
+        if (read(lab.getLabNumber()) == null) {
+            this.labs.put(lab.getLabNumber(), lab);
         }
-        return null;
+        return lab;
     }
 
-    public Set<Lab> getAll(){
-        return this.labs;
+    @Override
+    public Lab read(String e) {
+        return this.labs.get(e);
     }
+
+    @Override
+    public Lab update(Lab lab) {
+        if (read(lab.getLabNumber()) != null) {
+            labs.replace(lab.getLabNumber(), lab);
+        }
+        return lab;
+    }
+
+    @Override
+    public void delete(String e) {
+        Lab lab = read(e);
+        this.labs.remove(e, lab);
+    }
+
 }

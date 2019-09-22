@@ -1,8 +1,9 @@
 package com.service.infrastructure;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.infrastructure.Lab;
 import com.factory.infrastructure.LabFactory;
+import com.service.infrastructure.impl.LabServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,63 +17,67 @@ import com.repository.infrastructure.impl.LabRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class LabServiceTest {
 
-    private LabRepository repository;
-    private Lab lab;
-
-    private Lab getSavedLab() {
-        Set<Lab> savedLabs = this.repository.getAll();
-        return savedLabs.iterator().next();
-    }
+    LabServiceImpl service;
+    Lab lab;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = LabRepositoryImpl.getRepository();
-        this.lab = LabFactory.getLab("3", "Computer");
+        service = LabServiceImpl.getService();
+        lab = LabFactory.getLab("12345", "IT");
     }
 
     @Test
-    public void a_create() {
-        Lab created = this.repository.create(this.lab);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.lab);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Lab savedLab = getSavedLab();
-        System.out.println("In read, lab number = " + savedLab.getLabNumber());
-        Lab read = this.repository.read(savedLab.getLabNumber());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedLab, read);
+    public void getAll() {
+        service.create(lab);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Lab savedLab = getSavedLab();
-        this.repository.delete(savedLab.getLabNumber());
-        d_getAll();
+    public void create() {
+        service.create(lab);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newLabNumber = "New Test Lab Contact Number";
-        Lab updated = new Lab.Builder().copy(getSavedLab()).labNumber(newLabNumber).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newLabNumber, updated.getLabNumber());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Lab> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(lab);
+        System.out.println(service.read("12345"));
+
+        Lab labUpdated = LabFactory.getLab("12345", "Med");
+        service.update(labUpdated);
+
+        Lab b = service.read("12345");
+        Assert.assertNotEquals(lab.getLabType(), b.getLabType());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(lab.getLabNumber()));
+        System.out.println("Delete\n" + service.read(lab.getLabNumber()));
+    }
+
 }

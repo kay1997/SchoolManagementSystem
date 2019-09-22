@@ -1,8 +1,9 @@
 package com.service.equipment;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.equipment.Stationery;
 import com.factory.equipment.StationeryFactory;
+import com.service.equipment.impl.StationeryServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,64 +17,67 @@ import com.repository.equipment.impl.StationeryRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class StationeryServiceTest {
 
-
-    private StationeryRepository repository;
-    private Stationery stationery;
-
-    private Stationery getSavedStationery() {
-        Set<Stationery> savedStationerySet = this.repository.getAll();
-        return savedStationerySet.iterator().next();
-    }
+    StationeryServiceImpl service;
+    Stationery stationery;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = StationeryRepositoryImpl.getRepository();
-        this.stationery = StationeryFactory.getStationery("PEN123", "Pen");
+        service = StationeryServiceImpl.getService();
+        stationery = StationeryFactory.getStationery("12345", "Pen");
     }
 
     @Test
-    public void a_create() {
-        Stationery created = this.repository.create(this.stationery);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.stationery);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Stationery savedStationery = getSavedStationery();
-        System.out.println("In read, stationery code = " + savedStationery.getStationeryCode());
-        Stationery read = this.repository.read(savedStationery.getStationeryCode());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedStationery, read);
+    public void getAll() {
+        service.create(stationery);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Stationery savedStationery = getSavedStationery();
-        this.repository.delete(savedStationery.getStationeryCode());
-        d_getAll();
+    public void create() {
+        service.create(stationery);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newStationeryCode = "New Test Stationery Code";
-        Stationery updated = new Stationery.Builder().copy(getSavedStationery()).stationeryCode(newStationeryCode).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newStationeryCode, updated.getStationeryCode());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Stationery> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(stationery);
+        System.out.println(service.read("12345"));
+
+        Stationery stationeryUpdated = StationeryFactory.getStationery("12345", "Pencil");
+        service.update(stationeryUpdated);
+
+        Stationery comp = service.read("12345");
+        Assert.assertNotEquals(stationery.getStationeryType(), comp.getStationeryType());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(stationery.getStationeryCode()));
+        System.out.println("Delete\n" + service.read(stationery.getStationeryCode()));
+    }
+
 }

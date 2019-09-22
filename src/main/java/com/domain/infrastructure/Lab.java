@@ -30,9 +30,17 @@ public class Lab {
         return labNumber;
     }
 
+    public void setLabNumber(String labNumber) {
+        this.labNumber = labNumber;
+    }
+
+    public void setLabType(String labType) {
+        this.labType = labType;
+    }
+
     public String getLabType()
-        { return labType;
-        }
+    { return labType;
+    }
 
 
     public static class Builder {
@@ -51,7 +59,7 @@ public class Lab {
 
         public Builder labType(String labType)
         {
-            this.labNumber = labNumber;
+            this.labType = labType;
             return this;
         }
 
@@ -67,7 +75,6 @@ public class Lab {
         }
 
     }
-
 
     @Override
     public String toString() {

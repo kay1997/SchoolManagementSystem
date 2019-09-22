@@ -12,23 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class SubjectServiceImpl implements SubjectService {
-
-    @Autowired
-    @Qualifier("InMemory")
-    private SubjectServiceImpl service = null;
+    private static SubjectServiceImpl service;
     private SubjectRepository repository;
 
-    private SubjectServiceImpl() {
-        this.repository = SubjectRepositoryImpl.getRepository();
-    }
+    private SubjectServiceImpl(){this.repository = SubjectRepositoryImpl.getRepository();}
 
-    public SubjectService getService() {
-        if (service == null) service = new SubjectServiceImpl();
+    public static SubjectServiceImpl getService()
+    {
+        if(service == null){service = new SubjectServiceImpl();}
         return service;
     }
 
     @Override
-    public Subject create(Subject subject) {
+    public Subject create(Subject subject){
         return this.repository.create(subject);
     }
 
@@ -38,7 +34,7 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     @Override
-    public void delete(String subjectCode) {
+    public void delete(String subjectCode){
         this.repository.delete(subjectCode);
     }
 

@@ -23,6 +23,14 @@ public class Textbook {
         return textbookCode;
     }
 
+    public void setTextbookCode(String textbookCode) {
+        this.textbookCode = textbookCode;
+    }
+
+    public void setTextbookName(String textbookName) {
+        this.textbookName = textbookName;
+    }
+
     public String getTextbookName() {
         return textbookName;
     }

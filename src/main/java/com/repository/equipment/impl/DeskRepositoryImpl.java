@@ -4,58 +4,56 @@ import com.domain.equipment.Desk;
 import com.repository.equipment.DeskRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 @Repository("InMemory")
 public class DeskRepositoryImpl implements DeskRepository {
 
     private static DeskRepositoryImpl repository = null;
-    private Set<Desk> desks;
+    private Map<String, Desk> desks;
 
-    private DeskRepositoryImpl(){
-        this.desks = new HashSet<>();
+    private DeskRepositoryImpl() {
+        this.desks = new HashMap<>();
     }
 
-    public static DeskRepositoryImpl getRepository(){
+    public static DeskRepositoryImpl getRepository() {
         if (repository == null) repository = new DeskRepositoryImpl();
         return repository;
     }
 
-
-    public Desk create(Desk desk){
-        this.desks.add(desk);
-        return desk;
+    @Override
+    public Set<Desk> getAll() {
+        Collection<Desk> desks = this.desks.values();
+        Set<Desk> set = new HashSet<>();
+        set.addAll(desks);
+        return set;
     }
 
-    private Desk findDesk(String deskNumber) {
-        return this.desks.stream()
-                .filter(desk -> desk.getDeskNumber().trim().equals(deskNumber))
-                .findAny()
-                .orElse(null);
-    }
-
-    public Desk read(String deskNumber){
-
-        Desk desk = findDesk(deskNumber);
-        return desk;
-    }
-
-    public void delete(String deskNumber) {
-        Desk desk = findDesk(deskNumber);
-        if (desk != null) this.desks.remove(desk);
-
-    }
-
-    public Desk update(Desk desk) {
-        Desk toDelete = findDesk(desk.getDeskNumber());
-        if (toDelete != null) {
-            this.desks.remove(toDelete);
-            return create(desk);
+    @Override
+    public Desk create(Desk desk) {
+        if (read(desk.getDeskNumber()) == null) {
+            this.desks.put(desk.getDeskNumber(), desk);
         }
-        return null;
+        return desk;
     }
 
-    public Set<Desk> getAll(){
-        return this.desks;
+    @Override
+    public Desk read(String e) {
+        return this.desks.get(e);
     }
+
+    @Override
+    public Desk update(Desk desk) {
+        if (read(desk.getDeskNumber()) != null) {
+            desks.replace(desk.getDeskNumber(), desk);
+        }
+        return desk;
+    }
+
+    @Override
+    public void delete(String e) {
+        Desk desk = read(e);
+        this.desks.remove(e, desk);
+    }
+
 }

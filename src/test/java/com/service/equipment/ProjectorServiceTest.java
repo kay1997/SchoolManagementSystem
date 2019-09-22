@@ -1,8 +1,9 @@
 package com.service.equipment;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.equipment.Projector;
 import com.factory.equipment.ProjectorFactory;
+import com.service.equipment.impl.ProjectorServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,63 +17,67 @@ import com.repository.equipment.impl.ProjectorRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class ProjectorServiceTest {
 
-    private ProjectorRepository repository;
-    private Projector projector;
-
-    private Projector getSavedProjector() {
-        Set<Projector> savedProjectors = this.repository.getAll();
-        return savedProjectors.iterator().next();
-    }
+    ProjectorServiceImpl service;
+    Projector projector;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = ProjectorRepositoryImpl.getRepository();
-        this.projector = ProjectorFactory.getProjector("321", "HP");
+        service = ProjectorServiceImpl.getService();
+        projector = ProjectorFactory.getProjector("12345", "Dell");
     }
 
     @Test
-    public void a_create() {
-        Projector created = this.repository.create(this.projector);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.projector);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Projector savedProjector = getSavedProjector();
-        System.out.println("In read, projector code = " + savedProjector.getProjectorCode());
-        Projector read = this.repository.read(savedProjector.getProjectorCode());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedProjector, read);
+    public void getAll() {
+        service.create(projector);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Projector savedProjector = getSavedProjector();
-        this.repository.delete(savedProjector.getProjectorCode());
-        d_getAll();
+    public void create() {
+        service.create(projector);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newProjectorCode = "New Test Projector Code";
-        Projector updated = new Projector.Builder().copy(getSavedProjector()).projectorCode(newProjectorCode).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newProjectorCode, updated.getProjectorCode());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Projector> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(projector);
+        System.out.println(service.read("12345"));
+
+        Projector projectorUpdated = ProjectorFactory.getProjector("12345", "Samsung");
+        service.update(projectorUpdated);
+
+        Projector pro = service.read("12345");
+        Assert.assertNotEquals(projector.getProjectorName(), pro.getProjectorName());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(projector.getProjectorCode()));
+        System.out.println("Delete\n" + service.read(projector.getProjectorCode()));
+    }
+
 }

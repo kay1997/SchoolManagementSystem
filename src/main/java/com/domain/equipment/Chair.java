@@ -2,26 +2,42 @@ package com.domain.equipment;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
+import javax.print.DocFlavor;
 import java.util.Objects;
 
 @EntityScan
 public class Chair {
 
     private String chairNumber;
+    private String chairType;
 
-    private Chair(){}
+    public Chair(){}
 
     private Chair(Builder builder){
         this.chairNumber = builder.chairNumber;
+        this.chairType = builder.chairType;
     }
 
     public String getChairNumber() {
         return chairNumber;
     }
 
+    public void setChairNumber(String chairNumber) {
+        this.chairNumber = chairNumber;
+    }
+
+    public void setChairType(String chairType) {
+        this.chairType = chairType;
+    }
+
+    public String getChairType(){
+        return chairType;
+    }
+
     public static class Builder{
 
         private String chairNumber;
+        private String chairType;
 
         public Builder chairNumber(String chairNumber)
         {
@@ -29,8 +45,16 @@ public class Chair {
             return this;
         }
 
+        public Builder chairType(String chairType)
+        {
+            this.chairType = chairType;
+            return this;
+        }
+
+
         public Builder copy(Chair chair){
             this.chairNumber = chair.chairNumber;
+            this.chairType = chair.chairType;
 
             return this;
         }
@@ -45,6 +69,7 @@ public class Chair {
     public String toString() {
         return "Chair) {" +
                 "chairNumber" + chairNumber + '\'' +
+                "chairType" + chairType + '\'' +
                 '}';
     }
 

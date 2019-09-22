@@ -1,115 +1,528 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b00e77e5-43bc-44cb-b98b-26a328bda6f4" name="Default Changelist" comment="" />
+    <list default="true" id="b00e77e5-43bc-44cb-b98b-26a328bda6f4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/app/SchoolManagementSystemApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/SchoolManagementSystemApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/admin/AttendanceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/admin/AttendanceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/admin/ClassController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/admin/ClassController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/admin/GradeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/admin/GradeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/admin/ResultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/admin/ResultController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/admin/SchoolController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/admin/SchoolController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/admin/SubjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/admin/SubjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/assessments/AssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/assessments/AssignmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/assessments/ExamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/assessments/ExamController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/assessments/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/assessments/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/equipment/ChairController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/equipment/ChairController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/equipment/ComputerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/equipment/ComputerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/equipment/DeskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/equipment/DeskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/equipment/PrinterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/equipment/PrinterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/equipment/ProjectorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/equipment/ProjectorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/equipment/StationeryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/equipment/StationeryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/equipment/TextbookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/equipment/TextbookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/infrastructure/BuildingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/infrastructure/BuildingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/infrastructure/LabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/infrastructure/LabController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/infrastructure/RoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/infrastructure/RoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/people/CaretakerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/people/CaretakerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/people/EducatorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/people/EducatorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/people/LearnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/people/LearnerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/people/PrincipleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/people/PrincipleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/people/SecretaryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/people/SecretaryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/people/SecurityController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/controller/people/SecurityController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/admin/Attendance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/admin/Attendance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/admin/Class.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/admin/Class.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/admin/Grade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/admin/Grade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/admin/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/admin/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/admin/School.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/admin/School.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/admin/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/admin/Subject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/assessments/Assignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/assessments/Assignment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/assessments/Exam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/assessments/Exam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/assessments/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/assessments/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/equipment/Chair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/equipment/Chair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/equipment/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/equipment/Computer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/equipment/Desk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/equipment/Desk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/equipment/Printer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/equipment/Printer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/equipment/Projector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/equipment/Projector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/equipment/Stationery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/equipment/Stationery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/equipment/Textbook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/equipment/Textbook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/infrastructure/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/infrastructure/Building.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/infrastructure/Lab.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/infrastructure/Lab.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/infrastructure/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/infrastructure/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/people/Caretaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/people/Caretaker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/people/Educator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/people/Educator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/people/Learner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/people/Learner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/people/Principle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/people/Principle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/people/Secretary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/people/Secretary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/domain/people/Security.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/domain/people/Security.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/factory/admin/AttendanceFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/factory/admin/AttendanceFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/factory/admin/ClassFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/factory/admin/ClassFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/factory/admin/GradeFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/factory/admin/GradeFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/factory/admin/ResultFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/factory/admin/ResultFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/factory/equipment/ChairFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/factory/equipment/ChairFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/factory/equipment/DeskFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/factory/equipment/DeskFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/factory/infrastructure/RoomFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/factory/infrastructure/RoomFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/admin/impl/AttendanceRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/admin/impl/AttendanceRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/admin/impl/ClassRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/admin/impl/ClassRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/admin/impl/GradeRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/admin/impl/GradeRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/admin/impl/ResultRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/admin/impl/ResultRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/admin/impl/SchoolRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/admin/impl/SchoolRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/admin/impl/SubjectRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/admin/impl/SubjectRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/assessments/impl/AssignmentRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/assessments/impl/AssignmentRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/assessments/impl/ExamRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/assessments/impl/ExamRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/assessments/impl/TestRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/assessments/impl/TestRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/equipment/impl/ChairRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/equipment/impl/ChairRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/equipment/impl/ComputerRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/equipment/impl/ComputerRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/equipment/impl/DeskRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/equipment/impl/DeskRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/equipment/impl/PrinterRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/equipment/impl/PrinterRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/equipment/impl/ProjectorRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/equipment/impl/ProjectorRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/equipment/impl/StationeryRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/equipment/impl/StationeryRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/equipment/impl/TextbookRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/equipment/impl/TextbookRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/infrastructure/impl/BuildingRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/infrastructure/impl/BuildingRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/infrastructure/impl/LabRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/infrastructure/impl/LabRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/infrastructure/impl/RoomRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/infrastructure/impl/RoomRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/people/impl/CaretakerRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/people/impl/CaretakerRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/people/impl/EducatorRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/people/impl/EducatorRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/people/impl/LearnerRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/people/impl/LearnerRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/people/impl/PrincipleRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/people/impl/PrincipleRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/people/impl/SecretaryRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/people/impl/SecretaryRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/repository/people/impl/SecurityRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/repository/people/impl/SecurityRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/admin/impl/AttendanceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/admin/impl/AttendanceServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/admin/impl/ClassServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/admin/impl/ClassServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/admin/impl/GradeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/admin/impl/GradeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/admin/impl/ResultServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/admin/impl/ResultServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/admin/impl/SchoolServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/admin/impl/SchoolServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/admin/impl/SubjectServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/admin/impl/SubjectServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/assessments/impl/AssignmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/assessments/impl/AssignmentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/assessments/impl/ExamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/assessments/impl/ExamServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/assessments/impl/TestServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/assessments/impl/TestServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/equipment/impl/ChairServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/equipment/impl/ChairServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/equipment/impl/ComputerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/equipment/impl/ComputerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/equipment/impl/DeskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/equipment/impl/DeskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/equipment/impl/PrinterServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/equipment/impl/PrinterServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/equipment/impl/ProjectorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/equipment/impl/ProjectorServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/equipment/impl/StationeryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/equipment/impl/StationeryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/equipment/impl/TextbookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/equipment/impl/TextbookServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/infrastructure/impl/BuildingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/infrastructure/impl/BuildingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/infrastructure/impl/LabServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/infrastructure/impl/LabServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/infrastructure/impl/RoomServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/infrastructure/impl/RoomServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/people/impl/CaretakerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/people/impl/CaretakerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/people/impl/EducatorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/people/impl/EducatorServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/people/impl/LearnerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/people/impl/LearnerServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/people/impl/PrincipleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/people/impl/PrincipleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/people/impl/SecretaryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/people/impl/SecretaryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/people/impl/SecurityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/service/people/impl/SecurityServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/admin/AttendanceControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/admin/AttendanceControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/admin/ClassControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/admin/ClassControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/admin/GradeControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/admin/GradeControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/admin/ResultControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/admin/ResultControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/admin/SchoolControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/admin/SchoolControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/admin/SubjectControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/admin/SubjectControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/assessments/AssignmentControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/assessments/AssignmentControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/assessments/ExamControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/assessments/ExamControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/assessments/TestControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/assessments/TestControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/equipment/ChairControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/equipment/ChairControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/equipment/ComputerControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/equipment/ComputerControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/equipment/DeskControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/equipment/DeskControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/equipment/PrinterControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/equipment/PrinterControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/equipment/ProjectorControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/equipment/ProjectorControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/equipment/StationeryControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/equipment/StationeryControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/infrastructure/BuildingControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/infrastructure/BuildingControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/infrastructure/LabControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/infrastructure/LabControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/infrastructure/RoomControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/infrastructure/RoomControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/people/CaretakerControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/people/CaretakerControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/people/EducatorControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/people/EducatorControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/people/LearnerControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/people/LearnerControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/people/PrincipleControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/people/PrincipleControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/people/SecretaryControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/people/SecretaryControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/controller/people/SecurityControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/controller/people/SecurityControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/factory/admin/AttendanceFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/factory/admin/AttendanceFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/factory/admin/ClassFactorytTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/factory/admin/ClassFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/factory/admin/GradeFactoryClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/factory/admin/GradeFactoryClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/factory/admin/ResultFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/factory/admin/ResultFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/factory/equipment/ChairFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/factory/equipment/ChairFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/factory/equipment/DeskFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/factory/equipment/DeskFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/factory/infrastructure/RoomFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/factory/infrastructure/RoomFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/admin/AttendanceRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/admin/AttendanceRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/admin/ClassRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/admin/ClassRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/admin/GradeRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/admin/GradeRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/admin/ResultRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/admin/ResultRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/admin/SchoolRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/admin/SchoolRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/admin/SubjectRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/admin/SubjectRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/assessments/AssignmentRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/assessments/AssignmentRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/assessments/ExamRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/assessments/ExamRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/assessments/TestRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/assessments/TestRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/equipment/ChairRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/equipment/ChairRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/equipment/ComputerRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/equipment/ComputerRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/equipment/DeskRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/equipment/DeskRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/equipment/PrinterRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/equipment/PrinterRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/equipment/ProjectorRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/equipment/ProjectorRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/equipment/StationeryRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/equipment/StationeryRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/equipment/TextbookRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/equipment/TextbookRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/infrastructure/BuildingRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/infrastructure/BuildingRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/infrastructure/LabRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/infrastructure/LabRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/infrastructure/RoomRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/infrastructure/RoomRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/people/CaretakerRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/people/CaretakerRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/people/EducatorRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/people/EducatorRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/people/LearnerRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/people/LearnerRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/people/PrincipleRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/people/PrincipleRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/people/SecretaryRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/people/SecretaryRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/repository/people/SecurityRepositoryImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/repository/people/SecurityRepositoryImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/admin/AttendanceServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/admin/AttendanceServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/admin/ClassServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/admin/ClassServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/admin/GradeServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/admin/GradeServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/admin/ResultServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/admin/ResultServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/admin/SchoolServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/admin/SchoolServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/admin/SubjectServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/admin/SubjectServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/assessments/AssignmentServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/assessments/AssignmentServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/assessments/ExamServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/assessments/ExamServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/assessments/TestServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/assessments/TestServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/equipment/ChairServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/equipment/ChairServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/equipment/ComputerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/equipment/ComputerServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/equipment/DeskServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/equipment/DeskServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/equipment/PrinterServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/equipment/PrinterServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/equipment/ProjectorServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/equipment/ProjectorServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/equipment/StationeryServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/equipment/StationeryServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/equipment/TextbookServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/equipment/TextbookServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/infrastructure/BuildingServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/infrastructure/BuildingServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/infrastructure/LabServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/infrastructure/LabServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/infrastructure/RoomServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/infrastructure/RoomServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/people/CaretakerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/people/CaretakerServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/people/EducatorServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/people/EducatorServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/people/LearnerServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/people/LearnerServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/people/PrincipleServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/people/PrincipleServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/people/SecretaryServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/people/SecretaryServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/service/people/SecurityServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/service/people/SecurityServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/app/SchoolManagementSystemApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/IndexController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/IndexController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/admin/AttendanceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/admin/AttendanceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/admin/ClassController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/admin/ClassController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/admin/GradeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/admin/GradeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/admin/ResultController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/admin/ResultController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/admin/SchoolController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/admin/SchoolController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/admin/SubjectController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/admin/SubjectController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/assessments/AssignmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/assessments/AssignmentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/assessments/ExamController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/assessments/ExamController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/assessments/TestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/assessments/TestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/equipment/ChairController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/equipment/ChairController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/equipment/ComputerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/equipment/ComputerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/equipment/DeskController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/equipment/DeskController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/equipment/PrinterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/equipment/PrinterController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/equipment/ProjectorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/equipment/ProjectorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/equipment/StationeryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/equipment/StationeryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/equipment/TextbookController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/equipment/TextbookController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/infrastructure/BuildingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/infrastructure/BuildingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/infrastructure/LabController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/infrastructure/LabController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/infrastructure/RoomController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/infrastructure/RoomController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/people/CaretakerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/people/CaretakerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/people/EducatorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/people/EducatorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/people/LearnerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/people/LearnerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/people/PrincipleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/people/PrincipleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/people/SecretaryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/people/SecretaryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/controller/people/SecurityController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/controller/people/SecurityController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/admin/Attendance$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/admin/Attendance$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/admin/Attendance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/admin/Attendance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/admin/Class$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/admin/Class$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/admin/Class.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/admin/Class.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/admin/Grade$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/admin/Grade$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/admin/Grade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/admin/Grade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/admin/Result$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/admin/Result$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/admin/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/admin/Result.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/admin/School$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/admin/School$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/admin/School.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/admin/School.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/admin/Subject$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/admin/Subject$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/admin/Subject.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/admin/Subject.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/assessments/Assignment$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/assessments/Assignment$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/assessments/Assignment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/assessments/Assignment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/assessments/Exam$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/assessments/Exam$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/assessments/Exam.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/assessments/Exam.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/assessments/Test$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/assessments/Test$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/assessments/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/assessments/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/equipment/Chair$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/equipment/Chair$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/equipment/Chair.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/equipment/Chair.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/equipment/Computer$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/equipment/Computer$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/equipment/Computer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/equipment/Computer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/equipment/Desk$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/equipment/Desk$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/equipment/Desk.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/equipment/Desk.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/equipment/Printer$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/equipment/Printer$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/equipment/Printer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/equipment/Printer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/equipment/Projector$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/equipment/Projector$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/equipment/Projector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/equipment/Projector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/equipment/Stationery$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/equipment/Stationery$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/equipment/Stationery.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/equipment/Stationery.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/equipment/Textbook$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/equipment/Textbook$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/equipment/Textbook.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/equipment/Textbook.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/infrastructure/Building$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/infrastructure/Building$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/infrastructure/Building.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/infrastructure/Building.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/infrastructure/Lab$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/infrastructure/Lab$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/infrastructure/Lab.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/infrastructure/Lab.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/infrastructure/Room$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/infrastructure/Room$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/infrastructure/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/infrastructure/Room.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/people/Caretaker$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/people/Caretaker$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/people/Caretaker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/people/Caretaker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/people/Educator$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/people/Educator$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/people/Educator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/people/Educator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/people/Learner$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/people/Learner$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/people/Learner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/people/Learner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/people/Principle$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/people/Principle$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/people/Principle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/people/Principle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/people/Secretary$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/people/Secretary$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/people/Secretary.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/people/Secretary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/people/Security$Builder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/people/Security$Builder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/domain/people/Security.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/domain/people/Security.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/factory/admin/AttendanceFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/factory/admin/AttendanceFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/factory/admin/ClassFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/factory/admin/ClassFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/factory/admin/GradeFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/factory/admin/GradeFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/factory/admin/ResultFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/factory/admin/ResultFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/factory/equipment/ChairFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/factory/equipment/ChairFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/factory/equipment/DeskFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/factory/equipment/DeskFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/factory/infrastructure/RoomFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/factory/infrastructure/RoomFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/admin/impl/AttendanceRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/admin/impl/AttendanceRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/admin/impl/ClassRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/admin/impl/ClassRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/admin/impl/GradeRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/admin/impl/GradeRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/admin/impl/ResultRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/admin/impl/ResultRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/admin/impl/SchoolRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/admin/impl/SchoolRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/admin/impl/SubjectRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/admin/impl/SubjectRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/assessments/impl/AssignmentRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/assessments/impl/AssignmentRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/assessments/impl/ExamRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/assessments/impl/ExamRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/assessments/impl/TestRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/assessments/impl/TestRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/equipment/impl/ChairRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/equipment/impl/ChairRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/equipment/impl/ComputerRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/equipment/impl/ComputerRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/equipment/impl/DeskRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/equipment/impl/DeskRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/equipment/impl/PrinterRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/equipment/impl/PrinterRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/equipment/impl/ProjectorRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/equipment/impl/ProjectorRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/equipment/impl/StationeryRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/equipment/impl/StationeryRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/equipment/impl/TextbookRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/equipment/impl/TextbookRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/infrastructure/impl/BuildingRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/infrastructure/impl/BuildingRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/infrastructure/impl/LabRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/infrastructure/impl/LabRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/infrastructure/impl/RoomRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/infrastructure/impl/RoomRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/people/impl/CaretakerRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/people/impl/CaretakerRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/people/impl/EducatorRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/people/impl/EducatorRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/people/impl/LearnerRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/people/impl/LearnerRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/people/impl/PrincipleRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/people/impl/PrincipleRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/people/impl/SecretaryRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/people/impl/SecretaryRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/repository/people/impl/SecurityRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/repository/people/impl/SecurityRepositoryImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/admin/impl/AttendanceServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/admin/impl/AttendanceServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/admin/impl/ClassServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/admin/impl/ClassServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/admin/impl/GradeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/admin/impl/GradeServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/admin/impl/ResultServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/admin/impl/ResultServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/admin/impl/SchoolServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/admin/impl/SchoolServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/admin/impl/SubjectServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/admin/impl/SubjectServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/assessments/impl/AssignmentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/assessments/impl/AssignmentServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/assessments/impl/ExamServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/assessments/impl/ExamServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/assessments/impl/TestServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/assessments/impl/TestServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/equipment/impl/ChairServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/equipment/impl/ChairServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/equipment/impl/ComputerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/equipment/impl/ComputerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/equipment/impl/DeskServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/equipment/impl/DeskServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/equipment/impl/PrinterServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/equipment/impl/PrinterServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/equipment/impl/ProjectorServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/equipment/impl/ProjectorServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/equipment/impl/StationeryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/equipment/impl/StationeryServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/equipment/impl/TextbookServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/equipment/impl/TextbookServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/infrastructure/impl/BuildingServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/infrastructure/impl/BuildingServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/infrastructure/impl/LabServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/infrastructure/impl/LabServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/infrastructure/impl/RoomServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/infrastructure/impl/RoomServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/people/impl/CaretakerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/people/impl/CaretakerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/people/impl/EducatorServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/people/impl/EducatorServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/people/impl/LearnerServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/people/impl/LearnerServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/people/impl/PrincipleServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/people/impl/PrincipleServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/people/impl/SecretaryServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/people/impl/SecretaryServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/service/people/impl/SecurityServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/service/people/impl/SecurityServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/admin/AttendanceControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/admin/AttendanceControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/admin/ClassControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/admin/ClassControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/admin/GradeControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/admin/GradeControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/admin/ResultControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/admin/ResultControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/admin/SchoolControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/admin/SchoolControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/admin/SubjectControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/admin/SubjectControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/assessments/AssignmentControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/assessments/AssignmentControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/assessments/ExamControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/assessments/ExamControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/assessments/TestControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/assessments/TestControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/equipment/ChairControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/equipment/ChairControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/equipment/ComputerControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/equipment/ComputerControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/equipment/DeskControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/equipment/DeskControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/equipment/PrinterControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/equipment/PrinterControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/equipment/ProjectorControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/equipment/ProjectorControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/equipment/StationeryControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/equipment/StationeryControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/infrastructure/BuildingControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/infrastructure/BuildingControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/infrastructure/LabControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/infrastructure/LabControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/infrastructure/RoomControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/infrastructure/RoomControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/people/CaretakerControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/people/CaretakerControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/people/EducatorControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/people/EducatorControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/people/LearnerControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/people/LearnerControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/people/PrincipleControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/people/PrincipleControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/people/SecretaryControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/people/SecretaryControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/controller/people/SecurityControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/controller/people/SecurityControllerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/factory/admin/AttendanceFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/factory/admin/AttendanceFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/factory/admin/ClassFactorytTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/factory/admin/GradeFactoryClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/factory/admin/GradeFactoryClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/factory/admin/ResultFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/factory/admin/ResultFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/factory/equipment/ChairFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/factory/equipment/ChairFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/factory/equipment/DeskFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/factory/equipment/DeskFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/factory/infrastructure/RoomFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/factory/infrastructure/RoomFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/admin/AttendanceRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/admin/AttendanceRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/admin/ClassRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/admin/ClassRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/admin/GradeRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/admin/GradeRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/admin/ResultRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/admin/ResultRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/admin/SchoolRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/admin/SchoolRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/admin/SubjectRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/admin/SubjectRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/assessments/AssignmentRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/assessments/AssignmentRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/assessments/ExamRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/assessments/ExamRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/assessments/TestRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/assessments/TestRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/equipment/ChairRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/equipment/ChairRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/equipment/ComputerRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/equipment/ComputerRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/equipment/DeskRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/equipment/DeskRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/equipment/PrinterRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/equipment/PrinterRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/equipment/ProjectorRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/equipment/ProjectorRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/equipment/StationeryRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/equipment/StationeryRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/equipment/TextbookRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/equipment/TextbookRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/infrastructure/BuildingRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/infrastructure/BuildingRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/infrastructure/LabRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/infrastructure/LabRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/infrastructure/RoomRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/infrastructure/RoomRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/people/CaretakerRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/people/CaretakerRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/people/EducatorRepositoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/people/EducatorRepositoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/people/LearnerRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/people/LearnerRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/people/PrincipleRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/people/PrincipleRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/people/SecretaryRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/people/SecretaryRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/repository/people/SecurityRepositoryImplTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/repository/people/SecurityRepositoryImplTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/admin/AttendanceServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/admin/AttendanceServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/admin/ClassServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/admin/ClassServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/admin/GradeServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/admin/GradeServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/admin/ResultServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/admin/ResultServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/admin/SchoolServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/admin/SchoolServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/admin/SubjectServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/admin/SubjectServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/assessments/AssignmentServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/assessments/AssignmentServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/assessments/ExamServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/assessments/ExamServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/assessments/TestServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/assessments/TestServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/equipment/ChairServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/equipment/ChairServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/equipment/ComputerServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/equipment/ComputerServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/equipment/DeskServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/equipment/DeskServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/equipment/PrinterServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/equipment/PrinterServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/equipment/ProjectorServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/equipment/ProjectorServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/equipment/StationeryServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/equipment/StationeryServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/equipment/TextbookServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/equipment/TextbookServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/infrastructure/BuildingServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/infrastructure/BuildingServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/infrastructure/LabServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/infrastructure/LabServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/infrastructure/RoomServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/infrastructure/RoomServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/people/CaretakerServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/people/CaretakerServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/people/EducatorServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/people/EducatorServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/people/LearnerServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/people/LearnerServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/people/PrincipleServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/people/PrincipleServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/people/SecretaryServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/people/SecretaryServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/service/people/SecurityServiceTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/service/people/SecurityServiceTest.class" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="C:\Users\Kaylen\Documents\SchoolManagementSystem\.idea\shelf/" />
+    <ignored path="C:\Users\Kaylen\IdeaProjects\SchoolManagementSystem\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/SchoolManagementSystem$EducatorRepositoryTest_SiteEducatorTest.ic" NAME="EducatorRepositoryTest.SiteEducatorTest Coverage Results" MODIFIED="1558389344380" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.repository.people.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="190" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="SchoolManagementSystem" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/repository/ResultRepositoryImplTest.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/people/Secretary.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="85">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/repository/RoomRepositoryImplTest.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/people/Security.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+            <state relative-caret-position="85">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/repository/SchoolRepositoryImplTest.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/people/Caretaker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+            <state relative-caret-position="85">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/repository/SecurityRepositoryImplTest.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/controller/admin/AttendanceControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="442">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/repository/StationeryRepositoryImplTest.java">
+        <entry file="file://$PROJECT_DIR$/src/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/repository/TestRepositoryImplTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/repository/SubjectRepositoryImplTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/repository/ProjectorRepositoryImplTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+            <state relative-caret-position="102">
+              <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/repository/TextbookRepositoryImplTest.java">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+            <state relative-caret-position="-1630" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/theSecurity/SecurityConfiguration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/repository/SecretaryRepositoryImplTest.java">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/controller/admin/ClassControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="391">
+              <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/controller/equipment/ComputerControllerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1139">
+              <caret line="84" column="27" selection-start-line="84" selection-start-column="27" selection-end-line="84" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/controller/equipment/ChairControllerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -120,6 +533,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Singleton" />
+        <option value="JavaFXApplication" />
         <option value="Class" />
       </list>
     </option>
@@ -130,62 +545,66 @@
     </replaceStrings>
     <dirStrings>
       <dir>E:\3rd Year\ADP\SchoolManagementSystem\src\main\java\za\ac\cput\factory</dir>
+      <dir>C:\Users\Kaylen\Documents\SchoolManagementSystem\src\main\java\domain</dir>
     </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/PrincipleRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/factory/SecurityFactory.java" />
-        <option value="$PROJECT_DIR$/src/main/java/factory/CaretakerFactory.java" />
-        <option value="$PROJECT_DIR$/src/main/java/domain/Caretaker.java" />
-        <option value="$PROJECT_DIR$/src/main/java/domain/Security.java" />
-        <option value="$PROJECT_DIR$/src/test/java/StationeryRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/SecurityRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/CaretakerRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/ResultRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/domain/Result.java" />
-        <option value="$PROJECT_DIR$/src/main/java/factory/ResultFactory.java" />
-        <option value="$PROJECT_DIR$/src/test/java/EducatorRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/domain/Educator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/factory/EducatorFactory.java" />
-        <option value="$PROJECT_DIR$/src/test/java/SecretaryRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/AttendanceRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/domain/Attendance.java" />
-        <option value="$PROJECT_DIR$/src/main/java/factory/AttendanceFactory.java" />
-        <option value="$PROJECT_DIR$/src/test/java/factory/SecretaryFactoryTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/factory/CaretakerFactoryTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/factory/AttendanceFactoryTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/factory/EducatorFactoryTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/factory/AssignmentFactoryTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/factory/PrincipleFactoryTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/factory/SecurityFactoryTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/factory/ResultFactoryTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/AssignmentRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/AttendanceRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/BuildingRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/CaretakerRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/ChairRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/ClassRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/ComputerRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/DeskRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/EducatorRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/ExamRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/GradeRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/LabRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/LearnerRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/PrinterRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/PrincipleRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/ProjectorRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/ResultRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/RoomRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/SchoolRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/SecretaryRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/SecurityRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/StationeryRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/SubjectRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/TestRepositoryImplTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/repository/TextbookRepositoryImplTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/equipment/Printer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/equipment/Projector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/equipment/Stationery.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/equipment/Textbook.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/assessments/Test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/assessments/Exam.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/assessments/Assignment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/admin/Attendance.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/admin/School.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/admin/Subject.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/service/admin/SchoolServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/infrastructure/RoomControllerTest.kt" />
+        <option value="$PROJECT_DIR$/src/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/controller/admin/AttendanceController.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/controller/admin/ClassController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/controller/infrastructure/LabController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/controller/people/SecretaryController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/admin/GradeControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/admin/ResultControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/admin/SchoolControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/admin/SubjectControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/assessments/AssignmentControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/assessments/ExamControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/assessments/TestControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/equipment/ChairControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/equipment/ComputerControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/equipment/PrinterControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/equipment/ProjectorControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/equipment/StationeryControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/equipment/DeskControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/infrastructure/BuildingControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/infrastructure/LabControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/infrastructure/RoomControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/people/CaretakerControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/people/EducatorControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/people/LearnerControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/people/PrincipleControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/people/SecretaryControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/people/SecurityControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/controller/equipment/ComputerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/equipment/Chair.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/equipment/Desk.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/admin/Class.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/admin/Grade.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/admin/Result.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/infrastructure/Building.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/domain/infrastructure/Room.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/admin/ClassControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/controller/admin/AttendanceControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/theSecurity/SecurityConfiguration.java" />
       </list>
     </option>
   </component>
@@ -197,21 +616,37 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="School Management System" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="217" />
-    <option name="y" value="-17" />
-    <option name="width" value="1170" />
-    <option name="height" value="788" />
+    <option name="x" value="828" />
+    <option name="y" value="-16" />
+    <option name="width" value="578" />
+    <option name="height" value="739" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
-      <flattenPackages ProjectPane="true" />
+      <flattenPackages ProjectPane="false" />
       <showMembers ProjectPane="true" />
       <hideEmptyPackages ProjectPane="false" />
       <autoscrollToSource ProjectPane="true" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -237,39 +672,66 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="SchoolManagementSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SchoolManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SchoolManagementSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SchoolManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="theSecurity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SchoolManagementSystem" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SchoolManagementSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://E:/3rd Year/ADP/SchoolManagementSystem/src/main/java/za/ac/cput/domain/Principle.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556457438991" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569085173196" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/payroll-master (1)/payroll-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com" />
+      <recent name="" />
+      <recent name="com.repository" />
+      <recent name="za" />
+      <recent name="repository.people" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Kaylen\Documents\SchoolManagementSystem\src\test\java\service" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="repository.people" />
+      <recent name="repository" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Kaylen\Documents\SchoolManagementSystem\src\test\java" />
       <recent name="C:\Users\Kaylen\Documents\SchoolManagementSystem\src\test" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="repository" />
-      <recent name="" />
-      <recent name="za" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="repository" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -284,7 +746,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.AttendanceControllerTest">
     <configuration default="true" type="Applet">
       <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
@@ -299,8 +761,92 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AttendanceControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SchoolManagementSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.controller.admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.controller.admin" />
+      <option name="MAIN_CLASS_NAME" value="com.controller.admin.AttendanceControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ChairControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SchoolManagementSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.controller.equipment.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.controller.equipment" />
+      <option name="MAIN_CLASS_NAME" value="com.controller.equipment.ChairControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClassControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SchoolManagementSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.controller.admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.controller.admin" />
+      <option name="MAIN_CLASS_NAME" value="com.controller.admin.ClassControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ComputerControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SchoolManagementSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.controller.equipment.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.controller.equipment" />
+      <option name="MAIN_CLASS_NAME" value="com.controller.equipment.ComputerControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.controller in SchoolManagementSystem" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SchoolManagementSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.controller" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
@@ -326,6 +872,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AttendanceControllerTest" />
+        <item itemvalue="JUnit.ClassControllerTest" />
+        <item itemvalue="JUnit.com.controller in SchoolManagementSystem" />
+        <item itemvalue="JUnit.ChairControllerTest" />
+        <item itemvalue="JUnit.ComputerControllerTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -344,457 +899,551 @@
       <workItem from="1555491722215" duration="187000" />
       <workItem from="1555491983482" duration="1098000" />
     </task>
+    <task id="LOCAL-00001">
+      <created>1556471613875</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1556471613875</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="com_controller_in_SchoolManagementSystem - 2019.09.21 at 18h 30m 48s.xml">
+      <configuration name="com.controller in SchoolManagementSystem" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_controller_in_SchoolManagementSystem - 2019.09.21 at 18h 33m 25s.xml">
+      <configuration name="com.controller in SchoolManagementSystem" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ComputerControllerTest - 2019.09.21 at 18h 36m 19s.xml">
+      <configuration name="ComputerControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ComputerControllerTest - 2019.09.21 at 18h 38m 30s.xml">
+      <configuration name="ComputerControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ChairControllerTest - 2019.09.21 at 18h 38m 49s.xml">
+      <configuration name="ChairControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ChairControllerTest - 2019.09.21 at 18h 40m 01s.xml">
+      <configuration name="ChairControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="com_controller_in_SchoolManagementSystem - 2019.09.21 at 18h 43m 03s.xml">
+      <configuration name="com.controller in SchoolManagementSystem" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ClassControllerTest - 2019.09.21 at 18h 44m 46s.xml">
+      <configuration name="ClassControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AttendanceControllerTest - 2019.09.21 at 18h 45m 42s.xml">
+      <configuration name="AttendanceControllerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AttendanceControllerTest - 2019.09.21 at 18h 46m 24s.xml">
+      <configuration name="AttendanceControllerTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="6355000" />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.2579425" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.3192133" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24962178" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Favorites" order="6" side_tool="true" weight="0.32980332" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.50378215" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8645991" weight="0.6824877" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49394855" weight="0.55973816" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49924356" weight="0.3289689" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49924356" weight="0.049099836" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5087848" side_tool="true" weight="0.32755905" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49121523" weight="0.049099836" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.1354009" side_tool="true" weight="0.049099836" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.48108926" weight="0.22094926" />
+      <window_info anchor="bottom" id="GitHub Pull Requests" order="12" weight="0.049099836" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="13" sideWeight="0.49546143" visible="true" weight="0.46481177" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Maven" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="2" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info anchor="right" id="Ant Build" order="8" weight="0.32753405" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32980332" />
+      <window_info anchor="right" id="Maven" order="10" weight="0.022692889" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.25036603" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.31467474" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24962178" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Favorites" order="6" side_tool="true" weight="0.32980332" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.50378215" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8645991" visible="true" weight="0.049099836" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49394855" weight="0.55973816" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49924356" weight="0.3289689" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49924356" weight="0.049099836" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5087848" side_tool="true" weight="0.32755905" />
-      <window_info anchor="bottom" id="Messages" order="12" sideWeight="0.49121523" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.1354009" side_tool="true" visible="true" weight="0.049099836" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.48108926" weight="0.22094926" />
+      <window_info anchor="bottom" id="GitHub Pull Requests" order="12" weight="0.049099836" />
+      <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.49546143" weight="0.049099836" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Maven" order="6" />
-      <window_info anchor="right" id="Capture Analysis" order="7" />
-      <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="2" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info anchor="right" id="Ant Build" order="8" weight="0.32753405" />
+      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32980332" />
+      <window_info anchor="right" id="Maven" order="10" visible="true" weight="0.022692889" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/service/impl/LearnerServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/controller/people/CaretakerControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="39" column="40" selection-start-line="39" selection-start-column="40" selection-end-line="39" selection-end-column="40" />
-          <folding />
+        <state relative-caret-position="438">
+          <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/Learner.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/controller/people/EducatorControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/controller/people/LearnerControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/controller/people/PrincipleControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/controller/people/SecretaryControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/controller/people/SecurityControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/repository/equipment/impl/PrinterRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/Secretary.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/service/equipment/impl/ChairServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
-          <folding />
+        <state relative-caret-position="85">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/factory/PrincipleFactory.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/service/equipment/impl/DeskServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+        <state relative-caret-position="-48">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/factory/SecretaryFactory.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/service/equipment/impl/ComputerServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        <state relative-caret-position="85">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/factory/SecurityFactory.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/repository/equipment/impl/DeskRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="45" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
+        <state relative-caret-position="-306">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/factory/CaretakerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/Caretaker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/Principle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="818">
-          <caret line="91" column="9" lean-forward="true" selection-start-line="91" selection-start-column="9" selection-end-line="91" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/Security.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="695">
-          <caret line="56" column="9" lean-forward="true" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/Result.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/Educator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="88" column="9" selection-start-line="88" selection-start-column="9" selection-end-line="88" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/factory/EducatorFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/domain/Attendance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="37" column="49" lean-forward="true" selection-start-line="37" selection-start-column="49" selection-end-line="37" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/factory/AttendanceFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/factory/ResultFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/factory/SecretaryFactoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/factory/CaretakerFactoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/factory/AttendanceFactoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/factory/EducatorFactoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/factory/AssignmentFactoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/factory/PrincipleFactoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/factory/SecurityFactoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/factory/ResultFactoryTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/factory/LearnerFactoryTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/repository/equipment/DeskRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/AssignmentRepositoryImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/factory/equipment/DeskFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/AttendanceRepositoryImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/controller/admin/GradeControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+        <state relative-caret-position="408">
+          <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/BuildingRepositoryImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/controller/equipment/DeskController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        <state relative-caret-position="102">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/CaretakerRepositoryImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/controller/equipment/PrinterController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        <state relative-caret-position="102">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/ChairRepositoryImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/controller/equipment/ProjectorController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+        <state relative-caret-position="102">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/ClassRepositoryImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/controller/equipment/StationeryController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="49">
-          <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+        <state relative-caret-position="102">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/ComputerRepositoryImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/controller/equipment/TextbookController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+        <state relative-caret-position="102">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/DeskRepositoryImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/controller/equipment/ChairController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="24" column="30" lean-forward="true" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+        <state relative-caret-position="139">
+          <caret line="29" column="49" lean-forward="true" selection-start-line="29" selection-start-column="49" selection-end-line="29" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/EducatorRepositoryImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/controller/equipment/ComputerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        <state relative-caret-position="102">
+          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/ExamRepositoryImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/controller/equipment/DeskControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        <state relative-caret-position="298">
+          <caret line="35" column="54" selection-start-line="35" selection-start-column="54" selection-end-line="35" selection-end-column="54" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/GradeRepositoryImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/equipment/Printer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/LabRepositoryImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/equipment/Textbook.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="24" column="26" lean-forward="true" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/LearnerRepositoryImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/equipment/Projector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/PrinterRepositoryImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/PrincipleRepositoryImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/ResultRepositoryImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/RoomRepositoryImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/SchoolRepositoryImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/SecurityRepositoryImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/StationeryRepositoryImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/TestRepositoryImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/SubjectRepositoryImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/ProjectorRepositoryImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/SecretaryRepositoryImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/repository/TextbookRepositoryImplTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/equipment/Computer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/equipment/Chair.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/equipment/Desk.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+          <folding>
+            <element signature="e#473#474#0" expanded="true" />
+            <element signature="e#517#518#0" expanded="true" />
+            <element signature="e#565#566#0" expanded="true" />
+            <element signature="e#605#606#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/equipment/Stationery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/assessments/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/assessments/Exam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/admin/Class.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+          <folding>
+            <element signature="e#446#447#0" expanded="true" />
+            <element signature="e#490#491#0" expanded="true" />
+            <element signature="e#536#537#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/admin/Grade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/admin/Result.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/admin/School.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/admin/Subject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/assessments/Assignment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/infrastructure/Building.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/infrastructure/Lab.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/infrastructure/Room.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/people/Educator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/people/Principle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/people/Secretary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/people/Security.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/domain/people/Caretaker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/controller/admin/ClassControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/controller/equipment/ComputerControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="84" column="27" lean-forward="true" selection-start-line="84" selection-start-column="27" selection-end-line="84" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/controller/equipment/ChairControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/controller/admin/AttendanceControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="31" lean-forward="true" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/theSecurity/SecurityConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -850,11 +1499,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>test</last-edited>
+          <last-edited>SchoolManagementSystem</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -862,7 +1512,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: junit:junit:4.11</last-edited>
+          <last-edited>Maven: ch.qos.logback:logback-classic:1.2.3</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

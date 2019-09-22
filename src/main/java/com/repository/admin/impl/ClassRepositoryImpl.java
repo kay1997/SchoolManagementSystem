@@ -4,61 +4,56 @@ import com.domain.admin.Class;
 import com.repository.admin.ClassRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 @Repository("InMemory")
 public class ClassRepositoryImpl implements ClassRepository {
 
-        private static ClassRepositoryImpl repository = null;
-        private Set<Class> classes;
+    private static ClassRepositoryImpl repository = null;
+    private Map<String, Class> clss;
 
-        private ClassRepositoryImpl(){
-            this.classes = new HashSet<>();
-        }
-
-        public static ClassRepositoryImpl getRepository(){
-            if (repository == null) repository = new ClassRepositoryImpl();
-            return repository;
-        }
-
-
-        public Class create(Class oneClass){
-            this.classes.add(oneClass);
-            return oneClass;
-        }
-
-    private Class findClass(String classGroup) {
-        return this.classes.stream()
-                .filter(oneClass -> oneClass.getClassGroup().trim().equals(classGroup))
-                .findAny()
-                .orElse(null);
+    private ClassRepositoryImpl() {
+        this.clss = new HashMap<>();
     }
 
-    public Class read(String classGroup){
-
-        Class oneClass = findClass(classGroup);
-        return oneClass;
+    public static ClassRepositoryImpl getRepository() {
+        if (repository == null) repository = new ClassRepositoryImpl();
+        return repository;
     }
 
-    public void delete(String classGroup) {
-        Class oneClass = findClass(classGroup);
-        if (oneClass != null) this.classes.remove(oneClass);
-
+    @Override
+    public Set<Class> getAll() {
+        Collection<Class> clss = this.clss.values();
+        Set<Class> set = new HashSet<>();
+        set.addAll(clss);
+        return set;
     }
 
-    public Class update(Class oneClass) {
-        Class toDelete = findClass(oneClass.getClassGroup());
-        if (toDelete != null) {
-            this.classes.remove(toDelete);
-            return create(oneClass);
+    @Override
+    public Class create(Class cls) {
+        if (read(cls.getClassID()) == null) {
+            this.clss.put(cls.getClassID(), cls);
         }
-        return null;
+        return cls;
     }
 
+    @Override
+    public Class read(String e) {
+        return this.clss.get(e);
+    }
 
-
-    public Set<Class> getAll(){
-            return this.classes;
+    @Override
+    public Class update(Class cls) {
+        if (read(cls.getClassID()) != null) {
+            clss.replace(cls.getClassID(), cls);
         }
+        return cls;
     }
 
+    @Override
+    public void delete(String e) {
+        Class cls = read(e);
+        this.clss.remove(e, cls);
+    }
+
+}

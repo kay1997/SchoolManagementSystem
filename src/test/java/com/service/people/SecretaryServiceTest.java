@@ -1,8 +1,9 @@
 package com.service.people;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.people.Secretary;
 import com.factory.people.SecretaryFactory;
+import com.service.people.impl.SecretaryServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,63 +17,66 @@ import com.repository.people.impl.SecretaryRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class SecretaryServiceTest {
-
-    private SecretaryRepository repository;
-    private Secretary secretary;
-
-    private Secretary getSavedSecretary() {
-        Set<Secretary> savedSecretaries = this.repository.getAll();
-        return savedSecretaries.iterator().next();
-    }
+    SecretaryServiceImpl service;
+    Secretary security;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = SecretaryRepositoryImpl.getRepository();
-        this.secretary = SecretaryFactory.getSecretary("880414", "Ally", "Adams", "880414", "Cape Town", "0875432134", 33);
+        service = SecretaryServiceImpl.getService();
+        security = SecretaryFactory.getSecretary("12345", "Kaylen", "Abrahams", "26", "CPT", "12345", 22);
     }
 
     @Test
-    public void a_create() {
-        Secretary created = this.repository.create(this.secretary);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.secretary);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Secretary savedSecretary = getSavedSecretary();
-        System.out.println("In read, secretary ID number = " + savedSecretary.getSecretaryIDNumber());
-        Secretary read = this.repository.read(savedSecretary.getSecretaryIDNumber());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedSecretary, read);
+    public void getAll() {
+        service.create(security);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Secretary savedSecretary = getSavedSecretary();
-        this.repository.delete(savedSecretary.getSecretaryIDNumber());
-        d_getAll();
+    public void create() {
+        service.create(security);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newname = "New Test Secretary Name";
-        Secretary updated = new Secretary.Builder().copy(getSavedSecretary()).secretaryFirstName(newname).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newname, updated.getSecretaryFirstName());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Secretary> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(security);
+        System.out.println(service.read("12345"));
+
+        Secretary securityUpdated = SecretaryFactory.getSecretary("12345", "Kevin", "Abrahams", "26", "CPT", "12345", 22);
+        service.update(securityUpdated);
+
+        Secretary emp = service.read("12345");
+        Assert.assertNotEquals(security.getSecretaryFirstName(), emp.getSecretaryFirstName());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(security.getSecretaryIDNumber()));
+        System.out.println("Delete\n" + service.read(security.getSecretaryIDNumber()));
+    }
+
 }

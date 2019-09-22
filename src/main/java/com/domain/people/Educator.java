@@ -31,6 +31,17 @@ public class Educator {
     public String getEducatorIDNumber() {
         return educatorIDNumber;
     }
+
+    public void setEducatorIDNumber(String educatorIDNumber) {
+        this.educatorIDNumber = educatorIDNumber;
+    }
+
+    public void setEducatorFirstName(String educatorFirstName) {
+        this.educatorFirstName = educatorFirstName;
+    }
+
+
+
     public int getEducatorAge() {
         return educatorAge;
     }
@@ -131,7 +142,7 @@ public class Educator {
                 ", educatorAddress='" + educatorAddress + '\'' +
                 ", educatorDateOfBirth='" + educatorDateOfBirth+ '\'' +
                 ", educatorContactNumber='" + educatorContactNumber + '\'' +
-                ", educatorFirstName='" + educatorAge + '\'' +
+                ", educatorAge='" + educatorAge + '\'' +
                 '}';
     }
 

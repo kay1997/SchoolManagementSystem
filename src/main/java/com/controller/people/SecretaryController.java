@@ -1,41 +1,47 @@
 package com.controller.people;
 
 import com.domain.people.Secretary;
+import com.service.people.impl.SecretaryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.people.SecretaryService;
 
+import java.util.Set;
+
 @RestController
-@RequestMapping("/SchoolManagementSystem/secretary")
+@RequestMapping("/secretary")
 public class SecretaryController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
-    private SecretaryService service;
+    private SecretaryServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public Secretary create(Secretary secretary) {
+    public Secretary create(@RequestBody Secretary secretary) {
         return service.create(secretary);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public Secretary update(Secretary secretary) {
+    public Secretary update(@RequestBody Secretary secretary) {
         return service.update(secretary);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
+
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public Secretary read(@PathVariable String id) {
-        return service.read(id);
+
+        Secretary secretary = service.read(id);
+        return secretary;
+    }
+
+    @GetMapping("/getall")
+    public Set<Secretary> getAll(){
+        return service.getAll();
     }
 
 }

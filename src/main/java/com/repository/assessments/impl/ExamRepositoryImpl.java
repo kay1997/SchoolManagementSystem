@@ -4,60 +4,56 @@ import com.domain.assessments.Exam;
 import com.repository.assessments.ExamRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 @Repository("InMemory")
 public class ExamRepositoryImpl implements ExamRepository {
 
     private static ExamRepositoryImpl repository = null;
-    private Set<Exam> exams;
+    private Map<String, Exam> exams;
 
-    private ExamRepositoryImpl(){
-        this.exams = new HashSet<>();
+    private ExamRepositoryImpl() {
+        this.exams = new HashMap<>();
     }
 
-    private Exam findExam(String examPaperNumber) {
-        return this.exams.stream()
-                .filter(exam -> exam.getExamPaperNumber().trim().equals(examPaperNumber))
-                .findAny()
-                .orElse(null);
-    }
-
-    public static ExamRepositoryImpl getRepository(){
+    public static ExamRepositoryImpl getRepository() {
         if (repository == null) repository = new ExamRepositoryImpl();
         return repository;
     }
 
-
-    public Exam create(Exam exam){
-        this.exams.add(exam);
-        return exam;
+    @Override
+    public Set<Exam> getAll() {
+        Collection<Exam> exams = this.exams.values();
+        Set<Exam> set = new HashSet<>();
+        set.addAll(exams);
+        return set;
     }
 
-    public Exam read(String examPaperNumber){
-
-        Exam exam = findExam(examPaperNumber);
-        return exam;
-    }
-
-    public void delete(String examPaperNumber) {
-        Exam exam = findExam(examPaperNumber);
-        if (exam != null) this.exams.remove(exam);
-
-    }
-
-    public Exam update(Exam exam) {
-        Exam toDelete = findExam(exam.getExamPaperNumber());
-        if (toDelete != null) {
-            this.exams.remove(toDelete);
-            return create(exam);
+    @Override
+    public Exam create(Exam exam) {
+        if (read(exam.getExamPaperNumber()) == null) {
+            this.exams.put(exam.getExamPaperNumber(), exam);
         }
-        return null;
+        return exam;
     }
 
-
-    public Set<Exam> getAll(){
-        return this.exams;
+    @Override
+    public Exam read(String e) {
+        return this.exams.get(e);
     }
+
+    @Override
+    public Exam update(Exam exam) {
+        if (read(exam.getExamPaperNumber()) != null) {
+            exams.replace(exam.getExamPaperNumber(), exam);
+        }
+        return exam;
+    }
+
+    @Override
+    public void delete(String e) {
+        Exam exam = read(e);
+        this.exams.remove(e, exam);
+    }
+
 }
-

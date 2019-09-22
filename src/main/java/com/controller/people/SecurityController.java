@@ -1,42 +1,46 @@
 package com.controller.people;
 
 import com.domain.people.Security;
+import com.service.people.impl.SecurityServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.people.SecurityService;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/security")
 public class SecurityController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
-    private SecurityService service;
+    private SecurityServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public Security create(Security security) {
+    public Security create(@RequestBody Security security) {
         return service.create(security);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public Security update(Security security) {
+    public Security update(@RequestBody Security security) {
         return service.update(security);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
-
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public Security read(@PathVariable String id) {
-        return service.read(id);
+
+        Security security = service.read(id);
+        return security;
+    }
+
+    @GetMapping("/getall")
+    public Set<Security> getAll(){
+        return service.getAll();
     }
 
 }

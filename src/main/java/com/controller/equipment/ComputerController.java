@@ -1,41 +1,47 @@
 package com.controller.equipment;
 
 import com.domain.equipment.Computer;
+import com.service.equipment.impl.ComputerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.equipment.ComputerService;
 
+import java.util.Set;
+
 @RestController
 @RequestMapping("/computer")
-class ComputerController {
+public class ComputerController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
-    private ComputerService service;
+    private ComputerServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public Computer create(Computer computer) {
+    public Computer create(@RequestBody Computer computer) {
         return service.create(computer);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public Computer update(Computer computer) {
+    public Computer update(@RequestBody Computer computer) {
         return service.update(computer);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
+
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public Computer read(@PathVariable String id) {
-        return service.read(id);
+
+        Computer computer = service.read(id);
+        return computer;
+    }
+
+    @GetMapping("/getall")
+    public Set<Computer> getAll(){
+        return service.getAll();
     }
 
 }

@@ -1,8 +1,9 @@
 package com.service.infrastructure;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.infrastructure.Building;
 import com.factory.infrastructure.BuildingFactory;
+import com.service.infrastructure.impl.BuildingServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,63 +17,67 @@ import com.repository.infrastructure.impl.BuildingRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class BuildingServiceTest {
 
-    private BuildingRepository repository;
-    private Building building;
-
-    private Building getSavedBuilding() {
-        Set<Building> savedBuildings = this.repository.getAll();
-        return savedBuildings.iterator().next();
-    }
+    BuildingServiceImpl service;
+    Building building;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = BuildingRepositoryImpl.getRepository();
-        this.building = BuildingFactory.getBuilding("3", "Admin");
+        service = BuildingServiceImpl.getService();
+        building = BuildingFactory.getBuilding("12345", "Commerce");
     }
 
     @Test
-    public void a_create() {
-        Building created = this.repository.create(this.building);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.building);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Building savedBuilding = getSavedBuilding();
-        System.out.println("In read, building number = " + savedBuilding.getBuildingNumber());
-        Building read = this.repository.read(savedBuilding.getBuildingNumber());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedBuilding, read);
+    public void getAll() {
+        service.create(building);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Building savedBuilding = getSavedBuilding();
-        this.repository.delete(savedBuilding.getBuildingNumber());
-        d_getAll();
+    public void create() {
+        service.create(building);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newBuildingNumber = "New Test Building Contact Number";
-        Building updated = new Building.Builder().copy(getSavedBuilding()).buildingNumber(newBuildingNumber).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newBuildingNumber, updated.getBuildingNumber());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Building> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(building);
+        System.out.println(service.read("12345"));
+
+        Building buildingUpdated = BuildingFactory.getBuilding("12345", "IT");
+        service.update(buildingUpdated);
+
+        Building b = service.read("12345");
+        Assert.assertNotEquals(building.getBuildingName(), b.getBuildingName());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(building.getBuildingNumber()));
+        System.out.println("Delete\n" + service.read(building.getBuildingNumber()));
+    }
+
 }

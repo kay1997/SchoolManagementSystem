@@ -13,22 +13,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class ChairServiceImpl implements ChairService {
-    @Autowired
-    @Qualifier("InMemory")
-    private ChairServiceImpl service = null;
+    private static ChairServiceImpl service;
     private ChairRepository repository;
 
-    private ChairServiceImpl(){
-        this.repository = ChairRepositoryImpl.getRepository();
-    }
+    private ChairServiceImpl(){this.repository = ChairRepositoryImpl.getRepository();}
 
-    public ChairService getService(){
-        if (service == null) service = new ChairServiceImpl();
+    public static ChairServiceImpl getService()
+    {
+        if(service == null){service = new ChairServiceImpl();}
         return service;
     }
 
     @Override
-    public Chair create(Chair chair) {
+    public Chair create(Chair chair){
         return this.repository.create(chair);
     }
 
@@ -38,7 +35,7 @@ public class ChairServiceImpl implements ChairService {
     }
 
     @Override
-    public void delete(String chairNumber) {
+    public void delete(String chairNumber){
         this.repository.delete(chairNumber);
     }
 

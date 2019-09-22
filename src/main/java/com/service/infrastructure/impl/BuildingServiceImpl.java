@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class BuildingServiceImpl implements BuildingService {
-    @Autowired
-    @Qualifier("InMemory")
-    private BuildingServiceImpl service = null;
+    private static BuildingServiceImpl service;
     private BuildingRepository repository;
 
-    private BuildingServiceImpl(){
-        this.repository = BuildingRepositoryImpl.getRepository();
-    }
+    private BuildingServiceImpl(){this.repository = BuildingRepositoryImpl.getRepository();}
 
-    public BuildingService getService(){
-        if (service == null) service = new BuildingServiceImpl();
+    public static BuildingServiceImpl getService()
+    {
+        if(service == null){service = new BuildingServiceImpl();}
         return service;
     }
 
     @Override
-    public Building create(Building building) {
+    public Building create(Building building){
         return this.repository.create(building);
     }
 
@@ -37,7 +34,7 @@ public class BuildingServiceImpl implements BuildingService {
     }
 
     @Override
-    public void delete(String buildingNumber) {
+    public void delete(String buildingNumber){
         this.repository.delete(buildingNumber);
     }
 

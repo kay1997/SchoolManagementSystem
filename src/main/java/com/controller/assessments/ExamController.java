@@ -1,42 +1,48 @@
 package com.controller.assessments;
 import com.domain.assessments.Exam;
+import com.service.assessments.impl.ExamServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.assessments.ExamService;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/exam")
 public class ExamController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
-    private ExamService service;
+    private ExamServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public Exam create(Exam exam) {
+    public Exam create(@RequestBody Exam exam) {
         return service.create(exam);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public Exam update(Exam exam) {
+    public Exam update(@RequestBody Exam exam) {
         return service.update(exam);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
 
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public Exam read(@PathVariable String id) {
-        return service.read(id);
+
+        Exam exam = service.read(id);
+        return exam;
     }
+
+    @GetMapping("/getall")
+    public Set<Exam> getAll(){
+        return service.getAll();
+    }
+
 
 }
 

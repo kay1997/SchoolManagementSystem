@@ -1,8 +1,9 @@
 package com.service.admin;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.admin.Attendance;
 import com.factory.admin.AttendanceFactory;
+import com.service.admin.impl.AttendanceServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,63 +17,67 @@ import com.repository.admin.impl.AttendanceRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class AttendanceServiceTest {
 
-    private AttendanceRepository repository;
-    private Attendance attendance;
-
-    private Attendance getSavedAttendance() {
-        Set<Attendance> savedAttendances = this.repository.getAll();
-        return savedAttendances.iterator().next();
-    }
+    AttendanceServiceImpl service;
+    Attendance attendance;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = AttendanceRepositoryImpl.getRepository();
-        this.attendance = AttendanceFactory.getAttendance(12, "57");
+        service = AttendanceServiceImpl.getService();
+        attendance = AttendanceFactory.getAttendance("12345", 3,"4");
     }
 
     @Test
-    public void a_create() {
-        Attendance created = this.repository.create(this.attendance);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.attendance);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Attendance savedAttendance = getSavedAttendance();
-        System.out.println("In read, days present = " + savedAttendance.getNumberOfDaysPresent());
-        Attendance read = this.repository.read(savedAttendance.getNumberOfDaysPresent());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedAttendance, read);
+    public void getAll() {
+        service.create(attendance);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Attendance savedAttendance = getSavedAttendance();
-        this.repository.delete(savedAttendance.getNumberOfDaysPresent());
-        d_getAll();
+    public void create() {
+        service.create(attendance);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newAttendanceNumber = "New Test days present";
-        Attendance updated = new Attendance.Builder().copy(getSavedAttendance()).noOfDaysPresent(newAttendanceNumber).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newAttendanceNumber, updated.getNumberOfDaysPresent());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Attendance> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(attendance);
+        System.out.println(service.read("12345"));
+
+        Attendance attendanceUpdated = AttendanceFactory.getAttendance("12345", 3,"6");
+        service.update(attendanceUpdated);
+
+        Attendance comp = service.read("12345");
+        Assert.assertNotEquals(attendance.getNumberOfDaysPresent(), comp.getNumberOfDaysPresent());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(attendance.getLearnerID()));
+        System.out.println("Delete\n" + service.read(attendance.getLearnerID()));
+    }
+
 }

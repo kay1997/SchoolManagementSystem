@@ -1,41 +1,47 @@
 package com.controller.equipment;
 
 import com.domain.equipment.Desk;
+import com.service.equipment.impl.DeskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.equipment.DeskService;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/desk")
 public class DeskController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
-    private DeskService service;
+    private DeskServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public Desk create(Desk desk) {
+    public Desk create(@RequestBody Desk desk) {
         return service.create(desk);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public Desk update(Desk desk) {
+    public Desk update(@RequestBody Desk desk) {
         return service.update(desk);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
+
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public Desk read(@PathVariable String id) {
-        return service.read(id);
+
+        Desk desk = service.read(id);
+        return desk;
+    }
+
+    @GetMapping("/getall")
+    public Set<Desk> getAll(){
+        return service.getAll();
     }
 
 }

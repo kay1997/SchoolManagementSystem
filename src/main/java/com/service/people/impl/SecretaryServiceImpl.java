@@ -14,22 +14,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class SecretaryServiceImpl implements SecretaryService {
-    @Autowired
-    @Qualifier("InMemory")
-    private SecretaryServiceImpl service = null;
+    private static SecretaryServiceImpl service;
     private SecretaryRepository repository;
 
-    private SecretaryServiceImpl(){
-        this.repository = SecretaryRepositoryImpl.getRepository();
-    }
+    private SecretaryServiceImpl(){this.repository = SecretaryRepositoryImpl.getRepository();}
 
-    public SecretaryService getService(){
-        if (service == null) service = new SecretaryServiceImpl();
+    public static SecretaryServiceImpl getService()
+    {
+        if(service == null){service = new SecretaryServiceImpl();}
         return service;
     }
 
     @Override
-    public Secretary create(Secretary secretary) {
+    public Secretary create(Secretary secretary){
         return this.repository.create(secretary);
     }
 
@@ -39,7 +36,7 @@ public class SecretaryServiceImpl implements SecretaryService {
     }
 
     @Override
-    public void delete(String secretaryIDNumber) {
+    public void delete(String secretaryIDNumber){
         this.repository.delete(secretaryIDNumber);
     }
 
@@ -52,4 +49,5 @@ public class SecretaryServiceImpl implements SecretaryService {
     public Set<Secretary> getAll() {
         return this.repository.getAll();
     }
+
 }

@@ -1,42 +1,45 @@
 package com.controller.admin;
 
 import com.domain.admin.School;
+import com.service.admin.impl.SchoolServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.admin.SchoolService;
 
+import java.util.Set;
+
 @RestController
 @RequestMapping("/school")
 public class SchoolController {
-
     @Autowired
-    @Qualifier("ServiceImpl")
-    private SchoolService service;
+    private SchoolServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public School create(School school) {
+    public School create(@RequestBody School school) {
         return service.create(school);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public School update(School school) {
+    public School update(@RequestBody School school) {
         return service.update(school);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
 
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public School read(@PathVariable String id) {
-        return service.read(id);
+
+        School school = service.read(id);
+        return school;
     }
 
+    @GetMapping("/getall")
+    public Set<School> getAll(){
+        return service.getAll();
+    }
 }

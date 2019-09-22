@@ -30,6 +30,15 @@ public class Principle {
     public String getPrincipleIDNumber() {
         return principleIDNumber;
     }
+
+    public void setPrincipleIDNumber(String principleIDNumber) {
+        this.principleIDNumber = principleIDNumber;
+    }
+
+    public void setPrincipleFirstName(String principleFirstName) {
+        this.principleFirstName = principleFirstName;
+    }
+
     public int getPrincipleAge() {
         return principleAge;
     }

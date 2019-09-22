@@ -10,8 +10,6 @@ import java.util.*;
 
 @Repository("RepositoryImpl")
 public class PrincipleRepositoryImpl implements PrincipleRepository {
-    @Autowired
-    @Qualifier
     private static PrincipleRepositoryImpl repository = null;
     private Map<String, Principle> principles;
 
@@ -19,33 +17,44 @@ public class PrincipleRepositoryImpl implements PrincipleRepository {
         this.principles = new HashMap<>();
     }
 
-    public static PrincipleRepository getRepository(){
-        if(repository == null) repository = new PrincipleRepositoryImpl();
+    public static PrincipleRepositoryImpl getRepository() {
+        if (repository == null) repository = new PrincipleRepositoryImpl();
         return repository;
     }
 
-    public Principle create(Principle principle){
-        this.principles.put(principle.getPrincipleIDNumber(),principle);
-        return principle;
-    }
-
-    public Principle read(String principleId){
-        return this.principles.get(principleId);
-    }
-
-    public Principle update(Principle principle) {
-        this.principles.replace(principle.getPrincipleIDNumber(),principle);
-        return this.principles.get(principle.getPrincipleIDNumber());
-    }
-
-    public void delete(String principleId) {
-        this.principles.remove(principleId);
-    }
-
-    public Set<Principle> getAll(){
+    @Override
+    public Set<Principle> getAll() {
         Collection<Principle> principles = this.principles.values();
         Set<Principle> set = new HashSet<>();
         set.addAll(principles);
         return set;
     }
+
+    @Override
+    public Principle create(Principle principle) {
+        if (read(principle.getPrincipleIDNumber()) == null) {
+            this.principles.put(principle.getPrincipleIDNumber(), principle);
+        }
+        return principle;
+    }
+
+    @Override
+    public Principle read(String e) {
+        return this.principles.get(e);
+    }
+
+    @Override
+    public Principle update(Principle principle) {
+        if (read(principle.getPrincipleIDNumber()) != null) {
+            principles.replace(principle.getPrincipleIDNumber(), principle);
+        }
+        return principle;
+    }
+
+    @Override
+    public void delete(String e) {
+        Principle principle = read(e);
+        this.principles.remove(e, principle);
+    }
+
 }

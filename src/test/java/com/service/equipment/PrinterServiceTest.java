@@ -1,8 +1,9 @@
 package com.service.equipment;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.equipment.Printer;
 import com.factory.equipment.PrinterFactory;
+import com.service.equipment.impl.PrinterServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,63 +17,67 @@ import com.repository.equipment.impl.PrinterRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class PrinterServiceTest {
 
-    private PrinterRepository repository;
-    private Printer printer;
-
-    private Printer getSavedPrinter() {
-        Set<Printer> savedPrinters = this.repository.getAll();
-        return savedPrinters.iterator().next();
-    }
+    PrinterServiceImpl service;
+    Printer printer;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = PrinterRepositoryImpl.getRepository();
-        this.printer = PrinterFactory.getPrinter("321", "HP");
+        service = PrinterServiceImpl.getService();
+        printer = PrinterFactory.getPrinter("12345", "Canon");
     }
 
     @Test
-    public void a_create() {
-        Printer created = this.repository.create(this.printer);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.printer);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Printer savedPrinter = getSavedPrinter();
-        System.out.println("In read, printer code = " + savedPrinter.getPrinterCode());
-        Printer read = this.repository.read(savedPrinter.getPrinterCode());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedPrinter, read);
+    public void getAll() {
+        service.create(printer);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Printer savedPrinter = getSavedPrinter();
-        this.repository.delete(savedPrinter.getPrinterCode());
-        d_getAll();
+    public void create() {
+        service.create(printer);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newPrinterCode = "New Test Printer Code";
-        Printer updated = new Printer.Builder().copy(getSavedPrinter()).printerCode(newPrinterCode).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newPrinterCode, updated.getPrinterCode());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Printer> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(printer);
+        System.out.println(service.read("12345"));
+
+        Printer printerUpdated = PrinterFactory.getPrinter("12345", "HP");
+        service.update(printerUpdated);
+
+        Printer pri = service.read("12345");
+        Assert.assertNotEquals(printer.getPrinterName(), pri.getPrinterName());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(printer.getPrinterCode()));
+        System.out.println("Delete\n" + service.read(printer.getPrinterCode()));
+    }
+
 }

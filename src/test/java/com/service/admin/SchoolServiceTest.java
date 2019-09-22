@@ -1,8 +1,9 @@
 package com.service.admin;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.admin.School;
 import com.factory.admin.SchoolFactory;
+import com.service.admin.impl.SchoolServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -17,64 +18,67 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.repository.admin.SchoolRepository;
 import com.repository.admin.impl.SchoolRepositoryImpl;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class SchoolServiceTest {
 
-
-    private SchoolRepository repository;
-    private School school;
-
-    private School getSavedSchool() {
-        Set<School> savedSchools = this.repository.getAll();
-        return savedSchools.iterator().next();
-    }
+    SchoolServiceImpl service;
+    School school;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = SchoolRepositoryImpl.getRepository();
-        this.school = SchoolFactory.getSchool("012", "Rocklands High", "Cape Town", "0213921234");
+        service = SchoolServiceImpl.getService();
+        school = SchoolFactory.getSchool("12345", "Westridge", "M/Plain", "0211234526");
     }
 
     @Test
-    public void a_create() {
-        School created = this.repository.create(this.school);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.school);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        School savedSchool = getSavedSchool();
-        System.out.println("In read, school code = " + savedSchool.getSchoolCode());
-        School read = this.repository.read(savedSchool.getSchoolCode());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedSchool, read);
+    public void getAll() {
+        service.create(school);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        School savedSchool = getSavedSchool();
-        this.repository.delete(savedSchool.getSchoolCode());
-        d_getAll();
+    public void create() {
+        service.create(school);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newSchoolNumber = "New Test School Contact Number";
-        School updated = new School.Builder().copy(getSavedSchool()).schoolContactNumber(newSchoolNumber).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newSchoolNumber, updated.getSchoolContactNumber());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<School> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(school);
+        System.out.println(service.read("12345"));
+
+        School schoolUpdated = SchoolFactory.getSchool("12345", "Rocklands", "M/Plain", "0211234526");
+        service.update(schoolUpdated);
+
+        School emp = service.read("12345");
+        Assert.assertNotEquals(school.getSchoolName(), emp.getSchoolName());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(school.getSchoolCode()));
+        System.out.println("Delete\n" + service.read(school.getSchoolCode()));
+    }
+
 }

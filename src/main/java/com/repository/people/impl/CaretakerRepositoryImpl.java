@@ -4,60 +4,55 @@ import com.domain.people.Caretaker;
 import com.repository.people.CaretakerRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Repository
 public class CaretakerRepositoryImpl implements CaretakerRepository {
-
     private static CaretakerRepositoryImpl repository = null;
-    private Set<Caretaker> caretakers;
+    private Map<String, Caretaker> caretakers;
 
-    private CaretakerRepositoryImpl(){
-        this.caretakers = new HashSet<>();
+    private CaretakerRepositoryImpl() {
+        this.caretakers = new HashMap<>();
     }
 
-    public static CaretakerRepositoryImpl getRepository(){
+    public static CaretakerRepositoryImpl getRepository() {
         if (repository == null) repository = new CaretakerRepositoryImpl();
         return repository;
     }
 
-
-    public Caretaker create(Caretaker caretaker){
-        this.caretakers.add(caretaker);
-        return caretaker;
+    @Override
+    public Set<Caretaker> getAll() {
+        Collection<Caretaker> caretakers = this.caretakers.values();
+        Set<Caretaker> set = new HashSet<>();
+        set.addAll(caretakers);
+        return set;
     }
 
-    private Caretaker findCaretaker(String caretakerIDNumber) {
-        return this.caretakers.stream()
-                .filter(caretaker -> caretaker.getCaretakerIDNumber().trim().equals(caretakerIDNumber))
-                .findAny()
-                .orElse(null);
-    }
-
-    public Caretaker read(String caretakerIDNumber){
-
-        Caretaker caretaker = findCaretaker(caretakerIDNumber);
-        return caretaker;
-    }
-
-    public void delete(String caretakerIDNumber) {
-        Caretaker caretaker = findCaretaker(caretakerIDNumber);
-        if (caretaker != null) this.caretakers.remove(caretaker);
-
-    }
-
-    public Caretaker update(Caretaker caretaker) {
-        Caretaker toDelete = findCaretaker(caretaker.getCaretakerIDNumber());
-        if (toDelete != null) {
-            this.caretakers.remove(toDelete);
-            return create(caretaker);
+    @Override
+    public Caretaker create(Caretaker caretaker) {
+        if (read(caretaker.getCaretakerIDNumber()) == null) {
+            this.caretakers.put(caretaker.getCaretakerIDNumber(), caretaker);
         }
-        return null;
+        return caretaker;
     }
 
-
-    public Set<Caretaker> getAll(){
-        return this.caretakers;
+    @Override
+    public Caretaker read(String e) {
+        return this.caretakers.get(e);
     }
+
+    @Override
+    public Caretaker update(Caretaker caretaker) {
+        if (read(caretaker.getCaretakerIDNumber()) != null) {
+            caretakers.replace(caretaker.getCaretakerIDNumber(), caretaker);
+        }
+        return caretaker;
+    }
+
+    @Override
+    public void delete(String e) {
+        Caretaker caretaker = read(e);
+        this.caretakers.remove(e, caretaker);
+    }
+
 }

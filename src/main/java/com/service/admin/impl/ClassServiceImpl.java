@@ -12,38 +12,36 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class ClassServiceImpl implements ClassService {
-    @Autowired
-    @Qualifier("InMemory")
-    private ClassServiceImpl service = null;
+
+    private static ClassServiceImpl service;
     private ClassRepository repository;
 
-    private ClassServiceImpl(){
-        this.repository = ClassRepositoryImpl.getRepository();
-    }
+    private ClassServiceImpl(){this.repository = ClassRepositoryImpl.getRepository();}
 
-    public ClassService getService(){
-        if (service == null) service = new ClassServiceImpl();
+    public static ClassServiceImpl getService()
+    {
+        if(service == null){service = new ClassServiceImpl();}
         return service;
     }
 
     @Override
-    public Class create(Class oneClass) {
-        return this.repository.create(oneClass);
+    public Class create(Class cls){
+        return this.repository.create(cls);
     }
 
     @Override
-    public Class update(Class oneClass) {
-        return this.repository.update(oneClass);
+    public Class update(Class cls) {
+        return this.repository.update(cls);
     }
 
     @Override
-    public void delete(String classGroup) {
-        this.repository.delete(classGroup);
+    public void delete(String classID){
+        this.repository.delete(classID);
     }
 
     @Override
-    public Class read(String classGroup) {
-        return this.repository.read(classGroup);
+    public Class read(String classID) {
+        return this.repository.read(classID);
     }
 
     @Override
@@ -52,3 +50,4 @@ public class ClassServiceImpl implements ClassService {
     }
 
 }
+

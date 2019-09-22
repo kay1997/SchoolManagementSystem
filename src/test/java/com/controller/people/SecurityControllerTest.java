@@ -1,75 +1,96 @@
 package com.controller.people;
 
+import app.SchoolManagementSystemApplication;
 import com.domain.people.Security;
 import com.factory.people.SecurityFactory;
+import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.HttpClientErrorException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @RunWith(SpringRunner.class)
+@ContextConfiguration(classes = SchoolManagementSystemApplication.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class SecurityControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
+
     private String baseURL="http://localhost:8080/security";
 
     @Test
-    public void testGetAllSecuritys() {
-        HttpHeaders headers = new HttpHeaders();
+    public void a_create() {
 
-        HttpEntity<String> entity = new HttpEntity<String>(null, headers);
-        ResponseEntity<String> response = restTemplate.exchange(baseURL + "/read/all",
-                HttpMethod.GET, entity, String.class);
-        assertNotNull(response.getBody());
-    }
+        Security security = SecurityFactory.getSecurity( "97", "Kaylen", "Abrahams", "260897", "CPT",  "1234567890", 21);
+        security.setSecurityIDNumber("970826");
 
-    @Ignore
-    public void testGetSecurityById() {
-        Security security = restTemplate.getForObject(baseURL + "/security/1", Security.class);
-        System.out.println(security.getSecurityFirstName());
-        assertNotNull(security);
-    }
+        ResponseEntity<Security> postResponse = restTemplate.postForEntity(baseURL + "/new", security, Security.class);
 
-    @Ignore
-    public void testCreateSecurity() {
-        Security security = SecurityFactory.getSecurity("800101"," Kay","Adams","010180", "Cape Town", "1234567890",29);
-
-        ResponseEntity<Security> postResponse = restTemplate.postForEntity(baseURL + "/create", security, Security.class);
         assertNotNull(postResponse);
-        assertNotNull(postResponse.getBody());
     }
 
-    @Ignore
-    public void testUpdateSecurity() {
-        int id = 1;
-        Security security = restTemplate.getForObject(baseURL + "/security/" + id, Security.class);
+    @Test
+    public void b_findById() {
 
-        restTemplate.put(baseURL + "/securitys/" + id, security);
-        Security updatedSecurity = restTemplate.getForObject(baseURL + "/Security/" + id, Security.class);
-        assertNotNull(updatedSecurity);
-    }
+        Security security = restTemplate.getForObject(baseURL + "/find/" + "970826", Security.class);
 
-    @Ignore
-    public void testDeleteSecurity() {
-        int id = 2;
-        Security security = restTemplate.getForObject(baseURL + "/securitys/" + id, Security.class);
         assertNotNull(security);
-        restTemplate.delete(baseURL + "/securitys/" + id);
+    }
+
+    @Test
+    public void c_update() {
+
+        int id = 1;
+        Security security = restTemplate.getForObject(baseURL + "/find/" + "970826", Security.class);
+        security.setSecurityFirstName("Kevin");
+
+        restTemplate.put(baseURL + "/update/" + "970826", security);
+
+        Security updatedSecurity = restTemplate.getForObject(baseURL + "/update/" + "970826", Security.class);
+
+        assertNotNull(updatedSecurity);
+
+    }
+
+    @Test
+    public void e_delete() {
+
+        int id = 1;
+        Security security = restTemplate.getForObject(baseURL + "/find/" + "970826", Security.class);
+        assertNotNull(security);
+
+        restTemplate.delete(baseURL + "/delete/" + "970826");
+
         try {
-            security = restTemplate.getForObject(baseURL + "/securitys/" + id, Security.class);
+            security = restTemplate.getForObject(baseURL + "/find/" + "970826", Security.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }
+
+    }
+
+    @Test
+    public void d_getAll() {
+
+        HttpHeaders headers = new HttpHeaders();
+
+        HttpEntity<String> entity = new HttpEntity<String>(null, headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(baseURL + "/getAll", HttpMethod.GET, entity, String.class);
+
+        assertNotNull(response.getBody());
+
     }
 }
-

@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class TestServiceImpl implements TestService {
-    @Autowired
-    @Qualifier("InMemory")
-    private TestServiceImpl service = null;
+    private static TestServiceImpl service;
     private TestRepository repository;
 
-    private TestServiceImpl() {
-        this.repository = TestRepositoryImpl.getRepository();
-    }
+    private TestServiceImpl(){this.repository = TestRepositoryImpl.getRepository();}
 
-    public TestService getService() {
-        if (service == null) service = new TestServiceImpl();
+    public static TestServiceImpl getService()
+    {
+        if(service == null){service = new TestServiceImpl();}
         return service;
     }
 
     @Override
-    public Test create(Test test) {
+    public Test create(Test test){
         return this.repository.create(test);
     }
 
@@ -37,7 +34,7 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    public void delete(String testPaperNumber) {
+    public void delete(String testPaperNumber){
         this.repository.delete(testPaperNumber);
     }
 

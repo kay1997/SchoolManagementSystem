@@ -15,8 +15,7 @@ public class Building {
     private Set<Lab> labs;
     private Set<Security> security;
 
-
-    private Building() {}
+    public Building() {}
 
     private Building(Builder builder)
     {
@@ -27,6 +26,14 @@ public class Building {
     public String getBuildingNumber()
     {
         return buildingNumber;
+    }
+
+    public void setBuildingNumber(String buildingNumber) {
+        this.buildingNumber = buildingNumber;
+    }
+
+    public void setBuildingName(String buildingName) {
+        this.buildingName = buildingName;
     }
 
     public String getBuildingName()

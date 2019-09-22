@@ -26,12 +26,21 @@ public class Caretaker {
     public String getCaretakerIDNumber() {
         return caretakerIDNumber;
     }
+
+    public void setCaretakerIDNumber(String caretakerIDNumber) {
+        this.caretakerIDNumber = caretakerIDNumber;
+    }
+
     public int getCaretakerAge() {
         return caretakerAge;
     }
 
     public String getCaretakerFirstName() {
         return caretakerFirstName;
+    }
+
+    public void setCaretakerFirstName(String caretakerFirstName) {
+        this.caretakerFirstName = caretakerFirstName;
     }
 
     public String getCaretakerLastName() {

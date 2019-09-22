@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class LearnerServiceImpl implements LearnerService {
-    @Autowired
-    @Qualifier("InMemory")
-    private LearnerServiceImpl service = null;
+    private static LearnerServiceImpl service;
     private LearnerRepository repository;
 
-    private LearnerServiceImpl(){
-        this.repository = LearnerRepositoryImpl.getRepository();
-    }
+    private LearnerServiceImpl(){this.repository = LearnerRepositoryImpl.getRepository();}
 
-    public LearnerService getService(){
-        if (service == null) service = new LearnerServiceImpl();
+    public static LearnerServiceImpl getService()
+    {
+        if(service == null){service = new LearnerServiceImpl();}
         return service;
     }
 
     @Override
-    public Learner create(Learner learner) {
+    public Learner create(Learner learner){
         return this.repository.create(learner);
     }
 
@@ -37,17 +34,18 @@ public class LearnerServiceImpl implements LearnerService {
     }
 
     @Override
-    public void delete(String learnerId) {
-        this.repository.delete(learnerId);
+    public void delete(String learnerIDNumber){
+        this.repository.delete(learnerIDNumber);
     }
 
     @Override
-    public Learner read(String learnerId) {
-        return this.repository.read(learnerId);
+    public Learner read(String learnerIDNumber) {
+        return this.repository.read(learnerIDNumber);
     }
 
     @Override
     public Set<Learner> getAll() {
         return this.repository.getAll();
     }
+
 }

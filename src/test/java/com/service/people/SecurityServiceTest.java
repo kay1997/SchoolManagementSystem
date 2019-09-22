@@ -1,8 +1,9 @@
 package com.service.people;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.people.Security;
 import com.factory.people.SecurityFactory;
+import com.service.people.impl.SecurityServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,63 +17,67 @@ import com.repository.people.impl.SecurityRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class SecurityServiceTest {
 
-    private SecurityRepository repository;
-    private Security security;
-
-    private Security getSavedSecurity() {
-        Set<Security> savedSecurities = this.repository.getAll();
-        return savedSecurities.iterator().next();
-    }
+    SecurityServiceImpl service;
+    Security security;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = SecurityRepositoryImpl.getRepository();
-        this.security = SecurityFactory.getSecurity("870912", "Kay", "Abrahams", "870912", "Cape Town", "0123456789", 32);
+        service = SecurityServiceImpl.getService();
+        security = SecurityFactory.getSecurity("12345", "Kaylen", "Abrahams", "26", "CPT", "12345", 22);
     }
 
     @Test
-    public void a_create() {
-        Security created = this.repository.create(this.security);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.security);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Security savedSecurity = getSavedSecurity();
-        System.out.println("In read, security ID number = "+ savedSecurity.getSecurityIDNumber());
-        Security read = this.repository.read(savedSecurity.getSecurityIDNumber());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedSecurity, read);
+    public void getAll() {
+        service.create(security);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Security savedSecurity = getSavedSecurity();
-        this.repository.delete(savedSecurity.getSecurityIDNumber());
-        d_getAll();
+    public void create() {
+        service.create(security);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newname = "New Test Security Name";
-        Security updated = new Security.Builder().copy(getSavedSecurity()).securityFirstName(newname).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newname, updated.getSecurityFirstName());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Security> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(security);
+        System.out.println(service.read("12345"));
+
+        Security securityUpdated = SecurityFactory.getSecurity("12345", "Kevin", "Abrahams", "26", "CPT", "12345", 22);
+        service.update(securityUpdated);
+
+        Security emp = service.read("12345");
+        Assert.assertNotEquals(security.getSecurityFirstName(), emp.getSecurityFirstName());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(security.getSecurityIDNumber()));
+        System.out.println("Delete\n" + service.read(security.getSecurityIDNumber()));
+    }
+
 }

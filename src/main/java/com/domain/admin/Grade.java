@@ -9,33 +9,56 @@ import java.util.Set;
 @EntityScan
 public class Grade {
 
-    private String gradeNumber;
+    private String gradeID;
+    private String gradeType;
     private Set<Subject> subjects;
     private Set<Class> classes;
     private Set<Learner> learners;
 
+    public Grade(){}
+
     private Grade(Builder builder) {
-       this.gradeNumber = builder.gradeNumber;
+
+        this.gradeID = builder.gradeID;
+        this.gradeType = builder.gradeType;
     }
 
-    public String getGradeNumber() {
-        return gradeNumber;
+    public String getGradeID(){return gradeID;}
+
+    public void setGradeID(String gradeID) {
+        this.gradeID = gradeID;
+    }
+
+    public void setGradeType(String gradeType) {
+        this.gradeType = gradeType;
+    }
+
+    public String getGradeType() {
+        return gradeType;
     }
 
     public static class Builder {
 
-        private String gradeNumber;
+        private String gradeID;
+        private String gradeType;
         private Set<Subject> subjects;
         private Set<Class> classes;
 
-        public Builder gradeNumber(String gradeNumber)
+        public Builder gradeID(String gradeID)
         {
-            this.gradeNumber = gradeNumber;
+            this.gradeID = gradeID;
+            return this;
+        }
+
+        public Builder gradeType(String gradeType)
+        {
+            this.gradeType = gradeType;
             return this;
         }
 
         public Builder copy(Grade grade){
-            this.gradeNumber = grade.gradeNumber;
+            this.gradeID = grade.gradeID;
+            this.gradeType = grade.gradeType;
 
             return this;
         }
@@ -49,7 +72,8 @@ public class Grade {
     @Override
     public String toString() {
         return "Grade {" +
-                "gradeNumber" + gradeNumber + '\'' +
+                "gradeID" + gradeID + '\'' +
+                "gradeType" + gradeType + '\'' +
                 '}';
     }
 
@@ -58,12 +82,12 @@ public class Grade {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Grade grade = (Grade) o;
-        return gradeNumber.equals(grade.gradeNumber);
+        return gradeID.equals(grade.gradeID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(gradeNumber);
+        return Objects.hash(gradeID);
     }
 
 

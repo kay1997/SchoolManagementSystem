@@ -1,42 +1,47 @@
 package com.controller.equipment;
 
 import com.domain.equipment.Textbook;
+import com.service.equipment.impl.TextbookServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.equipment.TextbookService;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/textbook")
 public class TextbookController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
-    private TextbookService service;
+    private TextbookServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public Textbook create(Textbook textbook) {
+    public Textbook create(@RequestBody Textbook textbook) {
         return service.create(textbook);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public Textbook update(Textbook textbook) {
+    public Textbook update(@RequestBody Textbook textbook) {
         return service.update(textbook);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
 
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public Textbook read(@PathVariable String id) {
-        return service.read(id);
+
+        Textbook textbook = service.read(id);
+        return textbook;
+    }
+
+    @GetMapping("/getall")
+    public Set<Textbook> getAll(){
+        return service.getAll();
     }
 
 }

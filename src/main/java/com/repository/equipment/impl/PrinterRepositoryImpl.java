@@ -4,58 +4,56 @@ import com.domain.equipment.Printer;
 import com.repository.equipment.PrinterRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 @Repository("InMemory")
 public class PrinterRepositoryImpl implements PrinterRepository {
 
     private static PrinterRepositoryImpl repository = null;
-    private Set<Printer> printers;
+    private Map<String, Printer> printers;
 
-    private PrinterRepositoryImpl(){
-        this.printers = new HashSet<>();
+    private PrinterRepositoryImpl() {
+        this.printers = new HashMap<>();
     }
 
-    public static PrinterRepositoryImpl getRepository(){
+    public static PrinterRepositoryImpl getRepository() {
         if (repository == null) repository = new PrinterRepositoryImpl();
         return repository;
     }
 
-
-    public Printer create(Printer printer){
-        this.printers.add(printer);
-        return printer;
+    @Override
+    public Set<Printer> getAll() {
+        Collection<Printer> printers = this.printers.values();
+        Set<Printer> set = new HashSet<>();
+        set.addAll(printers);
+        return set;
     }
 
-    private Printer findPrinter(String printerCode) {
-        return this.printers.stream()
-                .filter(printer -> printer.getPrinterCode().trim().equals(printerCode))
-                .findAny()
-                .orElse(null);
-    }
-
-    public Printer read(String printerCode){
-
-        Printer printer = findPrinter(printerCode);
-        return printer;
-    }
-
-    public void delete(String printerCode) {
-        Printer printer = findPrinter(printerCode);
-        if (printer != null) this.printers.remove(printer);
-
-    }
-
-    public Printer update(Printer printer) {
-        Printer toDelete = findPrinter(printer.getPrinterCode());
-        if (toDelete != null) {
-            this.printers.remove(toDelete);
-            return create(printer);
+    @Override
+    public Printer create(Printer printer) {
+        if (read(printer.getPrinterCode()) == null) {
+            this.printers.put(printer.getPrinterCode(), printer);
         }
-        return null;
+        return printer;
     }
 
-    public Set<Printer> getAll(){
-        return this.printers;
+    @Override
+    public Printer read(String e) {
+        return this.printers.get(e);
     }
+
+    @Override
+    public Printer update(Printer printer) {
+        if (read(printer.getPrinterCode()) != null) {
+            printers.replace(printer.getPrinterCode(), printer);
+        }
+        return printer;
+    }
+
+    @Override
+    public void delete(String e) {
+        Printer printer = read(e);
+        this.printers.remove(e, printer);
+    }
+
 }

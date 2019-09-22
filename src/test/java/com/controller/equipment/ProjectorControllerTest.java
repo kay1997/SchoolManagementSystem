@@ -1,75 +1,96 @@
 package com.controller.equipment;
 
+import app.SchoolManagementSystemApplication;
 import com.domain.equipment.Projector;
 import com.factory.equipment.ProjectorFactory;
+import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.HttpClientErrorException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @RunWith(SpringRunner.class)
+@ContextConfiguration(classes = SchoolManagementSystemApplication.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ProjectorControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL="http://localhost:8080/projector";
+
+    private String baseURL = "http://localhost:8080/projector";
 
     @Test
-    public void testGetAllProjectors() {
-        HttpHeaders headers = new HttpHeaders();
+    public void a_create() {
 
-        HttpEntity<String> entity = new HttpEntity<String>(null, headers);
-        ResponseEntity<String> response = restTemplate.exchange(baseURL + "/read/all",
-                HttpMethod.GET, entity, String.class);
-        assertNotNull(response.getBody());
-    }
+        Projector projector = ProjectorFactory.getProjector("97", "Samsung");
+        projector.setProjectorCode("123");
 
-    @Ignore
-    public void testGetProjectorByCode() {
-        Projector projector = restTemplate.getForObject(baseURL + "/projector/1", Projector.class);
-        System.out.println(projector.getProjectorCode());
-        assertNotNull(projector);
-    }
+        ResponseEntity<Projector> postResponse = restTemplate.postForEntity(baseURL + "/new", projector, Projector.class);
 
-    @Ignore
-    public void testCreateProjector() {
-        Projector projector = ProjectorFactory.getProjector("801","Samsung");
-
-        ResponseEntity<Projector> postResponse = restTemplate.postForEntity(baseURL + "/create", projector, Projector.class);
         assertNotNull(postResponse);
-        assertNotNull(postResponse.getBody());
     }
 
-    @Ignore
-    public void testUpdateProjector() {
-        int id = 1;
-        Projector projector = restTemplate.getForObject(baseURL + "/projector/" + id, Projector.class);
+    @Test
+    public void b_findById() {
 
-        restTemplate.put(baseURL + "/projectors/" + id, projector);
-        Projector updatedProjector = restTemplate.getForObject(baseURL + "/Projector/" + id, Projector.class);
-        assertNotNull(updatedProjector);
-    }
+        Projector projector = restTemplate.getForObject(baseURL + "/find/" + "123", Projector.class);
 
-    @Ignore
-    public void testDeleteProjector() {
-        int id = 2;
-        Projector projector = restTemplate.getForObject(baseURL + "/projectors/" + id, Projector.class);
         assertNotNull(projector);
-        restTemplate.delete(baseURL + "/projectors/" + id);
+    }
+
+    @Test
+    public void c_update() {
+
+        int id = 1;
+        Projector projector = restTemplate.getForObject(baseURL + "/find/" + "123", Projector.class);
+        projector.setProjectorName("Canon");
+
+        restTemplate.put(baseURL + "/update/" + "123", projector);
+
+        Projector updatedProjector = restTemplate.getForObject(baseURL + "/update/" + "123", Projector.class);
+
+        assertNotNull(updatedProjector);
+
+    }
+
+    @Test
+    public void e_delete() {
+
+        int id = 1;
+        Projector projector = restTemplate.getForObject(baseURL + "/find/" + "123", Projector.class);
+        assertNotNull(projector);
+
+        restTemplate.delete(baseURL + "/delete/" + "123");
+
         try {
-            projector = restTemplate.getForObject(baseURL + "/projectors/" + id, Projector.class);
+            projector = restTemplate.getForObject(baseURL + "/find/" + "123", Projector.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }
+
+    }
+
+    @Test
+    public void d_getAll() {
+
+        HttpHeaders headers = new HttpHeaders();
+
+        HttpEntity<String> entity = new HttpEntity<String>(null, headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(baseURL + "/getAll", HttpMethod.GET, entity, String.class);
+
+        assertNotNull(response.getBody());
+
     }
 }
-

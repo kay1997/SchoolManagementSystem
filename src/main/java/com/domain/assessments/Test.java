@@ -22,6 +22,14 @@ public class Test {
         return testPaperNumber;
     }
 
+    public void setTestPaperNumber(String testPaperNumber) {
+        this.testPaperNumber = testPaperNumber;
+    }
+
+    public void setTestType(String testType) {
+        this.testType = testType;
+    }
+
     public String getTestType() {
         return testType;
     }

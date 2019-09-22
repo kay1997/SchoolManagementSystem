@@ -1,8 +1,9 @@
 package com.service.admin;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.admin.Grade;
 import com.factory.admin.GradeFactory;
+import com.service.admin.impl.GradeServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,65 +17,68 @@ import com.repository.admin.impl.GradeRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class GradeServiceTest {
 
 
-    private GradeRepository repository;
-    private Grade grade;
-
-    private Grade getSavedGrade() {
-        Set<Grade> savedGrades = this.repository.getAll();
-        return savedGrades.iterator().next();
-    }
+    GradeServiceImpl service;
+    Grade grade;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = GradeRepositoryImpl.getRepository();
-        this.grade = GradeFactory.getGrade("7");
+        service = GradeServiceImpl.getService();
+        grade = GradeFactory.getGrade("1", "Senior");
     }
 
     @Test
-    public void a_create() {
-        Grade created = this.repository.create(this.grade);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.grade);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Grade savedGrade = getSavedGrade();
-        System.out.println("In read, grade number = " + savedGrade.getGradeNumber());
-        Grade read = this.repository.read(savedGrade.getGradeNumber());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedGrade, read);
+    public void getAll() {
+        service.create(grade);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Grade savedGrade = getSavedGrade();
-        this.repository.delete(savedGrade.getGradeNumber());
-        d_getAll();
+    public void create() {
+        service.create(grade);
+        assertNotNull(service.read("1"));
+        System.out.println("Created\n" + service.read("1"));
     }
 
     @Test
-    public void c_update() {
-        String newGradeNumber = "New Test Grade Number";
-        Grade updated = new Grade.Builder().copy(getSavedGrade()).gradeNumber(newGradeNumber).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newGradeNumber, updated.getGradeNumber());
-        d_getAll();
+    public void read() {
+        assertNotNull(service.read("1"));
+        System.out.println("Read\n" + service.read("1"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Grade> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(grade);
+        System.out.println(service.read("1"));
+
+        Grade gradeUpdated = GradeFactory.getGrade("1", "Foundation");
+        service.update(gradeUpdated);
+
+        Grade gr = service.read("1");
+        Assert.assertNotEquals(grade.getGradeType(), gr.getGradeType());
+        System.out.println("Updated\n" + service.read("3"));
     }
+
+    @Test
+    public void delete() {
+        service.delete(grade.getGradeID());
+        assertNull(service.read(grade.getGradeID()));
+        System.out.println("Delete\n" + service.read(grade.getGradeID()));
+    }
+
 }

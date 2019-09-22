@@ -4,60 +4,56 @@ import com.domain.equipment.Chair;
 import com.repository.equipment.ChairRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 @Repository("InMemory")
 public class ChairRepositoryImpl implements ChairRepository {
 
     private static ChairRepositoryImpl repository = null;
-    private Set<Chair> chairs;
+    private Map<String, Chair> chairs;
 
-    private ChairRepositoryImpl(){
-        this.chairs = new HashSet<>();
+    private ChairRepositoryImpl() {
+        this.chairs = new HashMap<>();
     }
 
-    private Chair findChair(String chairNumber) {
-        return this.chairs.stream()
-                .filter(chair -> chair.getChairNumber().trim().equals(chairNumber))
-                .findAny()
-                .orElse(null);
-    }
-
-
-    public static ChairRepositoryImpl getRepository(){
+    public static ChairRepositoryImpl getRepository() {
         if (repository == null) repository = new ChairRepositoryImpl();
         return repository;
     }
 
-
-    public Chair create(Chair chair){
-        this.chairs.add(chair);
-        return chair;
+    @Override
+    public Set<Chair> getAll() {
+        Collection<Chair> chairs = this.chairs.values();
+        Set<Chair> set = new HashSet<>();
+        set.addAll(chairs);
+        return set;
     }
 
-    public Chair read(String chairNumber){
-
-        Chair chair = findChair(chairNumber);
-        return chair;
-    }
-
-    public void delete(String chairNumber) {
-        Chair chair = findChair(chairNumber);
-        if (chair != null) this.chairs.remove(chair);
-
-    }
-
-    public Chair update(Chair chair) {
-        Chair toDelete = findChair(chair.getChairNumber());
-        if (toDelete != null) {
-            this.chairs.remove(toDelete);
-            return create(chair);
+    @Override
+    public Chair create(Chair chair) {
+        if (read(chair.getChairNumber()) == null) {
+            this.chairs.put(chair.getChairNumber(), chair);
         }
-        return null;
+        return chair;
     }
 
-    public Set<Chair> getAll(){
-        return this.chairs;
+    @Override
+    public Chair read(String e) {
+        return this.chairs.get(e);
     }
+
+    @Override
+    public Chair update(Chair chair) {
+        if (read(chair.getChairNumber()) != null) {
+            chairs.replace(chair.getChairNumber(), chair);
+        }
+        return chair;
+    }
+
+    @Override
+    public void delete(String e) {
+        Chair chair = read(e);
+        this.chairs.remove(e, chair);
+    }
+
 }
-

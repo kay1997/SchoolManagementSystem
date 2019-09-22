@@ -1,41 +1,47 @@
 package com.controller.infrastructure;
 
 import com.domain.infrastructure.Building;
+import com.service.infrastructure.impl.BuildingServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.infrastructure.BuildingService;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/building")
 public class BuildingController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
-    private BuildingService service;
+    private BuildingServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public Building create(Building building) {
+    public Building create(@RequestBody Building building) {
         return service.create(building);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public Building update(Building building) {
+    public Building update(@RequestBody Building building) {
         return service.update(building);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
+
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public Building read(@PathVariable String id) {
-        return service.read(id);
+
+        Building building = service.read(id);
+        return building;
+    }
+
+    @GetMapping("/getall")
+    public Set<Building> getAll(){
+        return service.getAll();
     }
 
 }

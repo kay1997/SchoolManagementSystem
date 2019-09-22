@@ -1,75 +1,100 @@
 package com.controller.admin;
 
+import app.SchoolManagementSystemApplication;
 import com.domain.admin.Attendance;
 import com.factory.admin.AttendanceFactory;
+import org.junit.Assert;
+import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.web.client.HttpClientErrorException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @RunWith(SpringRunner.class)
+@ContextConfiguration(classes = SchoolManagementSystemApplication.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AttendanceControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL="http://localhost:8080/attendance";
+
+    private String baseURL = "http://localhost:8080/attendance";
 
     @Test
-    public void testGetAllAttendances() {
-        HttpHeaders headers = new HttpHeaders();
+    public void a_create() {
 
-        HttpEntity<String> entity = new HttpEntity<String>(null, headers);
-        ResponseEntity<String> response = restTemplate.exchange(baseURL + "/read/all",
-                HttpMethod.GET, entity, String.class);
-        assertNotNull(response.getBody());
-    }
+        Attendance attendance = AttendanceFactory.getAttendance("97", 4,"6");
+        attendance.setLearnerID("123");
 
-    @Ignore
-    public void testGetAttendanceById() {
-        Attendance attendance = restTemplate.getForObject(baseURL + "/attendance/1", Attendance.class);
-        System.out.println(attendance.getNumberOfDaysPresent());
-        assertNotNull(attendance);
-    }
+        ResponseEntity<Attendance> postResponse = restTemplate.postForEntity(baseURL + "/new", attendance, Attendance.class);
 
-    @Ignore
-    public void testCreateAttendance() {
-        Attendance attendance = AttendanceFactory.getAttendance(2, "64");
-
-        ResponseEntity<Attendance> postResponse = restTemplate.postForEntity(baseURL + "/create", attendance, Attendance.class);
         assertNotNull(postResponse);
-        assertNotNull(postResponse.getBody());
+        Assert.assertNotNull(postResponse.getBody());
     }
 
-    @Ignore
-    public void testUpdateAttendance() {
-        int id = 1;
-        Attendance attendance = restTemplate.getForObject(baseURL + "/attendance/" + id, Attendance.class);
+    @Test
+    public void b_findById() {
 
-        restTemplate.put(baseURL + "/attendances/" + id, attendance);
-        Attendance updatedAttendance = restTemplate.getForObject(baseURL + "/Attendance/" + id, Attendance.class);
-        assertNotNull(updatedAttendance);
-    }
+        Attendance attendance = restTemplate.getForObject(baseURL + "/find/" + "123", Attendance.class);
 
-    @Ignore
-    public void testDeleteAttendance() {
-        int id = 2;
-        Attendance attendance = restTemplate.getForObject(baseURL + "/attendances/" + id, Attendance.class);
         assertNotNull(attendance);
-        restTemplate.delete(baseURL + "/attendances/" + id);
+    }
+
+    @Test
+    public void c_update() {
+
+        int id = 1;
+        Attendance attendance = restTemplate.getForObject(baseURL + "/find/" + "123", Attendance.class);
+        attendance.setNoOfDaysPresent("7");
+
+        restTemplate.put(baseURL + "/update/" + "123", attendance);
+
+        Attendance updatedAttendance = restTemplate.getForObject(baseURL + "/update/" + "123", Attendance.class);
+
+        assertNotNull(updatedAttendance);
+
+    }
+
+    @Test
+    public void e_delete() {
+
+        int id = 1;
+        Attendance attendance = restTemplate.getForObject(baseURL + "/find/" + "123", Attendance.class);
+        assertNotNull(attendance);
+
+        restTemplate.delete(baseURL + "/delete/" + "123");
+
         try {
-            attendance = restTemplate.getForObject(baseURL + "/attendances/" + id, Attendance.class);
+            attendance = restTemplate.getForObject(baseURL + "/find/" + "123", Attendance.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }
+
+    }
+
+    @Test
+    public void d_getAll() {
+
+        HttpHeaders headers = new HttpHeaders();
+
+        HttpEntity<String> entity = new HttpEntity<String>(null, headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(baseURL + "/getAll", HttpMethod.GET, entity, String.class);
+
+        assertNotNull(response.getBody());
+
     }
 }
-

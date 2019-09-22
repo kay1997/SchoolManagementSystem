@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class GradeServiceImpl implements GradeService {
-    @Autowired
-    @Qualifier("InMemory")
-    private GradeServiceImpl service = null;
+    private static GradeServiceImpl service;
     private GradeRepository repository;
 
-    private GradeServiceImpl(){
-        this.repository = GradeRepositoryImpl.getRepository();
-    }
+    private GradeServiceImpl(){this.repository = GradeRepositoryImpl.getRepository();}
 
-    public GradeService getService(){
-        if (service == null) service = new GradeServiceImpl();
+    public static GradeServiceImpl getService()
+    {
+        if(service == null){service = new GradeServiceImpl();}
         return service;
     }
 
     @Override
-    public Grade create(Grade grade) {
+    public Grade create(Grade grade){
         return this.repository.create(grade);
     }
 
@@ -37,7 +34,7 @@ public class GradeServiceImpl implements GradeService {
     }
 
     @Override
-    public void delete(String gradeNumber) {
+    public void delete(String gradeNumber){
         this.repository.delete(gradeNumber);
     }
 
@@ -52,3 +49,4 @@ public class GradeServiceImpl implements GradeService {
     }
 
 }
+

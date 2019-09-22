@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class LabServiceImpl implements LabService {
-    @Autowired
-    @Qualifier("InMemory")
-    private LabServiceImpl service = null;
+    private static LabServiceImpl service;
     private LabRepository repository;
 
-    private LabServiceImpl() {
-        this.repository = LabRepositoryImpl.getRepository();
-    }
+    private LabServiceImpl(){this.repository = LabRepositoryImpl.getRepository();}
 
-    public LabService getService() {
-        if (service == null) service = new LabServiceImpl();
+    public static LabServiceImpl getService()
+    {
+        if(service == null){service = new LabServiceImpl();}
         return service;
     }
 
     @Override
-    public Lab create(Lab lab) {
+    public Lab create(Lab lab){
         return this.repository.create(lab);
     }
 
@@ -37,7 +34,7 @@ public class LabServiceImpl implements LabService {
     }
 
     @Override
-    public void delete(String labNumber) {
+    public void delete(String labNumber){
         this.repository.delete(labNumber);
     }
 

@@ -12,13 +12,28 @@ import java.util.Set;
 public class Result {
 
     private String subjectMark;
+    private String learnerID;
     private Set<Test> tests;
     private Set<Assignment> assignments;
     private Set<Exam> exams;
 
+    public Result(){
+    }
+
     private Result(Builder builder)
     {
+        this.learnerID = builder.learnerID;
         this.subjectMark = builder.subjectMark;
+    }
+
+    public String getLearnerID(){return learnerID;}
+
+    public void setLearnerID(String learnerID) {
+        this.learnerID = learnerID;
+    }
+
+    public void setSubjectMark(String subjectMark) {
+        this.subjectMark = subjectMark;
     }
 
     public String getSubjectMark() {
@@ -28,10 +43,16 @@ public class Result {
     public static class Builder{
 
         private String subjectMark;
+        private String learnerID;
         private Set<Test> tests;
         private Set<Assignment> assignments;
         private Set<Exam> exams;
 
+        public Builder learnerID (String learnerID)
+        {
+            this.learnerID = learnerID;
+            return this;
+        }
         public Builder subjectMark(String subjectMark){
 
             this.subjectMark = subjectMark;
@@ -39,6 +60,7 @@ public class Result {
         }
 
         public Builder copy(Result result){
+            this.learnerID = result.learnerID;
             this.subjectMark = result.subjectMark;
 
             return this;
@@ -53,6 +75,7 @@ public class Result {
     @Override
     public String toString() {
         return "Result {" +
+                "learnerID" + learnerID + '\'' +
                 "subjectMark" + subjectMark + '\'' +
                 '}';
     }
@@ -62,7 +85,7 @@ public class Result {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Result result = (Result) o;
-        return subjectMark.equals(result.subjectMark);
+        return learnerID.equals(result.learnerID);
     }
 
     @Override

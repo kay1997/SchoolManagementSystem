@@ -1,76 +1,97 @@
 package com.controller.admin;
 
 
+import app.SchoolManagementSystemApplication;
 import com.domain.admin.Grade;
 import com.factory.admin.GradeFactory;
+import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.HttpClientErrorException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @RunWith(SpringRunner.class)
+@ContextConfiguration(classes = SchoolManagementSystemApplication.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GradeControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL="http://localhost:8080/grade";
+
+    private String baseURL = "http://localhost:8080/grade";
 
     @Test
-    public void testGetAllGrades() {
-        HttpHeaders headers = new HttpHeaders();
+    public void a_create() {
 
-        HttpEntity<String> entity = new HttpEntity<String>(null, headers);
-        ResponseEntity<String> response = restTemplate.exchange(baseURL + "/read/all",
-                HttpMethod.GET, entity, String.class);
-        assertNotNull(response.getBody());
-    }
+        Grade grade = GradeFactory.getGrade("7", "Foundation");
+        grade.setGradeID("6");
 
-    @Ignore
-    public void testGetGradeByNo() {
-        Grade grade = restTemplate.getForObject(baseURL + "/grade/1", Grade.class);
-        System.out.println(grade.getGradeNumber());
-        assertNotNull(grade);
-    }
+        ResponseEntity<Grade> postResponse = restTemplate.postForEntity(baseURL + "/new", grade, Grade.class);
 
-    @Ignore
-    public void testCreateGrade() {
-        Grade grade = GradeFactory.getGrade("3");
-
-        ResponseEntity<Grade> postResponse = restTemplate.postForEntity(baseURL + "/create", grade, Grade.class);
         assertNotNull(postResponse);
-        assertNotNull(postResponse.getBody());
     }
 
-    @Ignore
-    public void testUpdateGrade() {
-        int id = 1;
-        Grade grade = restTemplate.getForObject(baseURL + "/grade/" + id, Grade.class);
+    @Test
+    public void b_findById() {
 
-        restTemplate.put(baseURL + "/grades/" + id, grade);
-        Grade updatedGrade = restTemplate.getForObject(baseURL + "/Grade/" + id, Grade.class);
-        assertNotNull(updatedGrade);
-    }
+        Grade grade = restTemplate.getForObject(baseURL + "/find/" + "6", Grade.class);
 
-    @Ignore
-    public void testDeleteGrade() {
-        int id = 2;
-        Grade grade = restTemplate.getForObject(baseURL + "/grades/" + id, Grade.class);
         assertNotNull(grade);
-        restTemplate.delete(baseURL + "/grades/" + id);
+    }
+
+    @Test
+    public void c_update() {
+
+        int id = 1;
+        Grade grade = restTemplate.getForObject(baseURL + "/find/" + "6", Grade.class);
+        grade.setGradeType("Senior");
+
+        restTemplate.put(baseURL + "/update/" + "6", grade);
+
+        Grade updatedGrade = restTemplate.getForObject(baseURL + "/update/" + "6", Grade.class);
+
+        assertNotNull(updatedGrade);
+
+    }
+
+    @Test
+    public void e_delete() {
+
+        int id = 1;
+        Grade grade = restTemplate.getForObject(baseURL + "/find/" + "6", Grade.class);
+        assertNotNull(grade);
+
+        restTemplate.delete(baseURL + "/delete/" + "6");
+
         try {
-            grade = restTemplate.getForObject(baseURL + "/grades/" + id, Grade.class);
+            grade = restTemplate.getForObject(baseURL + "/find/" + "6", Grade.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }
+
+    }
+
+    @Test
+    public void d_getAll() {
+
+        HttpHeaders headers = new HttpHeaders();
+
+        HttpEntity<String> entity = new HttpEntity<String>(null, headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(baseURL + "/getAll", HttpMethod.GET, entity, String.class);
+
+        assertNotNull(response.getBody());
+
     }
 }
-

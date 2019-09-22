@@ -10,8 +10,6 @@ import java.util.*;
 
 @Repository("RepositoryImpl")
 public class LearnerRepositoryImpl implements LearnerRepository {
-    @Autowired
-    @Qualifier
     private static LearnerRepositoryImpl repository = null;
     private Map<String, Learner> learners;
 
@@ -19,33 +17,44 @@ public class LearnerRepositoryImpl implements LearnerRepository {
         this.learners = new HashMap<>();
     }
 
-    public static LearnerRepository getRepository(){
-        if(repository == null) repository = new LearnerRepositoryImpl();
+    public static LearnerRepositoryImpl getRepository() {
+        if (repository == null) repository = new LearnerRepositoryImpl();
         return repository;
     }
 
-    public Learner create(Learner learner){
-        this.learners.put(learner.getLearnerId(),learner);
-        return learner;
-    }
-
-    public Learner read(String learnerId){
-        return this.learners.get(learnerId);
-    }
-
-    public Learner update(Learner learner) {
-        this.learners.replace(learner.getLearnerId(),learner);
-        return this.learners.get(learner.getLearnerId());
-    }
-
-    public void delete(String learnerId) {
-        this.learners.remove(learnerId);
-    }
-
-    public Set<Learner> getAll(){
+    @Override
+    public Set<Learner> getAll() {
         Collection<Learner> learners = this.learners.values();
         Set<Learner> set = new HashSet<>();
         set.addAll(learners);
         return set;
     }
+
+    @Override
+    public Learner create(Learner learner) {
+        if (read(learner.getLearnerId()) == null) {
+            this.learners.put(learner.getLearnerId(), learner);
+        }
+        return learner;
+    }
+
+    @Override
+    public Learner read(String e) {
+        return this.learners.get(e);
+    }
+
+    @Override
+    public Learner update(Learner learner) {
+        if (read(learner.getLearnerId()) != null) {
+            learners.replace(learner.getLearnerId(), learner);
+        }
+        return learner;
+    }
+
+    @Override
+    public void delete(String e) {
+        Learner learner = read(e);
+        this.learners.remove(e, learner);
+    }
+
 }

@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class PrinterServiceImpl implements PrinterService {
-    @Autowired
-    @Qualifier("InMemory")
-    private PrinterServiceImpl service = null;
+    private static PrinterServiceImpl service;
     private PrinterRepository repository;
 
-    private PrinterServiceImpl() {
-        this.repository = PrinterRepositoryImpl.getRepository();
-    }
+    private PrinterServiceImpl(){this.repository = PrinterRepositoryImpl.getRepository();}
 
-    public PrinterService getService() {
-        if (service == null) service = new PrinterServiceImpl();
+    public static PrinterServiceImpl getService()
+    {
+        if(service == null){service = new PrinterServiceImpl();}
         return service;
     }
 
     @Override
-    public Printer create(Printer printer) {
+    public Printer create(Printer printer){
         return this.repository.create(printer);
     }
 
@@ -37,7 +34,7 @@ public class PrinterServiceImpl implements PrinterService {
     }
 
     @Override
-    public void delete(String printerCode) {
+    public void delete(String printerCode){
         this.repository.delete(printerCode);
     }
 

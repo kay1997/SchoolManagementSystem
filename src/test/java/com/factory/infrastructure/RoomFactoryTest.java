@@ -10,8 +10,9 @@ public class RoomFactoryTest {
     public void getRoomNumber() {
 
         String id = "2";
+        String type = "meeting";
 
-        Room room = RoomFactory.getRoom(id);
+        Room room = RoomFactory.getRoom(id, type);
         System.out.println(room);
         Assert.assertNotNull(room.getRoomNumber());
     }

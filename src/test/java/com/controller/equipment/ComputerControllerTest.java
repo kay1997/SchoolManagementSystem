@@ -1,75 +1,96 @@
 package com.controller.equipment;
 
+import app.SchoolManagementSystemApplication;
 import com.domain.equipment.Computer;
 import com.factory.equipment.ComputerFactory;
+import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.HttpClientErrorException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @RunWith(SpringRunner.class)
+@ContextConfiguration(classes = SchoolManagementSystemApplication.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ComputerControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL="http://localhost:8080/computer";
+
+    private String baseURL = "http://localhost:8080/computer";
 
     @Test
-    public void testGetAllComputers() {
-        HttpHeaders headers = new HttpHeaders();
+    public void a_create() {
 
-        HttpEntity<String> entity = new HttpEntity<String>(null, headers);
-        ResponseEntity<String> response = restTemplate.exchange(baseURL + "/read/all",
-                HttpMethod.GET, entity, String.class);
-        assertNotNull(response.getBody());
-    }
+        Computer computer = ComputerFactory.getComputer("97", "Mac");
+        computer.setComputerNumber("123");
 
-    @Ignore
-    public void testGetComputerByNo() {
-        Computer computer = restTemplate.getForObject(baseURL + "/computer/1", Computer.class);
-        System.out.println(computer.getComputerNumber());
-        assertNotNull(computer);
-    }
+        ResponseEntity<Computer> postResponse = restTemplate.postForEntity(baseURL + "/new", computer, Computer.class);
 
-    @Ignore
-    public void testCreateComputer() {
-        Computer computer = ComputerFactory.getComputer("0854","Dell");
-        ResponseEntity<Computer> postResponse = restTemplate.postForEntity(baseURL + "/create", computer, Computer.class);
         assertNotNull(postResponse);
-        assertNotNull(postResponse.getBody());
     }
 
-    @Ignore
-    public void testUpdateComputer() {
-        int id = 1;
-        Computer computer = restTemplate.getForObject(baseURL + "/computer/" + id, Computer.class);
+    @Test
+    public void b_findById() {
 
-        restTemplate.put(baseURL + "/computers/" + id, computer);
-        Computer updatedComputer = restTemplate.getForObject(baseURL + "/Computer/" + id, Computer.class);
-        assertNotNull(updatedComputer);
-    }
+        Computer computer = restTemplate.getForObject(baseURL + "/find/" + "123", Computer.class);
 
-    @Ignore
-    public void testDeleteComputer() {
-        int id = 2;
-        Computer computer = restTemplate.getForObject(baseURL + "/computers/" + id, Computer.class);
         assertNotNull(computer);
-        restTemplate.delete(baseURL + "/computers/" + id);
+    }
+
+    @Test
+    public void c_update() {
+
+        int id = 1;
+        Computer computer = restTemplate.getForObject(baseURL + "/find/" + "123", Computer.class);
+        computer.setComputerName("Dell");
+
+        restTemplate.put(baseURL + "/update/" + "123", computer);
+
+        Computer updatedComputer = restTemplate.getForObject(baseURL + "/update/" + "123", Computer.class);
+
+        assertNotNull(updatedComputer);
+
+    }
+
+    @Test
+    public void e_delete() {
+
+        int id = 1;
+        Computer computer = restTemplate.getForObject(baseURL + "/find/" + "123", Computer.class);
+        assertNotNull(computer);
+
+        restTemplate.delete(baseURL + "/delete/" + "123");
+
         try {
-            computer = restTemplate.getForObject(baseURL + "/computers/" + id, Computer.class);
+            computer = restTemplate.getForObject(baseURL + "/find/" + "123", Computer.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }
+
+    }
+
+    @Test
+    public void d_getAll() {
+
+        HttpHeaders headers = new HttpHeaders();
+
+        HttpEntity<String> entity = new HttpEntity<String>(null, headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(baseURL + "/getAll", HttpMethod.GET, entity, String.class);
+
+        assertNotNull(response.getBody());
+
     }
 }
-
-

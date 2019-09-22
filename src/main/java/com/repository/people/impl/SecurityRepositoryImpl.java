@@ -10,42 +10,51 @@ import java.util.*;
 
 @Repository("InMemory")
 public class SecurityRepositoryImpl implements SecurityRepository {
-    @Autowired
-    @Qualifier
     private static SecurityRepositoryImpl repository = null;
-    private Map<String, Security> securitys;
+    private Map<String, Security> securities;
 
     private SecurityRepositoryImpl() {
-        this.securitys = new HashMap<>();
+        this.securities = new HashMap<>();
     }
 
-    public static SecurityRepository getRepository(){
-        if(repository == null) repository = new SecurityRepositoryImpl();
+    public static SecurityRepositoryImpl getRepository() {
+        if (repository == null) repository = new SecurityRepositoryImpl();
         return repository;
     }
 
-    public Security create(Security security){
-        this.securitys.put(security.getSecurityIDNumber(),security);
+    @Override
+    public Set<Security> getAll() {
+        Collection<Security> securities = this.securities.values();
+        Set<Security> set = new HashSet<>();
+        set.addAll(securities);
+        return set;
+    }
+
+    @Override
+    public Security create(Security security) {
+        if (read(security.getSecurityIDNumber()) == null) {
+            this.securities.put(security.getSecurityIDNumber(), security);
+        }
         return security;
     }
 
-    public Security read(String securityId){
-        return this.securitys.get(securityId);
+    @Override
+    public Security read(String e) {
+        return this.securities.get(e);
     }
 
+    @Override
     public Security update(Security security) {
-        this.securitys.replace(security.getSecurityIDNumber(),security);
-        return this.securitys.get(security.getSecurityIDNumber());
+        if (read(security.getSecurityIDNumber()) != null) {
+            securities.replace(security.getSecurityIDNumber(), security);
+        }
+        return security;
     }
 
-    public void delete(String securityId) {
-        this.securitys.remove(securityId);
+    @Override
+    public void delete(String e) {
+        Security security = read(e);
+        this.securities.remove(e, security);
     }
 
-    public Set<Security> getAll(){
-        Collection<Security> securitys = this.securitys.values();
-        Set<Security> set = new HashSet<>();
-        set.addAll(securitys);
-        return set;
-    }
 }

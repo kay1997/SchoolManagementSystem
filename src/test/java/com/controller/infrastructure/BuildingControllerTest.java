@@ -1,75 +1,96 @@
 package com.controller.infrastructure;
 
+import app.SchoolManagementSystemApplication;
 import com.domain.infrastructure.Building;
 import com.factory.infrastructure.BuildingFactory;
+import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.HttpClientErrorException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @RunWith(SpringRunner.class)
+@ContextConfiguration(classes = SchoolManagementSystemApplication.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BuildingControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL="http://localhost:8080/building";
+
+    private String baseURL = "http://localhost:8080/building";
 
     @Test
-    public void testGetAllBuildings() {
-        HttpHeaders headers = new HttpHeaders();
+    public void a_create() {
 
-        HttpEntity<String> entity = new HttpEntity<String>(null, headers);
-        ResponseEntity<String> response = restTemplate.exchange(baseURL + "/read/all",
-                HttpMethod.GET, entity, String.class);
-        assertNotNull(response.getBody());
-    }
+        Building building = BuildingFactory.getBuilding("97", "Commerce");
+        building.setBuildingNumber("123");
 
-    @Ignore
-    public void testGetBuildingByNo() {
-        Building building = restTemplate.getForObject(baseURL + "/building/1", Building.class);
-        System.out.println(building.getBuildingNumber());
-        assertNotNull(building);
-    }
+        ResponseEntity<Building> postResponse = restTemplate.postForEntity(baseURL + "/new", building, Building.class);
 
-    @Ignore
-    public void testCreateBuilding() {
-        Building building = BuildingFactory.getBuilding("3","Admin");
-
-        ResponseEntity<Building> postResponse = restTemplate.postForEntity(baseURL + "/create", building, Building.class);
         assertNotNull(postResponse);
-        assertNotNull(postResponse.getBody());
     }
 
-    @Ignore
-    public void testUpdateBuilding() {
-        int id = 1;
-        Building building = restTemplate.getForObject(baseURL + "/building/" + id, Building.class);
+    @Test
+    public void b_findById() {
 
-        restTemplate.put(baseURL + "/buildings/" + id, building);
-        Building updatedBuilding = restTemplate.getForObject(baseURL + "/Building/" + id, Building.class);
-        assertNotNull(updatedBuilding);
-    }
+        Building building = restTemplate.getForObject(baseURL + "/find/" + "123", Building.class);
 
-    @Ignore
-    public void testDeleteBuilding() {
-        int id = 2;
-        Building building = restTemplate.getForObject(baseURL + "/buildings/" + id, Building.class);
         assertNotNull(building);
-        restTemplate.delete(baseURL + "/buildings/" + id);
+    }
+
+    @Test
+    public void c_update() {
+
+        int id = 1;
+        Building building = restTemplate.getForObject(baseURL + "/find/" + "123", Building.class);
+        building.setBuildingName("Admin");
+
+        restTemplate.put(baseURL + "/update/" + "123", building);
+
+        Building updatedBuilding = restTemplate.getForObject(baseURL + "/update/" + "123", Building.class);
+
+        assertNotNull(updatedBuilding);
+
+    }
+
+    @Test
+    public void e_delete() {
+
+        int id = 1;
+        Building building = restTemplate.getForObject(baseURL + "/find/" + "123", Building.class);
+        assertNotNull(building);
+
+        restTemplate.delete(baseURL + "/delete/" + "123");
+
         try {
-            building = restTemplate.getForObject(baseURL + "/buildings/" + id, Building.class);
+            building = restTemplate.getForObject(baseURL + "/find/" + "123", Building.class);
         } catch (final HttpClientErrorException e) {
             assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
         }
+
+    }
+
+    @Test
+    public void d_getAll() {
+
+        HttpHeaders headers = new HttpHeaders();
+
+        HttpEntity<String> entity = new HttpEntity<String>(null, headers);
+
+        ResponseEntity<String> response = restTemplate.exchange(baseURL + "/getAll", HttpMethod.GET, entity, String.class);
+
+        assertNotNull(response.getBody());
+
     }
 }
-

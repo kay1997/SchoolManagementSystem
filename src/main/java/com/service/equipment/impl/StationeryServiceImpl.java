@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class StationeryServiceImpl implements StationeryService {
-    @Autowired
-    @Qualifier("InMemory")
-    private StationeryServiceImpl service = null;
+    private static StationeryServiceImpl service;
     private StationeryRepository repository;
 
-    private StationeryServiceImpl() {
-        this.repository = StationeryRepositoryImpl.getRepository();
-    }
+    private StationeryServiceImpl(){this.repository = StationeryRepositoryImpl.getRepository();}
 
-    public StationeryService getService() {
-        if (service == null) service = new StationeryServiceImpl();
+    public static StationeryServiceImpl getService()
+    {
+        if(service == null){service = new StationeryServiceImpl();}
         return service;
     }
 
     @Override
-    public Stationery create(Stationery stationery) {
+    public Stationery create(Stationery stationery){
         return this.repository.create(stationery);
     }
 
@@ -37,7 +34,7 @@ public class StationeryServiceImpl implements StationeryService {
     }
 
     @Override
-    public void delete(String stationeryCode) {
+    public void delete(String stationeryCode){
         this.repository.delete(stationeryCode);
     }
 
@@ -50,4 +47,5 @@ public class StationeryServiceImpl implements StationeryService {
     public Set<Stationery> getAll() {
         return this.repository.getAll();
     }
+
 }

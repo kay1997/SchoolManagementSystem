@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class ComputerServiceImpl implements ComputerService {
-    @Autowired
-    @Qualifier("InMemory")
-    private ComputerServiceImpl service = null;
+    private static ComputerServiceImpl service;
     private ComputerRepository repository;
 
-    private ComputerServiceImpl() {
-        this.repository = ComputerRepositoryImpl.getRepository();
-    }
+    private ComputerServiceImpl(){this.repository = ComputerRepositoryImpl.getRepository();}
 
-    public ComputerService getService() {
-        if (service == null) service = new ComputerServiceImpl();
+    public static ComputerServiceImpl getService()
+    {
+        if(service == null){service = new ComputerServiceImpl();}
         return service;
     }
 
     @Override
-    public Computer create(Computer computer) {
+    public Computer create(Computer computer){
         return this.repository.create(computer);
     }
 
@@ -37,7 +34,7 @@ public class ComputerServiceImpl implements ComputerService {
     }
 
     @Override
-    public void delete(String computerNumber) {
+    public void delete(String computerNumber){
         this.repository.delete(computerNumber);
     }
 

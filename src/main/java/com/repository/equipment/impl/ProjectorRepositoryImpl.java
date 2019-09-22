@@ -4,58 +4,56 @@ import com.domain.equipment.Projector;
 import com.repository.equipment.ProjectorRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 @Repository("InMemory")
 public class ProjectorRepositoryImpl implements ProjectorRepository {
 
     private static ProjectorRepositoryImpl repository = null;
-    private Set<Projector> projectors;
+    private Map<String, Projector> projectors;
 
-    private ProjectorRepositoryImpl(){
-        this.projectors = new HashSet<>();
+    private ProjectorRepositoryImpl() {
+        this.projectors = new HashMap<>();
     }
 
-    public static ProjectorRepositoryImpl getRepository(){
+    public static ProjectorRepositoryImpl getRepository() {
         if (repository == null) repository = new ProjectorRepositoryImpl();
         return repository;
     }
 
-
-    public Projector create(Projector projector){
-        this.projectors.add(projector);
-        return projector;
+    @Override
+    public Set<Projector> getAll() {
+        Collection<Projector> projectors = this.projectors.values();
+        Set<Projector> set = new HashSet<>();
+        set.addAll(projectors);
+        return set;
     }
 
-    private Projector findProjector(String projectorCode) {
-        return this.projectors.stream()
-                .filter(projector -> projector.getProjectorCode().trim().equals(projectorCode))
-                .findAny()
-                .orElse(null);
-    }
-
-    public Projector read(String projectorCode){
-
-        Projector projector = findProjector(projectorCode);
-        return projector;
-    }
-
-    public void delete(String projectorCode) {
-        Projector projector = findProjector(projectorCode);
-        if (projector != null) this.projectors.remove(projector);
-
-    }
-
-    public Projector update(Projector projector) {
-        Projector toDelete = findProjector(projector.getProjectorCode());
-        if (toDelete != null) {
-            this.projectors.remove(toDelete);
-            return create(projector);
+    @Override
+    public Projector create(Projector projector) {
+        if (read(projector.getProjectorCode()) == null) {
+            this.projectors.put(projector.getProjectorCode(), projector);
         }
-        return null;
+        return projector;
     }
 
-    public Set<Projector> getAll(){
-        return this.projectors;
+    @Override
+    public Projector read(String e) {
+        return this.projectors.get(e);
     }
+
+    @Override
+    public Projector update(Projector projector) {
+        if (read(projector.getProjectorCode()) != null) {
+            projectors.replace(projector.getProjectorCode(), projector);
+        }
+        return projector;
+    }
+
+    @Override
+    public void delete(String e) {
+        Projector projector = read(e);
+        this.projectors.remove(e, projector);
+    }
+
 }

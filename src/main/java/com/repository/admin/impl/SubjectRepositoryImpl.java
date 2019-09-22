@@ -4,58 +4,56 @@ import com.domain.admin.Subject;
 import com.repository.admin.SubjectRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 @Repository("InMemory")
 public class SubjectRepositoryImpl implements SubjectRepository {
 
     private static SubjectRepositoryImpl repository = null;
-    private Set<Subject> subjects;
+    private Map<String, Subject> subjects;
 
-    private SubjectRepositoryImpl(){
-        this.subjects = new HashSet<>();
+    private SubjectRepositoryImpl() {
+        this.subjects = new HashMap<>();
     }
 
-    private Subject findSubject(String subjectCode) {
-        return this.subjects.stream()
-                .filter(subject -> subject.getSubjectCode().trim().equals(subjectCode))
-                .findAny()
-                .orElse(null);
-    }
-
-    public static SubjectRepositoryImpl getRepository(){
+    public static SubjectRepositoryImpl getRepository() {
         if (repository == null) repository = new SubjectRepositoryImpl();
         return repository;
     }
 
-
-    public Subject create(Subject subject){
-        this.subjects.add(subject);
-        return subject;
+    @Override
+    public Set<Subject> getAll() {
+        Collection<Subject> subjects = this.subjects.values();
+        Set<Subject> set = new HashSet<>();
+        set.addAll(subjects);
+        return set;
     }
 
-    public Subject read(final String subjectCode){
-        Subject subject = findSubject(subjectCode);
-        return subject;
-    }
-
-    public void delete(String subjectCode) {
-        Subject subject = findSubject(subjectCode);
-        if (subject != null) this.subjects.remove(subject);
-
-    }
-
-    public Subject update(Subject subject){
-        Subject toDelete = findSubject(subject.getSubjectCode());
-        if(toDelete != null) {
-            this.subjects.remove(toDelete);
-            return create(subject);
+    @Override
+    public Subject create(Subject subject) {
+        if (read(subject.getSubjectCode()) == null) {
+            this.subjects.put(subject.getSubjectCode(), subject);
         }
-        return null;
+        return subject;
     }
 
-
-    public Set<Subject> getAll(){
-        return this.subjects;
+    @Override
+    public Subject read(String e) {
+        return this.subjects.get(e);
     }
+
+    @Override
+    public Subject update(Subject subject) {
+        if (read(subject.getSubjectCode()) != null) {
+            subjects.replace(subject.getSubjectCode(), subject);
+        }
+        return subject;
+    }
+
+    @Override
+    public void delete(String e) {
+        Subject subject = read(e);
+        this.subjects.remove(e, subject);
+    }
+
 }

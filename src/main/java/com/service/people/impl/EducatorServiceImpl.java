@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class EducatorServiceImpl implements EducatorService {
-    @Autowired
-    @Qualifier("InMemory")
-    private EducatorServiceImpl service = null;
+    private static EducatorServiceImpl service;
     private EducatorRepository repository;
 
-    private EducatorServiceImpl(){
-        this.repository = EducatorRepositoryImpl.getRepository();
-    }
+    private EducatorServiceImpl(){this.repository = EducatorRepositoryImpl.getRepository();}
 
-    public EducatorService getService(){
-        if (service == null) service = new EducatorServiceImpl();
+    public static EducatorServiceImpl getService()
+    {
+        if(service == null){service = new EducatorServiceImpl();}
         return service;
     }
 
     @Override
-    public Educator create(Educator educator) {
+    public Educator create(Educator educator){
         return this.repository.create(educator);
     }
 
@@ -37,7 +34,7 @@ public class EducatorServiceImpl implements EducatorService {
     }
 
     @Override
-    public void delete(String educatorIDNumber) {
+    public void delete(String educatorIDNumber){
         this.repository.delete(educatorIDNumber);
     }
 
@@ -50,5 +47,5 @@ public class EducatorServiceImpl implements EducatorService {
     public Set<Educator> getAll() {
         return this.repository.getAll();
     }
-}
 
+}

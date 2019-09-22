@@ -11,9 +11,10 @@ public class GradeFactoryClass {
     public void getGradeNumber() {
 
        String id = "5";
+       String type = "Foundation";
 
-        Grade grade = GradeFactory.getGrade(id);
+        Grade grade = GradeFactory.getGrade(id, type);
         System.out.println(grade);
-        Assert.assertNotNull(grade.getGradeNumber());
+        Assert.assertNotNull(grade.getGradeID());
     }
 }

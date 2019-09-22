@@ -1,11 +1,12 @@
 package com.service.assessments;
 
-import com.app.SchoolManagementSystemApplication;
-import com.domain.assessments.Test;
+import app.SchoolManagementSystemApplication;
 import com.factory.assessments.TestFactory;
+import com.service.assessments.impl.TestServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,63 +16,67 @@ import com.repository.assessments.impl.TestRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class TestServiceTest {
 
-    private TestRepository repository;
-    private Test test;
-
-    private Test getSavedTest() {
-        Set<Test> savedTests = this.repository.getAll();
-        return savedTests.iterator().next();
-    }
+    TestServiceImpl service;
+    com.domain.assessments.Test test;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = TestRepositoryImpl.getRepository();
-        this.test = TestFactory.getTest("321", "Practical");
+        service = TestServiceImpl.getService();
+        test = TestFactory.getTest("12345", "Written");
     }
 
     @org.junit.Test
-    public void a_create() {
-        Test created = this.repository.create(this.test);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.test);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @org.junit.Test
-    public void b_read() {
-        Test savedTest = getSavedTest();
-        System.out.println("In read, test code = " + savedTest.getTestPaperNumber());
-        Test read = this.repository.read(savedTest.getTestPaperNumber());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedTest, read);
+    public void getAll() {
+        service.create(test);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @org.junit.Test
-    public void e_delete() {
-        Test savedTest = getSavedTest();
-        this.repository.delete(savedTest.getTestPaperNumber());
-        d_getAll();
+    public void create() {
+        service.create(test);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @org.junit.Test
-    public void c_update() {
-        String newTestPaperNumber = "New Test Test Paper Number";
-        Test updated = new Test.Builder().copy(getSavedTest()).testPaperNumber(newTestPaperNumber).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newTestPaperNumber, updated.getTestPaperNumber());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @org.junit.Test
-    public void d_getAll() {
-        Set<Test> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(test);
+        System.out.println(service.read("12345"));
+
+        com.domain.assessments.Test testUpdated = TestFactory.getTest("12345", "Online");
+        service.update(testUpdated);
+
+        com.domain.assessments.Test comp = service.read("12345");
+        Assert.assertNotEquals(test.getTestType(), comp.getTestType());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(test.getTestPaperNumber()));
+        System.out.println("Delete\n" + service.read(test.getTestPaperNumber()));
+    }
+
 }

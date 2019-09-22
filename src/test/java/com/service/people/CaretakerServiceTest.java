@@ -1,8 +1,9 @@
 package com.service.people;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.people.Caretaker;
 import com.factory.people.CaretakerFactory;
+import com.service.people.impl.CaretakerServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,63 +17,67 @@ import com.repository.people.impl.CaretakerRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class CaretakerServiceTest {
 
-    private CaretakerRepository repository;
-    private Caretaker caretaker;
-
-    private Caretaker getSavedCaretaker() {
-        Set<Caretaker> savedCaretakers = this.repository.getAll();
-        return savedCaretakers.iterator().next();
-    }
+    CaretakerServiceImpl service;
+    Caretaker security;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = CaretakerRepositoryImpl.getRepository();
-        this.caretaker = CaretakerFactory.getCaretaker("870912", "Kay", "Abrahams", "870912", "Cape Town", "0123456789", 32);
+        service = CaretakerServiceImpl.getService();
+        security = CaretakerFactory.getCaretaker("12345", "Kaylen", "Abrahams", "26", "CPT", "12345", 22);
     }
 
     @Test
-    public void a_create() {
-        Caretaker created = this.repository.create(this.caretaker);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.caretaker);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Caretaker savedCaretaker = getSavedCaretaker();
-        System.out.println("In read, caretaker ID number = " + savedCaretaker.getCaretakerIDNumber());
-        Caretaker read = this.repository.read(savedCaretaker.getCaretakerIDNumber());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedCaretaker, read);
+    public void getAll() {
+        service.create(security);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Caretaker savedCaretaker = getSavedCaretaker();
-        this.repository.delete(savedCaretaker.getCaretakerIDNumber());
-        d_getAll();
+    public void create() {
+        service.create(security);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newContactNumber = "New Test Caretaker Contact Number";
-        Caretaker updated = new Caretaker.Builder().copy(getSavedCaretaker()).caretakerContactNumber(newContactNumber).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newContactNumber, updated.getCaretakerContactNumber());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Caretaker> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(security);
+        System.out.println(service.read("12345"));
+
+        Caretaker securityUpdated = CaretakerFactory.getCaretaker("12345", "Kevin", "Abrahams", "26", "CPT", "12345", 22);
+        service.update(securityUpdated);
+
+        Caretaker emp = service.read("12345");
+        Assert.assertNotEquals(security.getCaretakerFirstName(), emp.getCaretakerFirstName());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(security.getCaretakerIDNumber()));
+        System.out.println("Delete\n" + service.read(security.getCaretakerIDNumber()));
+    }
+
 }

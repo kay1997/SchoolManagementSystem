@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class ResultServiceImpl implements ResultService {
-    @Autowired
-    @Qualifier("InMemory")
-    private ResultServiceImpl service = null;
+    private static ResultServiceImpl service;
     private ResultRepository repository;
 
-    private ResultServiceImpl() {
-        this.repository = ResultRepositoryImpl.getRepository();
-    }
+    private ResultServiceImpl(){this.repository = ResultRepositoryImpl.getRepository();}
 
-    public ResultService getService() {
-        if (service == null) service = new ResultServiceImpl();
+    public static ResultServiceImpl getService()
+    {
+        if(service == null){service = new ResultServiceImpl();}
         return service;
     }
 
     @Override
-    public Result create(Result result) {
+    public Result create(Result result){
         return this.repository.create(result);
     }
 
@@ -37,13 +34,13 @@ public class ResultServiceImpl implements ResultService {
     }
 
     @Override
-    public void delete(String subjectMark) {
-        this.repository.delete(subjectMark);
+    public void delete(String learnerID){
+        this.repository.delete(learnerID);
     }
 
     @Override
-    public Result read(String subjectMark) {
-        return this.repository.read(subjectMark);
+    public Result read(String learnerID) {
+        return this.repository.read(learnerID);
     }
 
     @Override
@@ -52,3 +49,4 @@ public class ResultServiceImpl implements ResultService {
     }
 
 }
+

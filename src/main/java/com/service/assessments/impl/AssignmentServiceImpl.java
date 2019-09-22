@@ -12,32 +12,29 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class AssignmentServiceImpl implements AssignmentService {
-    @Autowired
-    @Qualifier("InMemory")
-    private AssignmentServiceImpl service = null;
+    private static AssignmentServiceImpl service;
     private AssignmentRepository repository;
 
-    private AssignmentServiceImpl(){
-        this.repository = AssignmentRepositoryImpl.getRepository();
-    }
+    private AssignmentServiceImpl(){this.repository = AssignmentRepositoryImpl.getRepository();}
 
-    public AssignmentService getService(){
-        if (service == null) service = new AssignmentServiceImpl();
+    public static AssignmentServiceImpl getService()
+    {
+        if(service == null){service = new AssignmentServiceImpl();}
         return service;
     }
 
     @Override
-    public Assignment create(Assignment assignment) {
-        return this.repository.create(assignment);
+    public Assignment create(Assignment assingment){
+        return this.repository.create(assingment);
     }
 
     @Override
-    public Assignment update(Assignment assignment) {
-        return this.repository.update(assignment);
+    public Assignment update(Assignment assingment) {
+        return this.repository.update(assingment);
     }
 
     @Override
-    public void delete(String assignmentNumber) {
+    public void delete(String assignmentNumber){
         this.repository.delete(assignmentNumber);
     }
 
@@ -50,4 +47,5 @@ public class AssignmentServiceImpl implements AssignmentService {
     public Set<Assignment> getAll() {
         return this.repository.getAll();
     }
+
 }

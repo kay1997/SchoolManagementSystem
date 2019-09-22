@@ -1,8 +1,9 @@
 package com.service.equipment;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.equipment.Computer;
 import com.factory.equipment.ComputerFactory;
+import com.service.equipment.impl.ComputerServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,63 +17,67 @@ import com.repository.equipment.impl.ComputerRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class ComputerServiceTest {
 
-    private ComputerRepository repository;
-    private Computer computer;
-
-    private Computer getSavedComputer() {
-        Set<Computer> savedComputers = this.repository.getAll();
-        return savedComputers.iterator().next();
-    }
+    ComputerServiceImpl service;
+    Computer computer;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = ComputerRepositoryImpl.getRepository();
-        this.computer = ComputerFactory.getComputer("1233", "Dell");
+        service = ComputerServiceImpl.getService();
+        computer = ComputerFactory.getComputer("12345", "Dell");
     }
 
     @Test
-    public void a_create() {
-        Computer created = this.repository.create(this.computer);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.computer);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Computer savedComputer = getSavedComputer();
-        System.out.println("In read, computer number = " + savedComputer.getComputerNumber());
-        Computer read = this.repository.read(savedComputer.getComputerNumber());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedComputer, read);
+    public void getAll() {
+        service.create(computer);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Computer savedComputer = getSavedComputer();
-        this.repository.delete(savedComputer.getComputerNumber());
-        d_getAll();
+    public void create() {
+        service.create(computer);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newComputerNumber = "New Test Computer Number";
-        Computer updated = new Computer.Builder().copy(getSavedComputer()).computerNumber(newComputerNumber).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newComputerNumber, updated.getComputerNumber());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Computer> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(computer);
+        System.out.println(service.read("12345"));
+
+        Computer computerUpdated = ComputerFactory.getComputer("12345", "HP");
+        service.update(computerUpdated);
+
+        Computer comp = service.read("12345");
+        Assert.assertNotEquals(computer.getComputerName(), comp.getComputerName());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(computer.getComputerNumber()));
+        System.out.println("Delete\n" + service.read(computer.getComputerNumber()));
+    }
+
 }

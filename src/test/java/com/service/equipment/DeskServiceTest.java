@@ -1,8 +1,9 @@
 package com.service.equipment;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.equipment.Desk;
 import com.factory.equipment.DeskFactory;
+import com.service.equipment.impl.DeskServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,63 +17,67 @@ import com.repository.equipment.impl.DeskRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class DeskServiceTest {
 
-        private DeskRepository repository;
-        private Desk desk;
-
-    private Desk getSavedDesk() {
-        Set<Desk> savedDesks = this.repository.getAll();
-        return savedDesks.iterator().next();
-    }
+    DeskServiceImpl service;
+    Desk desk;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = DeskRepositoryImpl.getRepository();
-        this.desk = DeskFactory.getDesk("3");
+        service = DeskServiceImpl.getService();
+        desk = DeskFactory.getDesk("01", "Glass");
     }
 
     @Test
-    public void a_create() {
-        Desk created = this.repository.create(this.desk);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.desk);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Desk savedDesk = getSavedDesk();
-        System.out.println("In read, desk number = " + savedDesk.getDeskNumber());
-        Desk read = this.repository.read(savedDesk.getDeskNumber());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedDesk, read);
+    public void getAll() {
+        service.create(desk);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Desk savedDesk = getSavedDesk();
-        this.repository.delete(savedDesk.getDeskNumber());
-        d_getAll();
+    public void create() {
+        service.create(desk);
+        assertNotNull(service.read("01"));
+        System.out.println("Created\n" + service.read("01"));
     }
 
     @Test
-    public void c_update() {
-        String newDeskNumber = "New Test Desk Number";
-        Desk updated = new Desk.Builder().copy(getSavedDesk()).deskNumber(newDeskNumber).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newDeskNumber, updated.getDeskNumber());
+    public void read() {
+        assertNotNull(service.read("01"));
+        System.out.println("Read\n" + service.read("01"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Desk> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(desk);
+        System.out.println(service.read("01"));
+
+        Desk deskUpdated = DeskFactory.getDesk("01", "Wooden");
+        service.update(deskUpdated);
+
+        Desk des = service.read("01");
+        Assert.assertNotEquals(desk.getDeskType(), des.getDeskType());
+        System.out.println("Updated\n" + service.read("01"));
     }
+
+    @Test
+    public void delete() {
+        service.delete(desk.getDeskNumber());
+        assertNull(service.read(desk.getDeskNumber()));
+        System.out.println("Delete\n" + service.read(desk.getDeskNumber()));
+    }
+
 }

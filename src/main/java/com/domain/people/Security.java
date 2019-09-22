@@ -26,6 +26,15 @@ public class Security {
     public String getSecurityIDNumber() {
         return securityIDNumber;
     }
+
+    public void setSecurityIDNumber(String securityIDNumber) {
+        this.securityIDNumber = securityIDNumber;
+    }
+
+    public void setSecurityFirstName(String securityFirstName) {
+        this.securityFirstName = securityFirstName;
+    }
+
     public int getSecurityAge() {
         return securityAge;
     }

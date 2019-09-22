@@ -1,42 +1,45 @@
 package com.controller.admin;
 
 import com.domain.admin.Subject;
+import com.service.admin.impl.SubjectServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.admin.SubjectService;
 
+import java.util.Set;
+
 @RestController
 @RequestMapping("/subject")
 public class SubjectController {
-
     @Autowired
-    @Qualifier("ServiceImpl")
-    private SubjectService service;
+    private SubjectServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public Subject create(Subject subject) {
+    public Subject create(@RequestBody Subject subject) {
         return service.create(subject);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public Subject update(Subject subject) {
+    public Subject update(@RequestBody Subject subject) {
         return service.update(subject);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
 
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public Subject read(@PathVariable String id) {
-        return service.read(id);
+
+        Subject subject = service.read(id);
+        return subject;
     }
 
+    @GetMapping("/getall")
+    public Set<Subject> getAll(){
+        return service.getAll();
+    }
 }

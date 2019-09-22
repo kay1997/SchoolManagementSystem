@@ -14,22 +14,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class TextbookServiceImpl implements TextbookService {
-    @Autowired
-    @Qualifier("InMemory")
-    private TextbookServiceImpl service = null;
+    private static TextbookServiceImpl service;
     private TextbookRepository repository;
 
-    private TextbookServiceImpl(){
-        this.repository = TextbookRepositoryImpl.getRepository();
-    }
+    private TextbookServiceImpl(){this.repository = TextbookRepositoryImpl.getRepository();}
 
-    public TextbookService getService(){
-        if (service == null) service = new TextbookServiceImpl();
+    public static TextbookServiceImpl getService()
+    {
+        if(service == null){service = new TextbookServiceImpl();}
         return service;
     }
 
     @Override
-    public Textbook create(Textbook textbook) {
+    public Textbook create(Textbook textbook){
         return this.repository.create(textbook);
     }
 
@@ -39,7 +36,7 @@ public class TextbookServiceImpl implements TextbookService {
     }
 
     @Override
-    public void delete(String textbookCode) {
+    public void delete(String textbookCode){
         this.repository.delete(textbookCode);
     }
 
@@ -52,5 +49,5 @@ public class TextbookServiceImpl implements TextbookService {
     public Set<Textbook> getAll() {
         return this.repository.getAll();
     }
-}
 
+}

@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class SchoolServiceImpl implements SchoolService {
-    @Autowired
-    @Qualifier("InMemory")
-    private SchoolServiceImpl service = null;
+    private static SchoolServiceImpl service;
     private SchoolRepository repository;
 
-    private SchoolServiceImpl() {
-        this.repository = SchoolRepositoryImpl.getRepository();
-    }
+    private SchoolServiceImpl(){this.repository = SchoolRepositoryImpl.getRepository();}
 
-    public SchoolService getService() {
-        if (service == null) service = new SchoolServiceImpl();
+    public static SchoolServiceImpl getService()
+    {
+        if(service == null){service = new SchoolServiceImpl();}
         return service;
     }
 
     @Override
-    public School create(School school) {
+    public School create(School school){
         return this.repository.create(school);
     }
 
@@ -37,7 +34,7 @@ public class SchoolServiceImpl implements SchoolService {
     }
 
     @Override
-    public void delete(String schoolCode) {
+    public void delete(String schoolCode){
         this.repository.delete(schoolCode);
     }
 
@@ -50,4 +47,6 @@ public class SchoolServiceImpl implements SchoolService {
     public Set<School> getAll() {
         return this.repository.getAll();
     }
+
 }
+

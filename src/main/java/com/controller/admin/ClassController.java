@@ -1,42 +1,46 @@
 package com.controller.admin;
 
 import com.domain.admin.Class;
+import com.service.admin.impl.ClassServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.admin.ClassService;
 
+import java.util.Set;
+
 @RestController
-@RequestMapping("oneClass")
+@RequestMapping("/class")
 public class ClassController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
-    private ClassService service;
+    private ClassServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public Class create(Class oneClass) {
-        return service.create(oneClass);
+    public Class create(@RequestBody Class cls) {
+        return service.create(cls);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public Class update(Class oneClass) {
-        return service.update(oneClass);
+    public Class update(@RequestBody Class cls) {
+        return service.update(cls);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
 
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public Class read(@PathVariable String id) {
-        return service.read(id);
+
+        Class cls = service.read(id);
+        return cls;
     }
 
+    @GetMapping("/getall")
+    public Set<Class> getAll(){
+        return service.getAll();
+    }
 }

@@ -1,10 +1,13 @@
 package com.controller.assessments;
 
 import com.domain.assessments.Test;
+import com.service.assessments.impl.TestServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.assessments.TestService;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/test")
@@ -12,32 +15,35 @@ public class TestController {
 
 
     @Autowired
-    @Qualifier("ServiceImpl")
-    private TestService service;
+    private TestServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public Test create(Test test) {
+    public Test create(@RequestBody Test test) {
         return service.create(test);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public Test update(Test test) {
+    public Test update(@RequestBody Test test) {
         return service.update(test);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
 
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public Test read(@PathVariable String id) {
-        return service.read(id);
+
+        Test test = service.read(id);
+        return test;
     }
+
+    @GetMapping("/getall")
+    public Set<Test> getAll(){
+        return service.getAll();
+    }
+
 
 }

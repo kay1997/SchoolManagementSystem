@@ -1,8 +1,9 @@
 package com.service.people;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.people.Educator;
 import com.factory.people.EducatorFactory;
+import com.service.people.impl.EducatorServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,64 +17,67 @@ import com.repository.people.impl.EducatorRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class EducatorServiceTest {
 
-    private EducatorRepository repository;
-    private Educator educator;
-
-    private Educator getSavedEducator() {
-        Set<Educator> savedEducators = this.repository.getAll();
-        return savedEducators.iterator().next();
-    }
+    EducatorServiceImpl service;
+    Educator educator;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = EducatorRepositoryImpl.getRepository();
-        this.educator = EducatorFactory.getEducator("870912", "Kay", "Abrahams", "870912", "Cape Town", "0123456789", 32);
+        service = EducatorServiceImpl.getService();
+        educator = EducatorFactory.getEducator("12345", "Kaylen", "Abrahams", "26", "CPT", "12345", 22);
     }
 
     @Test
-    public void a_create() {
-        Educator created = this.repository.create(this.educator);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.educator);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Educator savedEducator = getSavedEducator();
-        System.out.println("In read, educator ID number = " + savedEducator.getEducatorIDNumber());
-        Educator read = this.repository.read(savedEducator.getEducatorIDNumber());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedEducator, read);
+    public void getAll() {
+        service.create(educator);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Educator savedEducator = getSavedEducator();
-        this.repository.delete(savedEducator.getEducatorIDNumber());
-        d_getAll();
+    public void create() {
+        service.create(educator);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
-
-   /* @Test
-    public void c_update() {
-        String newname = "New Test Educator Name";
-        Educator updated = new Educator.Builder().copy(getSavedEducator()).educatorFirstName(newname).build();
-        System.out.println("In update, updated = " + updated);
-        this.com.repository.update(updated);
-        Assert.assertSame(newname, updated.getEducatorFirstName());
-
-    }*/
 
     @Test
-    public void d_getAll() {
-        Set<Educator> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
+
+    @Test
+    public void update() {
+        service.create(educator);
+        System.out.println(service.read("12345"));
+
+        Educator educatorUpdated = EducatorFactory.getEducator("12345", "Kevin", "Abrahams", "26", "CPT", "12345", 22);
+        service.update(educatorUpdated);
+
+        Educator emp = service.read("12345");
+        Assert.assertNotEquals(educator.getEducatorFirstName(), emp.getEducatorFirstName());
+        System.out.println("Updated\n" + service.read("12345"));
+    }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(educator.getEducatorIDNumber()));
+        System.out.println("Delete\n" + service.read(educator.getEducatorIDNumber()));
+    }
+
 }

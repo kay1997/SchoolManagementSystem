@@ -7,15 +7,25 @@ import java.util.Objects;
 @EntityScan
 public class Class {
 
+    private String classID;
     private String classGroup;
+
+    public Class(){}
 
     private Class(Builder builder)
     {
+        this.classID = builder.classID;
         this.classGroup = builder.classGroup;
     }
 
-    public Class() {
+    public String getClassID(){return classID;}
 
+    public void setClassGroup(String classGroup) {
+        this.classGroup = classGroup;
+    }
+
+    public void setClassID(String classID) {
+        this.classID = classID;
     }
 
     public String getClassGroup() {
@@ -24,7 +34,14 @@ public class Class {
 
     public static class Builder {
 
+        private String classID;
         private String classGroup;
+
+        public Builder classID(String classID)
+        {
+            this.classID = classID;
+            return this;
+        }
 
         public Builder classGroup(String classGroup)
         {
@@ -33,6 +50,7 @@ public class Class {
         }
 
         public Builder copy(Class oneClass){
+            this.classID = oneClass.classID;
             this.classGroup = oneClass.classGroup;
 
             return this;
@@ -49,12 +67,12 @@ public class Class {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Class oneclass = (Class) o;
-        return classGroup.equals(oneclass.classGroup);
+        return classID.equals(oneclass.classID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(classGroup);
+        return Objects.hash(classID);
     }
 
     @Override

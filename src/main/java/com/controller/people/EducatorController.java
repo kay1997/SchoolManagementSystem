@@ -1,42 +1,46 @@
 package com.controller.people;
 
 import com.domain.people.Educator;
+import com.service.people.impl.EducatorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import com.service.people.EducatorService;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/educator")
 public class EducatorController {
 
     @Autowired
-    @Qualifier("ServiceImpl")
-    private EducatorService service;
+    private EducatorServiceImpl service;
 
     @PostMapping("/create")
-    @ResponseBody
-    public Educator create(Educator educator) {
+    public Educator create(@RequestBody Educator educator) {
         return service.create(educator);
     }
 
     @PostMapping("/update")
-    @ResponseBody
-    public Educator update(Educator educator) {
+    public Educator update(@RequestBody Educator educator) {
         return service.update(educator);
     }
 
-    @GetMapping("/delete/{id}")
-    @ResponseBody
+    @DeleteMapping(path = "/delete/{id}")
     public void delete(@PathVariable String id) {
         service.delete(id);
 
     }
 
-    @GetMapping("/read/{id}")
-    @ResponseBody
+    @GetMapping(path = "/read/{id}")
     public Educator read(@PathVariable String id) {
-        return service.read(id);
+
+        Educator educator = service.read(id);
+        return educator;
     }
 
+    @GetMapping("/getall")
+    public Set<Educator> getAll(){
+        return service.getAll();
+    }
 }

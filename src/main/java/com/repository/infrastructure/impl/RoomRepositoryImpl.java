@@ -4,58 +4,55 @@ import com.domain.infrastructure.Room;
 import com.repository.infrastructure.RoomRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 @Repository("InMemory")
 public class RoomRepositoryImpl implements RoomRepository {
-
     private static RoomRepositoryImpl repository = null;
-    private Set<Room> rooms;
+    private Map<String, Room> rooms;
 
-    private RoomRepositoryImpl(){
-        this.rooms = new HashSet<>();
+    private RoomRepositoryImpl() {
+        this.rooms = new HashMap<>();
     }
 
-    public static RoomRepositoryImpl getRepository(){
+    public static RoomRepositoryImpl getRepository() {
         if (repository == null) repository = new RoomRepositoryImpl();
         return repository;
     }
 
-
-    public Room create(Room room){
-        this.rooms.add(room);
-        return room;
+    @Override
+    public Set<Room> getAll() {
+        Collection<Room> rooms = this.rooms.values();
+        Set<Room> set = new HashSet<>();
+        set.addAll(rooms);
+        return set;
     }
 
-    private Room findRoom(String roomNumber) {
-        return this.rooms.stream()
-                .filter(room -> room.getRoomNumber().trim().equals(roomNumber))
-                .findAny()
-                .orElse(null);
-    }
-
-    public Room read(String roomNumber){
-
-        Room room = findRoom(roomNumber);
-        return room;
-    }
-
-    public void delete(String roomNumber) {
-        Room room = findRoom(roomNumber);
-        if (room != null) this.rooms.remove(room);
-
-    }
-
-    public Room update(Room room) {
-        Room toDelete = findRoom(room.getRoomNumber());
-        if (toDelete != null) {
-            this.rooms.remove(toDelete);
-            return create(room);
+    @Override
+    public Room create(Room room) {
+        if (read(room.getRoomNumber()) == null) {
+            this.rooms.put(room.getRoomNumber(), room);
         }
-        return null;
+        return room;
     }
 
-    public Set<Room> getAll(){
-        return this.rooms;
+    @Override
+    public Room read(String e) {
+        return this.rooms.get(e);
     }
+
+    @Override
+    public Room update(Room room) {
+        if (read(room.getRoomNumber()) != null) {
+            rooms.replace(room.getRoomNumber(), room);
+        }
+        return room;
+    }
+
+    @Override
+    public void delete(String e) {
+        Room room = read(e);
+        this.rooms.remove(e, room);
+    }
+
 }

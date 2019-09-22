@@ -1,8 +1,9 @@
 package com.service.admin;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.admin.Result;
 import com.factory.admin.ResultFactory;
+import com.service.admin.impl.ResultServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,64 +17,67 @@ import com.repository.admin.impl.ResultRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class ResultServiceTest {
 
-    private ResultRepository repository;
-    private Result result;
-
-    private Result getSavedResult() {
-        Set<Result> savedResults = this.repository.getAll();
-        return savedResults.iterator().next();
-    }
+    ResultServiceImpl service;
+    Result result;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = ResultRepositoryImpl.getRepository();
-        this.result = ResultFactory.getResult("89");
+        service = ResultServiceImpl.getService();
+        result = ResultFactory.getResult("12345", "70");
     }
 
     @Test
-    public void a_create() {
-        Result created = this.repository.create(this.result);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.result);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Result savedResult = getSavedResult();
-        System.out.println("In read, result code = " + savedResult.getSubjectMark());
-        Result read = this.repository.read(savedResult.getSubjectMark());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedResult, read);
+    public void getAll() {
+        service.create(result);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Result savedResult = getSavedResult();
-        this.repository.delete(savedResult.getSubjectMark());
-        d_getAll();
+    public void create() {
+        service.create(result);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newResultCode = "New Test Subject Mark";
-        Result updated = new Result.Builder().copy(getSavedResult()).subjectMark(newResultCode).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newResultCode, updated.getSubjectMark());
-
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Result> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(result);
+        System.out.println(service.read("12345"));
+
+        Result resultUpdated = ResultFactory.getResult("12345", "80");
+        service.update(resultUpdated);
+
+        Result comp = service.read("12345");
+        Assert.assertNotEquals(result.getSubjectMark(), comp.getSubjectMark());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(result.getLearnerID()));
+        System.out.println("Delete\n" + service.read(result.getLearnerID()));
+    }
+
 }

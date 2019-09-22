@@ -4,60 +4,56 @@ import com.domain.assessments.Assignment;
 import com.repository.assessments.AssignmentRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 @Repository("InMemory")
 public class AssignmentRepositoryImpl implements AssignmentRepository {
 
     private static AssignmentRepositoryImpl repository = null;
-    private Set<Assignment> assignments;
+    private Map<String, Assignment> assignments;
 
-   private AssignmentRepositoryImpl(){
-        this.assignments = new HashSet<>();
+    private AssignmentRepositoryImpl() {
+        this.assignments = new HashMap<>();
     }
 
-    private Assignment findAssignment(String assignmentNumber) {
-        return this.assignments.stream()
-                .filter(assignment -> assignment.getAssignmentNumber().trim().equals(assignmentNumber))
-                .findAny()
-                .orElse(null);
-    }
-
-    public static AssignmentRepositoryImpl getRepository(){
+    public static AssignmentRepositoryImpl getRepository() {
         if (repository == null) repository = new AssignmentRepositoryImpl();
         return repository;
     }
 
-
-    public Assignment create(Assignment assignment){
-        this.assignments.add(assignment);
-        return assignment;
+    @Override
+    public Set<Assignment> getAll() {
+        Collection<Assignment> assignments = this.assignments.values();
+        Set<Assignment> set = new HashSet<>();
+        set.addAll(assignments);
+        return set;
     }
 
-    public Assignment read(String assignmentNumber){
-
-        Assignment assignment = findAssignment(assignmentNumber);
-        return assignment;
-    }
-
-    public void delete(String assignmentNumber) {
-        Assignment assignment = findAssignment(assignmentNumber);
-        if (assignment != null) this.assignments.remove(assignment);
-
-    }
-
-    public Assignment update(Assignment assignment) {
-        Assignment toDelete = findAssignment(assignment.getAssignmentNumber());
-        if (toDelete != null) {
-            this.assignments.remove(toDelete);
-            return create(assignment);
+    @Override
+    public Assignment create(Assignment assignment) {
+        if (read(assignment.getAssignmentNumber()) == null) {
+            this.assignments.put(assignment.getAssignmentNumber(), assignment);
         }
-        return null;
+        return assignment;
     }
 
-
-    public Set<Assignment> getAll(){
-        return this.assignments;
+    @Override
+    public Assignment read(String e) {
+        return this.assignments.get(e);
     }
+
+    @Override
+    public Assignment update(Assignment assignment) {
+        if (read(assignment.getAssignmentNumber()) != null) {
+            assignments.replace(assignment.getAssignmentNumber(), assignment);
+        }
+        return assignment;
+    }
+
+    @Override
+    public void delete(String e) {
+        Assignment assignment = read(e);
+        this.assignments.remove(e, assignment);
+    }
+
 }
-

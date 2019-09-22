@@ -23,6 +23,14 @@ public class Subject {
         return subjectCode;
     }
 
+    public void setSubjectCode(String subjectCode) {
+        this.subjectCode = subjectCode;
+    }
+
+    public void setSubjectName(String subjectName) {
+        this.subjectName = subjectName;
+    }
+
     public String getSubjectName()
     {
         return subjectName;

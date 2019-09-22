@@ -36,6 +36,22 @@ public class School {
         return schoolCode;
     }
 
+    public void setSchoolCode(String schoolCode) {
+        this.schoolCode = schoolCode;
+    }
+
+    public void setSchoolAddress(String schoolAddress) {
+        this.schoolAddress = schoolAddress;
+    }
+
+    public void setSchoolContactNumber(String schoolContactNumber) {
+        this.schoolContactNumber = schoolContactNumber;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
+
     public String getSchoolName() {
         return schoolName;
     }

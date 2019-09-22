@@ -1,9 +1,11 @@
 package com.repository.people;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.people.Secretary;
 import com.factory.people.SecretaryFactory;
+import com.repository.people.impl.SecretaryRepositoryImpl;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,27 +16,73 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 @FixMethodOrder(MethodSorters.JVM)
 
 public class SecretaryRepositoryImplTest {
-    @Autowired
-    private SecretaryRepository repository;
-    private String secretaryId = null;
+    SecretaryRepositoryImpl repository;
+    Secretary secretary;
 
-    @Test
-    public void CreateSecretaryTest() throws IOException {
-        Secretary secretary = SecretaryFactory.getSecretary("970826", "Kaylen", "Abrahams", "260897", "Strandloper", "0605220503", 22);
-        Secretary result = repository.create(secretary);
-        secretaryId = result.getSecretaryIDNumber();
-        Assert.assertNotNull(secretary);
+    @Before
+    public void setUp() throws Exception {
+
+        repository = SecretaryRepositoryImpl.getRepository();
+        secretary = SecretaryFactory.getSecretary("123", "K", "Adams", "97", "Cape Town", "0213920626", 22);
     }
 
     @Test
-    public void GetSecretaryTest() throws IOException {
-
-        Secretary secretary = repository.read(secretaryId);
-        Assert.assertNotNull(secretary);
+    public void getRepository() {
+        assertNotNull(repository);
+        System.out.println(repository);
     }
+
+    @Test
+    public void getAll() {
+        repository.create(secretary);
+        assertNotNull(repository.getAll());
+        System.out.println("Get All\n" + repository.getAll());
+    }
+
+    @Test
+    public void create() {
+        repository.create(secretary);
+        assertNotNull(repository.read(secretary.getSecretaryIDNumber()));
+        System.out.println("Created\n" + repository.read(secretary.getSecretaryIDNumber()));
+    }
+
+    @Test
+    public void read() {
+
+        repository.create(secretary);
+
+        Secretary secretaries = repository.read(secretary.getSecretaryIDNumber());
+
+        assertEquals(secretary, secretaries);
+    }
+
+    @Test
+    public void update() {
+
+        repository.create(secretary);
+
+        Secretary updatedSecretary = SecretaryFactory.getSecretary("123", "Aiden", "Adams", "97", "Cape Town", "0213920626", 22);
+
+        repository.update(updatedSecretary);
+
+        Assert.assertNotEquals(secretary.getSecretaryFirstName(), updatedSecretary.getSecretaryFirstName());
+    }
+
+    @Test
+    public void delete() {
+        repository.delete("12345");
+        assertNull(repository.read("12345"));
+        System.out.println("Deleted\n" + repository.read("12345"));
+    }
+
 }

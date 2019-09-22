@@ -4,59 +4,56 @@ import com.domain.equipment.Stationery;
 import com.repository.equipment.StationeryRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 @Repository("InMemory")
 public class StationeryRepositoryImpl implements StationeryRepository {
 
     private static StationeryRepositoryImpl repository = null;
-    private Set<Stationery> stationerySet;
+    private Map<String, Stationery> stationerySet;
 
-    private StationeryRepositoryImpl(){
-        this.stationerySet = new HashSet<>();
+    private StationeryRepositoryImpl() {
+        this.stationerySet = new HashMap<>();
     }
 
-    public static StationeryRepositoryImpl getRepository(){
+    public static StationeryRepositoryImpl getRepository() {
         if (repository == null) repository = new StationeryRepositoryImpl();
         return repository;
     }
 
-
-    public Stationery create(Stationery stationery){
-        this.stationerySet.add(stationery);
-        return stationery;
+    @Override
+    public Set<Stationery> getAll() {
+        Collection<Stationery> stationerySet = this.stationerySet.values();
+        Set<Stationery> set = new HashSet<>();
+        set.addAll(stationerySet);
+        return set;
     }
 
-    private Stationery findStationery(String stationeryCode) {
-        return this.stationerySet.stream()
-                .filter(stationery -> stationery.getStationeryCode().trim().equals(stationeryCode))
-                .findAny()
-                .orElse(null);
-    }
-
-    public Stationery read(String stationeryCode){
-
-        Stationery stationery = findStationery(stationeryCode);
-        return stationery;
-    }
-
-    public void delete(String stationeryCode) {
-        Stationery stationery = findStationery(stationeryCode);
-        if (stationery != null) this.stationerySet.remove(stationery);
-
-    }
-
-    public Stationery update(Stationery stationery) {
-        Stationery toDelete = findStationery(stationery.getStationeryCode());
-        if (toDelete != null) {
-            this.stationerySet.remove(toDelete);
-            return create(stationery);
+    @Override
+    public Stationery create(Stationery stationery) {
+        if (read(stationery.getStationeryCode()) == null) {
+            this.stationerySet.put(stationery.getStationeryCode(), stationery);
         }
-        return null;
+        return stationery;
     }
 
-    public Set<Stationery> getAll(){
-        return this.stationerySet;
+    @Override
+    public Stationery read(String e) {
+        return this.stationerySet.get(e);
     }
+
+    @Override
+    public Stationery update(Stationery stationery) {
+        if (read(stationery.getStationeryCode()) != null) {
+            stationerySet.replace(stationery.getStationeryCode(), stationery);
+        }
+        return stationery;
+    }
+
+    @Override
+    public void delete(String e) {
+        Stationery stationery = read(e);
+        this.stationerySet.remove(e, stationery);
+    }
+
 }
-

@@ -9,11 +9,12 @@ public class AttendanceFactoryTest {
     @Test
     public void getNumberOfDaysAbsent() {
 
+        String learnerID = "9708265184084";
         int absentDays = 11;
-         String presentDays = "23";
+        String presentDays = "23";
 
-        Attendance attendance = AttendanceFactory.getAttendance(absentDays, presentDays);
+        Attendance attendance = AttendanceFactory.getAttendance(learnerID, absentDays, presentDays);
         System.out.println(attendance);
-        Assert.assertNotNull(attendance.getNumberOfDaysAbsent());
+        Assert.assertNotNull(attendance.getLearnerID());
     }
 }

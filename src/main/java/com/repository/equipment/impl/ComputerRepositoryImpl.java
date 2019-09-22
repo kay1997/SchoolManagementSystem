@@ -4,58 +4,55 @@ import com.domain.equipment.Computer;
 import com.repository.equipment.ComputerRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+
 @Repository("InMemory")
 public class ComputerRepositoryImpl implements ComputerRepository {
     private static ComputerRepositoryImpl repository = null;
-    private Set<Computer> computers;
+    private Map<String, Computer> computers;
 
-    private ComputerRepositoryImpl(){
-        this.computers = new HashSet<>();
+    private ComputerRepositoryImpl() {
+        this.computers = new HashMap<>();
     }
 
-    public static ComputerRepositoryImpl getRepository(){
+    public static ComputerRepositoryImpl getRepository() {
         if (repository == null) repository = new ComputerRepositoryImpl();
         return repository;
     }
 
-
-    public Computer create(Computer computer){
-        this.computers.add(computer);
-        return computer;
+    @Override
+    public Set<Computer> getAll() {
+        Collection<Computer> computers = this.computers.values();
+        Set<Computer> set = new HashSet<>();
+        set.addAll(computers);
+        return set;
     }
 
-    private Computer findComputer(String computerNumber) {
-        return this.computers.stream()
-                .filter(computer -> computer.getComputerNumber().trim().equals(computerNumber))
-                .findAny()
-                .orElse(null);
-    }
-
-    public Computer read(String computerNumber){
-
-        Computer computer = findComputer(computerNumber);
-        return computer;
-    }
-
-    public void delete(String computerNumber) {
-        Computer computer = findComputer(computerNumber);
-        if (computer != null) this.computers.remove(computer);
-
-    }
-
-    public Computer update(Computer computer) {
-        Computer toDelete = findComputer(computer.getComputerNumber());
-        if (toDelete != null) {
-            this.computers.remove(toDelete);
-            return create(computer);
+    @Override
+    public Computer create(Computer computer) {
+        if (read(computer.getComputerNumber()) == null) {
+            this.computers.put(computer.getComputerNumber(), computer);
         }
-        return null;
+        return computer;
     }
 
-    public Set<Computer> getAll(){
-        return this.computers;
+    @Override
+    public Computer read(String e) {
+        return this.computers.get(e);
     }
+
+    @Override
+    public Computer update(Computer computer) {
+        if (read(computer.getComputerNumber()) != null) {
+            computers.replace(computer.getComputerNumber(), computer);
+        }
+        return computer;
+    }
+
+    @Override
+    public void delete(String e) {
+        Computer computer = read(e);
+        this.computers.remove(e, computer);
+    }
+
 }
-

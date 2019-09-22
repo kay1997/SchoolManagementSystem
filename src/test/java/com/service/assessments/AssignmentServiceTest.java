@@ -1,8 +1,9 @@
 package com.service.assessments;
 
-import com.app.SchoolManagementSystemApplication;
+import app.SchoolManagementSystemApplication;
 import com.domain.assessments.Assignment;
 import com.factory.assessments.AssignmentFactory;
+import com.service.assessments.impl.AssignmentServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -16,63 +17,67 @@ import com.repository.assessments.impl.AssignmentRepositoryImpl;
 
 import java.util.Set;
 
+import static junit.framework.TestCase.assertNotNull;
+import static junit.framework.TestCase.assertNull;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @SpringBootTest(classes = SchoolManagementSystemApplication.class)
 @RunWith(SpringRunner.class)
 public class AssignmentServiceTest {
 
-    private AssignmentRepository repository;
-    private Assignment assignment;
-
-    private Assignment getSavedAssignment() {
-        Set<Assignment> savedAssignments = this.repository.getAll();
-        return savedAssignments.iterator().next();
-    }
+    AssignmentServiceImpl service;
+    Assignment assignment;
 
     @Before
     public void setUp() throws Exception {
-        this.repository = AssignmentRepositoryImpl.getRepository();
-        this.assignment = AssignmentFactory.getAssignment("Maths001", "Written");
+        service = AssignmentServiceImpl.getService();
+        assignment = AssignmentFactory.getAssignment("12345", "Essay");
     }
 
     @Test
-    public void a_create() {
-        Assignment created = this.repository.create(this.assignment);
-        System.out.println("In create, created = " + created);
-        d_getAll();
-        Assert.assertSame(created, this.assignment);
+    public void getService() {
+        assertNotNull(service);
+        System.out.println(service);
     }
 
     @Test
-    public void b_read() {
-        Assignment savedAssignment = getSavedAssignment();
-        System.out.println("In read, assignment number = " + savedAssignment.getAssignmentNumber());
-        Assignment read = this.repository.read(savedAssignment.getAssignmentNumber());
-        System.out.println("In read, read = " + read);
-        d_getAll();
-        Assert.assertEquals(savedAssignment, read);
+    public void getAll() {
+        service.create(assignment);
+        assertNotNull(service.getAll());
+        System.out.println("Get All\n" + service.getAll());
     }
 
     @Test
-    public void e_delete() {
-        Assignment savedAssignment = getSavedAssignment();
-        this.repository.delete(savedAssignment.getAssignmentNumber());
-        d_getAll();
+    public void create() {
+        service.create(assignment);
+        assertNotNull(service.read("12345"));
+        System.out.println("Created\n" + service.read("12345"));
     }
 
     @Test
-    public void c_update() {
-        String newAssignmentNumber = "New Test Assignment Number";
-        Assignment updated = new Assignment.Builder().copy(getSavedAssignment()).assignmentNumber(newAssignmentNumber).build();
-        System.out.println("In update, updated = " + updated);
-        this.repository.update(updated);
-        Assert.assertSame(newAssignmentNumber, updated.getAssignmentNumber());
+    public void read() {
+        assertNotNull(service.read("12345"));
+        System.out.println("Read\n" + service.read("12345"));
     }
 
     @Test
-    public void d_getAll() {
-        Set<Assignment> all = this.repository.getAll();
-        System.out.println("In getAll, all = " + all);
-//        Assert.assertSame(1, all.size());
+    public void update() {
+        service.create(assignment);
+        System.out.println(service.read("12345"));
+
+        Assignment assignmentUpdated = AssignmentFactory.getAssignment("12345", "Practical");
+        service.update(assignmentUpdated);
+
+        Assignment assign = service.read("12345");
+        Assert.assertNotEquals(assignment.getAssignmentType(), assign.getAssignmentType());
+        System.out.println("Updated\n" + service.read("12345"));
     }
+
+    @Test
+    public void delete() {
+        service.delete("12345");
+        assertNull(service.read(assignment.getAssignmentNumber()));
+        System.out.println("Delete\n" + service.read(assignment.getAssignmentNumber()));
+    }
+
 }

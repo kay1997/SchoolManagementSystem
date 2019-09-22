@@ -26,6 +26,15 @@ public class Secretary {
     public String getSecretaryIDNumber() {
         return secretaryIDNumber;
     }
+
+    public void setSecretaryIDNumber(String secretaryIDNumber) {
+        this.secretaryIDNumber = secretaryIDNumber;
+    }
+
+    public void setSecretaryFirstName(String secretaryFirstName) {
+        this.secretaryFirstName = secretaryFirstName;
+    }
+
     public int getSecretaryAge() {
         return secretaryAge;
     }

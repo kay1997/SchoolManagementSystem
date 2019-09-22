@@ -8,21 +8,34 @@ import java.util.Objects;
 public class Desk {
 
     private String deskNumber;
+    private String deskType;
 
-    private Desk(){}
+    public Desk(){}
 
     private Desk(Builder builder)
     {
         this.deskNumber = builder.deskNumber;
+        this.deskType = builder.deskType;
     }
 
     public String getDeskNumber() {
         return deskNumber;
     }
 
+    public void setDeskNumber(String deskNumber) {
+        this.deskNumber = deskNumber;
+    }
+
+    public void setDeskType(String deskType) {
+        this.deskType = deskType;
+    }
+
+    public String getDeskType(){return deskType;}
+
     public static class Builder{
 
         private String deskNumber;
+        private String deskType;
 
         public Builder deskNumber(String deskNumber){
 
@@ -30,9 +43,16 @@ public class Desk {
             return this;
         }
 
+        public Builder deskType(String deskType)
+        {
+            this.deskType = deskType;
+            return this;
+        }
 
         public Builder copy(Desk desk){
+
             this.deskNumber = desk.deskNumber;
+            this.deskType = desk.deskType;
 
             return this;
         }
@@ -47,6 +67,7 @@ public class Desk {
     public String toString() {
         return "Desk{" +
                 "deskNumber" + deskNumber + '\'' +
+                "deskType" + deskType + '\'' +
                 '}';
     }
 

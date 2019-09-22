@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class RoomServiceImpl implements RoomService {
-    @Autowired
-    @Qualifier("InMemory")
-    private RoomServiceImpl service = null;
+    private static RoomServiceImpl service;
     private RoomRepository repository;
 
-    private RoomServiceImpl() {
-        this.repository = RoomRepositoryImpl.getRepository();
-    }
+    private RoomServiceImpl(){this.repository = RoomRepositoryImpl.getRepository();}
 
-    public RoomService getService() {
-        if (service == null) service = new RoomServiceImpl();
+    public static RoomServiceImpl getService()
+    {
+        if(service == null){service = new RoomServiceImpl();}
         return service;
     }
 
     @Override
-    public Room create(Room room) {
+    public Room create(Room room){
         return this.repository.create(room);
     }
 
@@ -37,7 +34,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public void delete(String roomNumber) {
+    public void delete(String roomNumber){
         this.repository.delete(roomNumber);
     }
 

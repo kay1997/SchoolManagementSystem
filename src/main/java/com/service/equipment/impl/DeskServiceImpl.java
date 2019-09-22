@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class DeskServiceImpl implements DeskService {
-    @Autowired
-    @Qualifier("InMemory")
-    private DeskServiceImpl service = null;
+    private static DeskServiceImpl service;
     private DeskRepository repository;
 
-    private DeskServiceImpl(){
-        this.repository = DeskRepositoryImpl.getRepository();
-    }
+    private DeskServiceImpl(){this.repository = DeskRepositoryImpl.getRepository();}
 
-    public DeskService getService(){
-        if (service == null) service = new DeskServiceImpl();
+    public static DeskServiceImpl getService()
+    {
+        if(service == null){service = new DeskServiceImpl();}
         return service;
     }
 
     @Override
-    public Desk create(Desk desk) {
+    public Desk create(Desk desk){
         return this.repository.create(desk);
     }
 
@@ -37,7 +34,7 @@ public class DeskServiceImpl implements DeskService {
     }
 
     @Override
-    public void delete(String deskNumber) {
+    public void delete(String deskNumber){
         this.repository.delete(deskNumber);
     }
 

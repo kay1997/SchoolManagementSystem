@@ -22,6 +22,14 @@ public class Printer {
         return printerCode;
     }
 
+    public void setPrinterCode(String printerCode) {
+        this.printerCode = printerCode;
+    }
+
+    public void setPrinterName(String printerName) {
+        this.printerName = printerName;
+    }
+
     public String getPrinterName() {
         return printerName;
     }

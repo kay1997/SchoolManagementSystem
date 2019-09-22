@@ -12,22 +12,19 @@ import java.util.Set;
 
 @Service("ServiceImpl")
 public class PrincipleServiceImpl implements PrincipleService {
-    @Autowired
-    @Qualifier("InMemory")
-    private PrincipleServiceImpl service = null;
+    private static PrincipleServiceImpl service;
     private PrincipleRepository repository;
 
-    private PrincipleServiceImpl(){
-        this.repository = PrincipleRepositoryImpl.getRepository();
-    }
+    private PrincipleServiceImpl(){this.repository = PrincipleRepositoryImpl.getRepository();}
 
-    public PrincipleService getService(){
-        if (service == null) service = new PrincipleServiceImpl();
+    public static PrincipleServiceImpl getService()
+    {
+        if(service == null){service = new PrincipleServiceImpl();}
         return service;
     }
 
     @Override
-    public Principle create(Principle principle) {
+    public Principle create(Principle principle){
         return this.repository.create(principle);
     }
 
@@ -37,7 +34,7 @@ public class PrincipleServiceImpl implements PrincipleService {
     }
 
     @Override
-    public void delete(String principleIDNumber) {
+    public void delete(String principleIDNumber){
         this.repository.delete(principleIDNumber);
     }
 
@@ -50,5 +47,5 @@ public class PrincipleServiceImpl implements PrincipleService {
     public Set<Principle> getAll() {
         return this.repository.getAll();
     }
-}
 
+}
