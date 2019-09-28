@@ -4,7 +4,6 @@ import app.SchoolManagementSystemApplication;
 import com.domain.equipment.Printer;
 import com.factory.equipment.PrinterFactory;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -90,7 +89,7 @@ public class PrinterControllerTest {
 
         ResponseEntity<String> response = restTemplate.exchange(baseURL + "/getAll", HttpMethod.GET, entity, String.class);
 
-        assertNotNull(response.getBody());
+        assertNotNull(response);
 
     }
 }

@@ -12,10 +12,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import com.repository.admin.AttendanceRepository;
-import com.repository.admin.impl.AttendanceRepositoryImpl;
-
-import java.util.Set;
 
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertNull;

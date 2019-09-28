@@ -4,7 +4,6 @@ import app.SchoolManagementSystemApplication;
 import com.domain.equipment.Computer;
 import com.factory.equipment.ComputerFactory;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -90,7 +89,7 @@ public class ComputerControllerTest {
 
         ResponseEntity<String> response = restTemplate.exchange(baseURL + "/getAll", HttpMethod.GET, entity, String.class);
 
-        assertNotNull(response.getBody());
+        assertNotNull(response);
 
     }
 }

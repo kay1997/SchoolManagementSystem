@@ -1,6 +1,7 @@
 package com.controller.admin;
 
 import com.domain.admin.Grade;
+import com.factory.admin.GradeFactory;
 import com.service.admin.impl.GradeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,13 +11,13 @@ import com.service.admin.GradeService;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/grade")
+@RequestMapping("SchoolManagementSystem/lookup/Grade")
 public class GradeController {
 
     @Autowired
     private GradeServiceImpl service;
 
-    @PostMapping("/create")
+    @PostMapping(value = {"/", "/create"} )
     public Grade create(@RequestBody Grade grade) {
         return service.create(grade);
     }

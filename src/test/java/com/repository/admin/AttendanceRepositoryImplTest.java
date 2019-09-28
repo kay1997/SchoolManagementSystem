@@ -4,18 +4,14 @@ import app.SchoolManagementSystemApplication;
 import com.domain.admin.Attendance;
 import com.factory.admin.AttendanceFactory;
 import com.repository.admin.impl.AttendanceRepositoryImpl;
-import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.io.IOException;
 
 import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertNull;

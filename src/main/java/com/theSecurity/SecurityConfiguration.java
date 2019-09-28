@@ -1,6 +1,5 @@
 package com.theSecurity;
 
-import org.springframework.boot.autoconfigure.security.servlet.WebSecurityEnablerConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -18,38 +17,38 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private static final String SUPPORT_ROLE = "SUPPORT";
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+    protected void configure(AuthenticationManagerBuilder auth)
+            throws Exception {
 
         auth.inMemoryAuthentication()
                 .withUser("admin")
-                .password(encoder().encode("admin"))
+                .password(encoder().encode("sms"))
                 .roles(ADMIN_ROLE)
                 .and()
                 .withUser("user")
-                .password(encoder().encode("user"))
-                .roles(USER_ROLE)
+                .password(encoder().encode("sms"))
+                .roles(USER_ROLE, ADMIN_ROLE)
                 .and()
-                .withUser("supportUser")
-                .password(encoder().encode("supportUser"))
-                .roles(SUPPORT_ROLE);
-
+                .withUser("supportuser")
+                .password(encoder().encode("sms"))
+                .roles(SUPPORT_ROLE, ADMIN_ROLE);
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception{
+    protected void configure(HttpSecurity http) throws Exception {
 
         http.httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/report/getall")
+                .antMatchers(HttpMethod.GET, "/SchoolManagementSystem/getAll")
                 .hasRole(ADMIN_ROLE)
                 .and()
-                .csrf().disable();
-
+                .csrf().disable()
+                .formLogin().disable();
     }
 
     @Bean
-    public PasswordEncoder encoder(){
+    public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
     }
 }

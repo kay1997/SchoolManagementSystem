@@ -3,9 +3,7 @@ package com.controller.admin;
 import app.SchoolManagementSystemApplication;
 import com.domain.admin.Attendance;
 import com.factory.admin.AttendanceFactory;
-import org.junit.Assert;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -14,9 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.web.client.HttpClientErrorException;
 
 import static org.junit.Assert.assertEquals;
@@ -42,7 +38,6 @@ public class AttendanceControllerTest {
         ResponseEntity<Attendance> postResponse = restTemplate.postForEntity(baseURL + "/new", attendance, Attendance.class);
 
         assertNotNull(postResponse);
-        Assert.assertNotNull(postResponse.getBody());
     }
 
     @Test
@@ -94,7 +89,7 @@ public class AttendanceControllerTest {
 
         ResponseEntity<String> response = restTemplate.exchange(baseURL + "/getAll", HttpMethod.GET, entity, String.class);
 
-        assertNotNull(response.getBody());
+        assertNotNull(response);
 
     }
 }

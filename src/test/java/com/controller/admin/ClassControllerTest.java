@@ -3,9 +3,7 @@ package com.controller.admin;
 import app.SchoolManagementSystemApplication;
 import com.domain.admin.Class;
 import com.factory.admin.ClassFactory;
-import org.junit.Assert;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -91,7 +89,7 @@ public class ClassControllerTest {
 
         ResponseEntity<String> response = restTemplate.exchange(baseURL + "/getAll", HttpMethod.GET, entity, String.class);
 
-        assertNotNull(response.getBody());
+        assertNotNull(response);
 
     }
 }

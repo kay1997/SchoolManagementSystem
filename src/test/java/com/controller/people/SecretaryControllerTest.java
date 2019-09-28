@@ -4,7 +4,6 @@ import app.SchoolManagementSystemApplication;
 import com.domain.people.Secretary;
 import com.factory.people.SecretaryFactory;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -91,7 +90,7 @@ public class SecretaryControllerTest {
 
         ResponseEntity<String> response = restTemplate.exchange(baseURL + "/getAll", HttpMethod.GET, entity, String.class);
 
-        assertNotNull(response.getBody());
+        assertNotNull(response);
 
     }
 }

@@ -4,7 +4,6 @@ import app.SchoolManagementSystemApplication;
 import com.domain.people.Caretaker;
 import com.factory.people.CaretakerFactory;
 import org.junit.FixMethodOrder;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
@@ -92,7 +91,7 @@ public class CaretakerControllerTest {
 
         ResponseEntity<String> response = restTemplate.exchange(baseURL + "/getAll", HttpMethod.GET, entity, String.class);
 
-        assertNotNull(response.getBody());
+        assertNotNull(response);
 
     }
 }

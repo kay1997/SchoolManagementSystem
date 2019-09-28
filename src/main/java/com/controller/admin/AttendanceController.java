@@ -10,14 +10,14 @@ import com.service.admin.AttendanceService;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/attendance")
+@RequestMapping("/SchoolManagementSystem/lookup/Attendance")
 public class AttendanceController {
 
     @Qualifier("AttendanceServiceImpl")
     @Autowired
     private AttendanceServiceImpl service;
 
-    @PostMapping("/create")
+    @PostMapping(value = {"/", "/create"} )
     public Attendance create(@RequestBody Attendance attendance) {
         return service.create(attendance);
     }
